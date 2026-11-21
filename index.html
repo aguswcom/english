@@ -782,9 +782,19 @@ function buildText(){
       const fig=document.createElement('figure');
       fig.className='story-fig';
       const img=document.createElement('img');
-      img.src=b.src;
+      let src=b.src;
+      if(story&&!story.local&&!/^([a-z]+:|\/|stories\/)/i.test(src)){
+        src='stories/'+src.replace(/^\.\//,'');
+      }
+      img.src=src;
       img.alt=b.alt||'';
       img.loading='lazy';
+      img.onerror=()=>{
+        if(!img.dataset.retry&&!/^([a-z]+:|\/)/i.test(b.src)){
+          img.dataset.retry='1';
+          img.src=b.src.startsWith('stories/')?b.src.slice(8):'stories/'+b.src.replace(/^\.\//,'');
+        }
+      };
       fig.append(img);
       if(b.alt){
         const cap=document.createElement('figcaption');
