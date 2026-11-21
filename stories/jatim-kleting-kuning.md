@@ -1,5 +1,5 @@
 ---
-title: Past Tense :Kleting Kuning
+title: Past Tense :Jawa Timur - Kleting Kuning
 level: Pemula
 grammar: Simple Past Tense
 ---
