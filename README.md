@@ -71,6 +71,15 @@ Q: Choose the correct past tense sentence:
 
 ### Catatan Penulisan:
 - **level**: Diisi `Pemula` (Beginner), `Menengah` (Intermediate), atau `Lanjut` (Advanced).
+- **Gambar (Images)**: Anda dapat menyisipkan gambar di awal atau di antara paragraf cerita dengan sintaks Markdown:
+  ```markdown
+  ![Keterangan Gambar](stories/nama-gambar.jpg)
+  ```
+  atau menggunakan URL internet:
+  ```markdown
+  ![Keterangan Gambar](https://link-gambar.com/foto.jpg)
+  ```
+  Gambar akan otomatis tampil rapi di tengah dengan sudut melengkung dan keterangan (caption) di bawahnya, serta tidak akan dibaca keliru oleh TTS.
 - **Vocab**: Kata-kata yang dicantumkan di bagian `## Vocab` akan **otomatis berwarna biru** pada teks cerita dan dapat diklik untuk melihat artinya langsung.
 - **Quiz**: Gunakan tanda `- [x]` untuk kunci jawaban benar dan `- [ ]` untuk pilihan salah.
 - **Penting**: Hindari singkatan bertitik seperti `p.m.`, `a.m.`, `Mr.`, atau `Dr.` agar pemotong kalimat otomatis tidak terputus keliru.

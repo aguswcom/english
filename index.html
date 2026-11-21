@@ -78,6 +78,9 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 .w.cur{background:var(--hl);color:#1B1500!important;box-shadow:0 0 0 3px var(--hl);text-decoration:none}
 #text.center{text-align:center}
 #text.center .done{justify-content:center}
+.story-fig{margin:20px auto;padding:0;text-align:center;max-width:100%}
+.story-fig img{max-width:100%;height:auto;border-radius:14px;box-shadow:var(--card-sh);border:1px solid var(--ln);display:block;margin:0 auto}
+.story-fig figcaption{font-size:13px;color:var(--mu);margin-top:8px;font-style:italic;font-family:system-ui,-apple-system,sans-serif}
 #text.gulir{padding-top:max(22px,calc(38vh - 76px));padding-bottom:56vh}
 #ctl{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:38rem;z-index:6;background:var(--sf);border:1px solid var(--ln);border-bottom:0;border-radius:24px 24px 0 0;padding:0 18px max(14px,env(safe-area-inset-bottom));box-shadow:0 -6px 28px rgba(60,40,10,.09);transition:all .2s ease}
 @media(prefers-color-scheme:dark){#ctl{box-shadow:0 -6px 28px rgba(0,0,0,.45)}}
@@ -494,9 +497,23 @@ function parseMD(src,id,fallbackTitle){
     if(h){
       if(h[1].length===1){if(!title)title=clean(h[2]);}
       else blocks.push({t:'h',x:clean(h[2])});
-    } else blocks.push({t:'p',x:clean(chunk)});
+    } else {
+      const lines=chunk.split('\n').map(l=>l.trim()).filter(Boolean);
+      let pBuf=[];
+      const flushP=()=>{if(pBuf.length){blocks.push({t:'p',x:clean(pBuf.join(' '))});pBuf=[];}};
+      lines.forEach(line=>{
+        const im=line.match(/^!\[(.*?)\]\((.+?)\)$/);
+        if(im){
+          flushP();
+          blocks.push({t:'img',alt:clean(im[1]),src:im[2].trim()});
+        }else{
+          pBuf.push(line);
+        }
+      });
+      flushP();
+    }
   });
-  const all=blocks.map(b=>b.x).join(' ');
+  const all=blocks.filter(b=>b.x).map(b=>b.x).join(' ');
   const wc=(all.match(/[A-Za-z']+/g)||[]).length;
   let time=0;
   if(meta.date||meta.time){
@@ -761,6 +778,22 @@ function buildText(){
   vKeys.filter(k=>!/\s+/.test(k)).forEach(k=>{singleMap[k]=true});
 
   story.blocks.forEach(b=>{
+    if(b.t==='img'){
+      const fig=document.createElement('figure');
+      fig.className='story-fig';
+      const img=document.createElement('img');
+      img.src=b.src;
+      img.alt=b.alt||'';
+      img.loading='lazy';
+      fig.append(img);
+      if(b.alt){
+        const cap=document.createElement('figcaption');
+        cap.textContent=b.alt;
+        fig.append(cap);
+      }
+      art.append(fig);
+      return;
+    }
     const el=document.createElement(b.t==='h'?'h3':'p');art.append(el);
     const parts=b.x.split(WORD);
     const matchedVoc=new Array(parts.length).fill(null);
