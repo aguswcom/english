@@ -4,7 +4,7 @@ level: Pemula
 grammar: Simple Past Tense
 ---
 
-<img width="1024" height="572" alt="image" src="https://github.com/user-attachments/assets/ab9849d6-dee7-49fe-8f26-4edbb741fc4e" />
+![Ilustrasi Calon Arang](jatim-calon-arang.webp)
 Long ago, an old woman named Calon Arang lived in a village in East Java. She had a beautiful daughter named Ratna Manggali, but nobody wanted to marry her.
 
 The villagers were afraid of Calon Arang because she knew black magic. They said she was a wicked witch, so they stayed away from her family.
