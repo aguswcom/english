@@ -109,7 +109,7 @@ ditulis sama persis seperti di aplikasi.
    - Tombol Instal tidak muncul: pastikan alamatnya localhost, bukan IP.
    - Perubahan aplikasi tidak terlihat: tutup aplikasi sepenuhnya lalu buka lagi.
 
-8. TRAKTIR
+8. TRAKTIR  
    Jika anda merasa terbantu dengan proram dan ingin mentraktir, traktiran dapat di transfer melalui  :
    - BANK BRI 
    - NOMOR REKENING : 0516 0101 7476 538
