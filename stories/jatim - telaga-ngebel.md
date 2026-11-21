@@ -1,5 +1,5 @@
 ---
-title: Past Tense :Telaga Ngebel
+title: Past Tense :Jawa Timur - Telaga Ngebel
 level: Pemula
 grammar: Simple Past Tense
 ---
