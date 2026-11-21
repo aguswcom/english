@@ -9,8 +9,8 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>Baca Inggris</title>
 <style>
-:root{--bg:#F1F4F2;--sf:#FFFFFF;--tx:#17252B;--mu:#5A6A71;--ln:#D8DFDC;--ac:#0F766E;--acx:#FFFFFF;--hl:#FFC83D;--ok:#1B7F4B;--bad:#B3261E;--fs:21px;color-scheme:light dark}
-@media(prefers-color-scheme:dark){:root{--bg:#0F171B;--sf:#172228;--tx:#E5EDEB;--mu:#9AACB2;--ln:#26353C;--ac:#4FC3B3;--acx:#06201C;--hl:#E9B307;--ok:#5BD08D;--bad:#FF8A80}}
+:root{--bg:#F1F4F2;--sf:#FFFFFF;--tx:#17252B;--mu:#5A6A71;--ln:#D8DFDC;--ac:#0F766E;--acx:#FFFFFF;--hl:#FFC83D;--ok:#1B7F4B;--bad:#B3261E;--voc:#1D6AE5;--fs:21px;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#0F171B;--sf:#172228;--tx:#E5EDEB;--mu:#9AACB2;--ln:#26353C;--ac:#4FC3B3;--acx:#06201C;--hl:#E9B307;--ok:#5BD08D;--bad:#FF8A80;--voc:#60A5FA}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
@@ -20,8 +20,8 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 .serif{font-family:Georgia,"Iowan Old Style","Noto Serif",serif}
 
 .top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:6px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:var(--bg);border-bottom:1px solid var(--ln)}
-.top h1{margin:0;flex:1;min-width:0;font:600 clamp(16px,3.8vw,24px)/1.2 Georgia,"Iowan Old Style",serif;padding-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.top .btn{padding:0 10px;font-size:14px;white-space:nowrap}
+.top h1{margin:0;flex:1;min-width:0;font:600 clamp(15px,3.5vw,24px)/1.2 Georgia,"Iowan Old Style",serif;padding-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .btn{padding:0 8px;font-size:13px;white-space:nowrap}
 .top .ttl{flex:1;min-width:0;font:600 17px/1.2 Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .btn{min-height:44px;padding:0 14px;border-radius:12px;background:var(--sf);border:1px solid var(--ln)}
 .btn.pri{background:var(--ac);color:var(--acx);border-color:var(--ac)}
@@ -44,7 +44,8 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 #text p{margin:0 0 1.1em}
 #text h3{font:600 1.05em/1.4 Georgia,serif;margin:1.5em 0 .5em}
 .w{border-radius:4px;padding:1px 0;cursor:pointer;transition:background .12s}
-.w.cur{background:var(--hl);color:#1B1500;box-shadow:0 0 0 3px var(--hl)}
+.w.voc{color:var(--voc);font-weight:600;text-decoration:underline dotted 1.5px var(--voc);text-underline-offset:3px}
+.w.cur{background:var(--hl);color:#1B1500!important;box-shadow:0 0 0 3px var(--hl);text-decoration:none}
 #text.center{text-align:center}
 #text.center .done{justify-content:center}
 #text.gulir{padding-top:max(22px,calc(38vh - 76px));padding-bottom:56vh}
@@ -122,6 +123,7 @@ html{scroll-behavior:auto}
 <section id="v-lib" class="view">
   <header class="top">
     <h1>Baca Inggris</h1>
+    <button class="btn" id="btnAbout">About</button>
     <button class="btn" id="btnPrompt">Copy prompt</button>
     <button class="btn" id="btnWords">My words</button>
     <button class="btn pri" id="btnAdd">Add</button>
@@ -139,6 +141,7 @@ html{scroll-behavior:auto}
   </div>
   <div class="foot">
     <button class="btn" id="btnReload">Reload stories</button>
+    <button class="btn" id="btnAboutFoot">About</button>
     <button class="btn" id="btnFolder" hidden>Choose stories folder</button>
   </div>
 </section>
@@ -250,6 +253,39 @@ html{scroll-behavior:auto}
   </div>
 </div>
 
+<!-- Dialog About -->
+<div id="aboutDlg" class="sheet" hidden>
+  <div class="scrim" id="aboutScrim"></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="aboutH">
+    <div class="shHead">
+      <h2 id="aboutH" class="serif" style="margin:0;font-size:24px">About Baca Inggris</h2>
+      <button class="btn sm" id="aboutClose">Close</button>
+    </div>
+    <div style="margin:16px 0;line-height:1.6">
+      <p style="margin:0 0 14px">Jika anda merasa terbantu dengan program ini dan ingin mentraktir, traktiran dapat ditransfer melalui:</p>
+      
+      <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:13px;color:var(--mu);font-weight:600">BANK TRANSFER</span>
+          <button class="btn sm" id="btnCopyRek" type="button" style="font-size:12px;padding:2px 8px;min-height:30px">Copy Rekening</button>
+        </div>
+        <div style="font-size:15px"><b>Bank:</b> BANK BRI</div>
+        <div style="font-size:16px;margin:4px 0"><b>Nomor Rekening:</b> <span style="font-family:monospace;font-weight:bold;letter-spacing:1px">0516 0101 7476 538</span></div>
+        <div style="font-size:15px"><b>Atas Nama:</b> AGUS WALUYO</div>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px">
+        <span style="font-size:13px;color:var(--mu);font-weight:600;display:block;margin-bottom:8px">KONTAK</span>
+        <div style="font-size:15px;margin-bottom:6px"><b>No. Telp / WA:</b> <a href="https://wa.me/6281946135363" target="_blank" rel="noopener" style="color:var(--ac);text-decoration:none">+62 819-4613-5363</a></div>
+        <div style="font-size:15px"><b>Email:</b> <a href="mailto:agusw.com@gmail.com" style="color:var(--ac);text-decoration:none">agusw.com@gmail.com</a></div>
+      </div>
+    </div>
+    <div class="shAct">
+      <button class="btn pri" id="aboutOk" type="button" style="width:100%">Tutup</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast" hidden></div>
 
 <script>
@@ -329,7 +365,7 @@ $('#prevStory').innerHTML=ICON.prevStory;$('#nextStory').innerHTML=ICON.nextStor
 $('#searchClr').innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
 
 let stories=[],story=null,words=[],sentences=[],w2s=[];
-let cur=-1,pos=0,playing=false,timer=0,estTimer=0,token=0,voice=null,lockRef=null;
+let cur=-1,pos=0,playing=false,timer=0,estTimer=0,token=0,voice=null,lockRef=null,resumeScrollOnClose=false;
 let raf=0,acc=0,lastSet=0,lastT=0,lastHl=0,pxPerWord=20,ended=false;
 let mode=LS.get('mode','voice'),wpm=LS.get('wpm',150),fs=LS.get('fs',21),align=LS.get('align','left'),hlOn=LS.get('hl',true);
 let prog=LS.get('prog',{}),saveT=0;
@@ -484,9 +520,39 @@ function applyAlign(){
 }
 function buildText(){
   const art=$('#text');art.innerHTML='';words=[];sentences=[];w2s=[];
+  const vocab=(story&&story.vocab)||{};
+  const vKeys=Object.keys(vocab);
+  const multiKeys=vKeys.filter(k=>/\s+/.test(k)).sort((a,b)=>b.length-a.length);
+  const singleMap=Object.create(null);
+  vKeys.filter(k=>!/\s+/.test(k)).forEach(k=>{singleMap[k]=true});
+
   story.blocks.forEach(b=>{
     const el=document.createElement(b.t==='h'?'h3':'p');art.append(el);
     const parts=b.x.split(WORD);
+    const matchedVoc=new Array(parts.length).fill(null);
+
+    for(const vk of multiKeys){
+      const mw=vk.split(/\s+/).filter(Boolean);
+      const mlen=mw.length;
+      for(let i=1;i<=parts.length-(mlen*2-1);i+=2){
+        let ok=true;
+        for(let j=0;j<mlen;j++){
+          const segW=(parts[i+j*2]||'').toLowerCase().replace(/['’]s$/,'');
+          if(segW!==mw[j]&&(parts[i+j*2]||'').toLowerCase()!==mw[j]){ok=false;break;}
+        }
+        if(ok){
+          for(let j=0;j<mlen;j++) matchedVoc[i+j*2]=vk;
+        }
+      }
+    }
+    for(let i=1;i<parts.length;i+=2){
+      if(!matchedVoc[i]){
+        const segW=parts[i].toLowerCase().replace(/['’]s$/,'');
+        if(singleMap[segW]) matchedVoc[i]=segW;
+        else if(singleMap[parts[i].toLowerCase()]) matchedVoc[i]=parts[i].toLowerCase();
+      }
+    }
+
     let raw='',offs=[],s0=-1,skip=0;
     for(let i=0;i<parts.length;i++){
       const seg=parts[i];
@@ -494,7 +560,11 @@ function buildText(){
         if(seg){el.append(document.createTextNode(seg));raw+=seg.slice(skip);}
         skip=0;
       }else{
-        const sp=document.createElement('span');sp.className='w';sp.textContent=seg;
+        const sp=document.createElement('span');
+        const vocKey=matchedVoc[i];
+        sp.className=vocKey?'w voc':'w';
+        if(vocKey) sp.dataset.vocKey=vocKey;
+        sp.textContent=seg;
         const idx=words.length;sp.dataset.i=idx;el.append(sp);words.push(sp);
         if(s0<0)s0=idx;
         offs.push(raw.length);raw+=seg;w2s.push(sentences.length);
@@ -755,20 +825,25 @@ function renderSheet(note){
   $('#shSave').textContent=saved?'Saved':'Save word';
 }
 async function showSheet(i){
+  resumeScrollOnClose = playing && (mode === 'scroll');
   if(playing)pause();
-  const raw=words[i].textContent;
+  const sp=words[i];
+  const raw=sp.textContent;
   const key=raw.toLowerCase().replace(/['’]s$/,'');
-  sh={w:key,idx:i,gloss:story.vocab[key]||story.vocab[raw.toLowerCase()]||'',auto:'',def:'',ex:'',pos:'',phon:''};
-  $('#shWord').textContent=raw;
+  const vocKey=sp.dataset.vocKey;
+  const gloss=(vocKey&&story.vocab[vocKey])||story.vocab[key]||story.vocab[raw.toLowerCase()]||'';
+  const lookup=vocKey||key;
+  sh={w:lookup,idx:i,gloss,auto:'',def:'',ex:'',pos:'',phon:''};
+  $('#shWord').textContent=vocKey||raw;
   $('#sheet').hidden=false;
-  const cache=LS.get('lk',{})[key];
+  const cache=LS.get('lk',{})[lookup];
   if(cache){Object.assign(sh,cache);renderSheet();return;}
   renderSheet('Looking up…');
-  const cands=[...new Set([key,key.replace(/ies$/,'y'),key.replace(/(ing|ed|es|s)$/,''),key.replace(/(ing|ed)$/,'e')])].filter(Boolean);
+  const cands=[...new Set([lookup,lookup.replace(/ies$/,'y'),lookup.replace(/(ing|ed|es|s)$/,''),lookup.replace(/(ing|ed)$/,'e')])].filter(Boolean);
   const dictP=(async()=>{for(const c of cands){try{return await fj('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(c))}catch(e){}}throw new Error('x')})();
-  const trP=fj('https://api.mymemory.translated.net/get?q='+encodeURIComponent(key)+'&langpair=en|id');
+  const trP=fj('https://api.mymemory.translated.net/get?q='+encodeURIComponent(lookup)+'&langpair=en|id');
   const [d,t]=await Promise.allSettled([dictP,trP]);
-  if(!sh||sh.w!==key)return;
+  if(!sh||sh.w!==lookup)return;
   if(d.status==='fulfilled'&&d.value&&d.value[0]){
     const e=d.value[0],m=(e.meanings||[])[0],df=m&&(m.definitions||[])[0];
     sh.phon=e.phonetic||((e.phonetics||[]).map(p=>p.text).find(Boolean))||'';
@@ -782,7 +857,16 @@ async function showSheet(i){
   if(got){const lk=LS.get('lk',{});lk[key]={auto:sh.auto,def:sh.def,ex:sh.ex,pos:sh.pos,phon:sh.phon};LS.set('lk',lk);}
   renderSheet(got||sh.gloss?'':'No connection. Full meanings need internet. Words you have opened before are kept for offline use.');
 }
-function closeSheet(){$('#sheet').hidden=true;sh=null}
+function closeSheet(){
+  $('#sheet').hidden=true;
+  sh=null;
+  if(resumeScrollOnClose){
+    resumeScrollOnClose=false;
+    if(!playing&&mode==='scroll'&&!ended&&story&&!$('#v-read').hidden){
+      play();
+    }
+  }
+}
 function speakWord(w){
   if(!hasTTS)return;
   speechSynthesis.cancel();
@@ -1140,6 +1224,16 @@ async function copyPrompt(){
   else toast('Failed to copy prompt',2000);
 }
 
+const openAbout=()=>{if(playing)pause();$('#aboutDlg').hidden=false};
+const closeAbout=()=>{$('#aboutDlg').hidden=true};
+$('#btnAbout').onclick=openAbout;
+if($('#btnAboutFoot'))$('#btnAboutFoot').onclick=openAbout;
+$('#aboutClose').onclick=$('#aboutScrim').onclick=$('#aboutOk').onclick=closeAbout;
+$('#btnCopyRek').onclick=async()=>{
+  const ok=await copyToClipboard('051601017476538');
+  if(ok)toast('Nomor rekening BRI disalin!',2500);
+};
+
 $('#btnPrompt').onclick=copyPrompt;
 $('#btnWords').onclick=()=>{location.hash='#words'};
 $('#btnAdd').onclick=()=>openAdd();
@@ -1162,7 +1256,7 @@ $('#text').addEventListener('click',e=>{
 $('#shClose').onclick=$('#shScrim').onclick=closeSheet;
 $('#shSpeak').onclick=()=>sh&&speakWord(sh.w);
 $('#shSave').onclick=saveWord;
-$('#shFrom').onclick=()=>{if(!sh)return;const i=sh.idx;closeSheet();goTo(i);play()};
+$('#shFrom').onclick=()=>{if(!sh)return;const i=sh.idx;resumeScrollOnClose=false;closeSheet();goTo(i);play()};
 document.addEventListener('visibilitychange',()=>{
   if(document.hidden&&playing)pause();
   if(!document.hidden&&!$('#v-lib').hidden)loadStories().then(()=>{if(!$('#v-lib').hidden)renderLib()});
@@ -1171,7 +1265,8 @@ document.addEventListener('visibilitychange',()=>{
 /* ---------- router ---------- */
 function route(){
   if(playing)pause();
-  closeSheet();$('#addDlg').hidden=true;$('#setDlg').hidden=true;
+  resumeScrollOnClose=false;
+  closeSheet();$('#addDlg').hidden=true;$('#setDlg').hidden=true;$('#aboutDlg').hidden=true;
   const h=location.hash.slice(1),k=h.split('=')[0],v=decodeURIComponent(h.slice(k.length+1));
   if(k==='read'&&v)openStory(v);
   else if(k==='quiz'&&v)openQuiz(v);

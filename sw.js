@@ -1,4 +1,4 @@
-const VER = 'baca-inggris-v7';
+const VER = 'baca-inggris-v10';
 const SHELL = ['./', 'index.html', 'manifest.json', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', e => {
