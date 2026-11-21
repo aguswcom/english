@@ -353,6 +353,19 @@ async function discover(){
     const r=await fetch('stories/index.json',{cache:'no-cache'});
     if(r.ok){const j=await r.json();files=Array.isArray(j)?j:(j.files||[]);}
   }catch(e){}
+  if(!files.length && location.hostname.endsWith('github.io')){
+    try{
+      const owner=location.hostname.split('.')[0];
+      const repo=location.pathname.split('/').filter(Boolean)[0];
+      if(owner && repo){
+        const r=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/stories`);
+        if(r.ok){
+          const items=await r.json();
+          if(Array.isArray(items))files=items.map(x=>x.name);
+        }
+      }
+    }catch(e){}
+  }
   if(!files.length){
     try{
       const r=await fetch('stories/',{cache:'no-cache'});
@@ -364,7 +377,7 @@ async function discover(){
       }
     }catch(e){}
   }
-  files=[...new Set(files)].filter(f=>typeof f==='string'&&!/^readme/i.test(f));
+  files=[...new Set(files)].filter(f=>typeof f==='string'&&!/^readme/i.test(f)&&/\.md$/i.test(f));
   if(files.length)LS.set('fileList',files);else files=LS.get('fileList',[]);
   return files;
 }
