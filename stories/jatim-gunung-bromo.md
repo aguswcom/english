@@ -3,6 +3,8 @@ title: Past Tense :Jawa Timur - The Legend of Mount Bromo
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](stories/jatim-gunung-bromo.webp)
 Long ago, a kind princess named Roro Anteng lived in the Majapahit kingdom. She married a strong young man named Joko Seger, and they moved to the mountains near Tengger.
 
 They built a small village and became its leaders. The villagers loved them, and the village was peaceful.
