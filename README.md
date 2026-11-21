@@ -110,7 +110,7 @@ ditulis sama persis seperti di aplikasi.
    - Perubahan aplikasi tidak terlihat: tutup aplikasi sepenuhnya lalu buka lagi.
 
 8. DONASI :
-   BANK BRI 
-   NOMOR REKENING : 0516 0101 7476 538
-   ATAS NAMA : AGUS WALUYO
-   NO TLP : +62 819-4613-5363
+   - BANK BRI 
+   - NOMOR REKENING : 0516 0101 7476 538
+   - ATAS NAMA : AGUS WALUYO
+   - NO TLP : +62 819-4613-5363
