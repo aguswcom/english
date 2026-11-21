@@ -1,4 +1,4 @@
-const VER = 'porridge-v22';
+const VER = 'porridge-v23';
 const SHELL = ['./', 'index.html', 'manifest.json', 'favicon.ico', 'icons/favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', e => {

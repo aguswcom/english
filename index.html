@@ -561,7 +561,10 @@ function show(v){['lib','read','quiz','words'].forEach(n=>$('#v-'+n).hidden=n!==
 function pickVoice(){
   if(!hasTTS)return;
   const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
-  voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&v.localService)||vs.find(v=>/en[-_]US/i.test(v.lang))||vs[0]||null;
+  voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&v.localService)||
+        vs.find(v=>v.localService&&/^en/i.test(v.lang))||
+        vs.find(v=>/en[-_]US/i.test(v.lang))||
+        vs[0]||null;
 }
 if(hasTTS){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
 async function copyToClipboard(text){
@@ -949,10 +952,18 @@ function applyHl(){
   LS.set('hl',hlOn);
 }
 function msFor(i){
-  const w=words[i].textContent,base=60000/wpm;
-  let ms=base*(0.65+Math.min(w.length,10)/18);
+  const w=words[i].textContent;
+  const base=60000/Math.max(80,wpm);
+  const len=w.length;
+  let factor=0.85;
+  if(len<=2) factor=0.45;
+  else if(len<=4) factor=0.65;
+  else if(len<=7) factor=0.90;
+  else factor=1.15;
+  let ms=base*factor;
   const n=words[i].nextSibling,t=n&&n.nodeType===3?n.textContent:'';
-  if(/[.!?…]/.test(t))ms+=base*1.1;else if(/[,;:—]/.test(t))ms+=base*0.5;
+  if(/[.!?…]/.test(t)) ms+=base*0.6;
+  else if(/[,;:—]/.test(t)) ms+=base*0.3;
   return ms;
 }
 async function wake(on){
@@ -1036,20 +1047,33 @@ function speakAt(i){
   const u=new SpeechSynthesisUtterance(text);
   u.lang='en-US';if(voice)u.voice=voice;
   u.rate=Math.max(.5,Math.min(1.8,wpm/150));
-  let got=false;
-  const est=k=>{
-    if(my!==token||got||s.s+k>s.e)return;
-    highlight(s.s+k);
-    estTimer=setTimeout(()=>est(k+1),msFor(s.s+k));
+
+  const scheduleEst=k=>{
+    clearTimeout(estTimer);
+    if(my!==token||s.s+k>s.e)return;
+    const dur=msFor(s.s+k-1);
+    estTimer=setTimeout(()=>{
+      if(my!==token||s.s+k>s.e)return;
+      highlight(s.s+k);
+      scheduleEst(k+1);
+    },dur);
   };
+
+  u.onstart=()=>{
+    if(my!==token)return;
+    highlight(i);
+    scheduleEst(k0+1);
+  };
+
   u.onboundary=e=>{
     if(my!==token)return;
     if(e.name&&e.name!=='word')return;
-    got=true;clearTimeout(estTimer);
     const c=e.charIndex+off;let k=0;
-    while(k+1<s.offs.length&&s.offs[k+1]<=c)k++;
+    while(k+1<s.offs.length&&s.offs[k+1]<=c+1)k++;
     highlight(s.s+k);
+    scheduleEst(k+1);
   };
+
   u.onend=()=>{if(my!==token)return;clearTimeout(estTimer);speakAt(s.e+1);};
   u.onerror=ev=>{
     if(my!==token)return;
@@ -1057,12 +1081,13 @@ function speakAt(i){
     clearTimeout(estTimer);mode='silent';syncMode();
     toast('Voice is not available. Switched to Silent mode.');tick(cur);
   };
+
   speechSynthesis.cancel();
   setTimeout(()=>{
     if(my!==token)return;
     speechSynthesis.speak(u);
-    estTimer=setTimeout(()=>est(k0+1),msFor(i)+250);
-  },60);
+    scheduleEst(k0+1);
+  },40);
 }
 function jumpSent(d){
   if(!words.length)return;
