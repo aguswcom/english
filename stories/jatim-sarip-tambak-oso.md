@@ -1,5 +1,5 @@
 ---
-title: Past Tense :Sarip Tambak Oso
+title: Past Tense :Jawa Timur - Sarip Tambak Oso
 level: Pemula
 grammar: Simple Past Tense
 ---
