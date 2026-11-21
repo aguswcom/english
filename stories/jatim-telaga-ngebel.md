@@ -1,5 +1,5 @@
 ---
-title: Past Tense :Jawa Timur - Telaga Ngebel
+title: Past Tense :Jawa Timur - The Legend of Ngebel Lake
 level: Pemula
 grammar: Simple Past Tense
 ---
