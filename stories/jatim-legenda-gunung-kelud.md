@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Mount Kelud
+title: Past Tense :Jawa Timur - The Legend of Mount Kelud
 level: Pemula
 grammar: Simple Past Tense
 ---
