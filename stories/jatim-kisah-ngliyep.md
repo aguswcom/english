@@ -1,5 +1,5 @@
 ---
-title: Past Tense : The Legend of Ngliyep
+title: Past Tense :The Legend of Ngliyep
 level: Pemula
 grammar: Simple Past Tense
 ---
