@@ -3,6 +3,7 @@ title: Past Tense :Jawa Timur - The Legend of Damarwulan and Minakjinggo
 level: Pemula
 grammar: Simple Past Tense
 ---
+![](jatim-damarwulan.md)
 Long ago, a kind young man named Damarwulan lived in the Majapahit kingdom. He worked as a stable boy for a rich man, but he was brave and clever.
 
 At that time, Queen Kencanawungu ruled Majapahit. A cruel king named Minakjinggo attacked the kingdom, and many people felt afraid.
