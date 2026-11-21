@@ -114,3 +114,4 @@ ditulis sama persis seperti di aplikasi.
    - NOMOR REKENING : 0516 0101 7476 538
    - ATAS NAMA : AGUS WALUYO
    - NO TLP : +62 819-4613-5363
+   - email : agusw.com@gmail.com
