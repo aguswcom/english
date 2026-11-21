@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Baca Inggris",
-  "short_name": "Baca Inggris",
-  "description": "Latihan membaca bahasa Inggris dengan teks berjalan, suara, arti kata, dan kuis.",
+  "name": "PORRIDGE - Power Of Reading English",
+  "short_name": "PORRIDGE",
+  "description": "PORRIDGE (Power Of Reading English) - Every page, a spoonful of knowledge.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

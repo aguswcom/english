@@ -3,14 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#17252B">
+<meta name="theme-color" content="#FBF6EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17130E" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-<title>Baca Inggris</title>
+<title>PORRIDGE - Power Of Reading English</title>
 <style>
-:root{--bg:#F1F4F2;--sf:#FFFFFF;--tx:#17252B;--mu:#5A6A71;--ln:#D8DFDC;--ac:#0F766E;--acx:#FFFFFF;--hl:#FFC83D;--ok:#1B7F4B;--bad:#B3261E;--voc:#1D6AE5;--fs:21px;color-scheme:light dark}
-@media(prefers-color-scheme:dark){:root{--bg:#0F171B;--sf:#172228;--tx:#E5EDEB;--mu:#9AACB2;--ln:#26353C;--ac:#4FC3B3;--acx:#06201C;--hl:#E9B307;--ok:#5BD08D;--bad:#FF8A80;--voc:#60A5FA}}
+:root{--bg:#FBF6EC;--sf:#FFFFFF;--tx:#2B2118;--mu:#7A6A58;--ln:#E8DCC8;--ac:#0F766E;--acx:#FFFFFF;--hl:#FFC83D;--ok:#1B7F4B;--bad:#B3261E;--voc:#1D6AE5;--fs:21px;
+--honey:#E8A33D;--card-sh:0 1px 2px rgba(60,40,10,.06),0 6px 16px rgba(60,40,10,.06);
+--lb-bg:#DDF0E3;--lb-tx:#1B6B3F;--li-bg:#FBEBC8;--li-tx:#8A5A00;--la-bg:#F7DDD1;--la-tx:#9A3F1F;
+color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--bg:#17130E;--sf:#211B14;--tx:#F3EADB;--mu:#B3A28C;--ln:#3A3025;--ac:#4FC3B3;--acx:#06201C;--hl:#E9B307;--ok:#5BD08D;--bad:#FF8A80;--voc:#60A5FA;
+--honey:#E9B04A;--card-sh:none;
+--lb-bg:#1E3A2B;--lb-tx:#7ADBA3;--li-bg:#3D3016;--li-tx:#F0C15E;--la-bg:#43251A;--la-tx:#F2A07F}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
@@ -18,9 +24,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
 [hidden]{display:none!important}
 .serif{font-family:Georgia,"Iowan Old Style","Noto Serif",serif}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 .top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:6px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:var(--bg);border-bottom:1px solid var(--ln)}
 .top h1{margin:0;flex:1;min-width:0;font:600 clamp(15px,3.5vw,24px)/1.2 Georgia,"Iowan Old Style",serif;padding-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top h1.brand{display:flex;align-items:center}
+.brand svg{width:34px;height:34px;color:var(--ac);display:block}
 .top .btn{padding:0 8px;font-size:13px;white-space:nowrap}
 .top .ttl{flex:1;min-width:0;font:600 17px/1.2 Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .btn{min-height:44px;padding:0 14px;border-radius:12px;background:var(--sf);border:1px solid var(--ln)}
@@ -28,16 +37,35 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 .btn.sm{min-height:36px;padding:0 10px;font-size:14px}
 .ibtn{width:44px;height:44px;display:grid;place-items:center;border-radius:12px}
 
+/* hero */
+.hero{text-align:center;padding:22px 18px 0}
+.hero svg.bowlbig{width:76px;height:76px;color:var(--ac);display:block;margin:0 auto}
+.hero-t{margin:4px 0 0;font:700 clamp(34px,10vw,50px)/1.05 Georgia,"Iowan Old Style",serif;letter-spacing:.07em}
+.hero-s{margin:8px 0 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);font-weight:600}
+.hero-g{margin:10px 0 0;font:italic 17px/1.4 Georgia,"Iowan Old Style",serif;color:var(--ac)}
+.wave{display:block;width:calc(100% - 28px);height:10px;margin:16px 14px 0}
+.wave path{fill:none;stroke:var(--honey);stroke-width:2;stroke-linecap:round}
+.steam{fill:none;stroke:var(--honey);stroke-width:2.4;stroke-linecap:round;animation:steam 3.2s ease-in-out infinite}
+.steam.s2{animation-delay:.9s}
+.steam.s3{animation-delay:1.8s}
+@keyframes steam{0%{opacity:0;transform:translateY(5px)}40%{opacity:.85}100%{opacity:0;transform:translateY(-6px)}}
+
 .hint{margin:0;padding:16px 18px;color:var(--mu)}
-.list{list-style:none;margin:0;padding:4px 14px 24px}
-.li{display:flex;flex-wrap:wrap;align-items:flex-start;border-bottom:1px solid var(--ln)}
-.item{flex:1 1 100%;display:block;text-align:left;padding:16px 4px;min-width:0}
-.item h2{margin:0 0 8px;font:600 20px/1.3 Georgia,"Iowan Old Style",serif}
+.list{list-style:none;margin:0;padding:12px 14px 8px;display:grid;gap:12px}
+.li{display:flex;flex-wrap:wrap;align-items:flex-start;background:var(--sf);border:1px solid var(--ln);border-radius:16px;box-shadow:var(--card-sh);overflow:hidden;transition:transform .15s ease,box-shadow .15s ease}
+@media(hover:hover){.li:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(60,40,10,.08),0 10px 22px rgba(60,40,10,.10)}}
+.item{flex:1 1 100%;display:block;text-align:left;padding:16px;min-width:0}
+.item h2{margin:0 0 10px;font:600 20px/1.3 Georgia,"Iowan Old Style",serif}
 .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--mu);font-size:14px}
-.chip{padding:1px 10px;border-radius:99px;background:var(--sf);border:1px solid var(--ln)}
+.chip{padding:1px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--ln)}
 .chip.ok{border-color:var(--ok);color:var(--ok)}
-.bar{height:3px;background:var(--ln);border-radius:2px;margin-top:12px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--ac)}
+.chip.lv-b{background:var(--lb-bg);color:var(--lb-tx);border-color:transparent;font-weight:600}
+.chip.lv-i{background:var(--li-bg);color:var(--li-tx);border-color:transparent;font-weight:600}
+.chip.lv-a{background:var(--la-bg);color:var(--la-tx);border-color:transparent;font-weight:600}
+.chip.idle{border-style:dashed;background:none}
+.bar{height:6px;background:var(--ln);border-radius:3px;margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--ac),var(--honey))}
+.pct{margin-top:6px;font-size:12px;color:var(--mu)}
 .foot{padding:0 14px 40px;display:flex;gap:10px;flex-wrap:wrap}
 
 #text{max-width:36rem;margin:0 auto;padding:22px 20px 260px;font:var(--fs)/1.8 Georgia,"Iowan Old Style","Noto Serif",serif}
@@ -49,30 +77,34 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 #text.center{text-align:center}
 #text.center .done{justify-content:center}
 #text.gulir{padding-top:max(22px,calc(38vh - 76px));padding-bottom:56vh}
-.done{margin-top:2em;display:flex;gap:10px;flex-wrap:wrap;font-family:system-ui,sans-serif}
-
-#ctl{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--sf);border-top:1px solid var(--ln);border-radius:20px 20px 0 0;padding:0 14px max(12px,env(safe-area-inset-bottom))}
-.prog{height:3px;background:var(--ln);margin:0 -14px 10px;border-radius:20px 20px 0 0;overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:var(--ac)}
-.row{display:flex;justify-content:center;align-items:center;gap:12px}
-.sbtn{border:1px solid var(--ln)}
+#ctl{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:38rem;z-index:6;background:var(--sf);border:1px solid var(--ln);border-bottom:0;border-radius:24px 24px 0 0;padding:0 18px max(14px,env(safe-area-inset-bottom));box-shadow:0 -6px 28px rgba(60,40,10,.09);transition:all .2s ease}
+@media(prefers-color-scheme:dark){#ctl{box-shadow:0 -6px 28px rgba(0,0,0,.45)}}
+.prog{height:4px;background:var(--ln);margin:0 -18px 10px;border-radius:24px 24px 0 0;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--honey));border-radius:2px;transition:width .1s linear}
+.row{display:flex;justify-content:center;align-items:center;gap:14px;padding:2px 0}
+.sbtn{border:1px solid var(--ln);background:var(--bg);border-radius:12px;transition:all .15s ease}
 .sbtn:disabled{opacity:.35;cursor:default}
-.tab{position:absolute;top:-32px;right:16px;height:32px;width:56px;padding:0;display:flex;align-items:center;justify-content:center;color:var(--mu);background:var(--sf);border:1px solid var(--ln);border-bottom:0;border-radius:12px 12px 0 0}
+@media(hover:hover){.sbtn:not(:disabled):hover{background:var(--sf);border-color:var(--ac);color:var(--ac);transform:scale(1.06)}}
+.tab{position:absolute;top:-32px;right:20px;height:32px;width:56px;padding:0;display:flex;align-items:center;justify-content:center;color:var(--mu);background:var(--sf);border:1px solid var(--ln);border-bottom:0;border-radius:12px 12px 0 0;box-shadow:0 -4px 10px rgba(60,40,10,.05);cursor:pointer;transition:color .15s}
+@media(hover:hover){.tab:hover{color:var(--ac)}}
 .tab svg{display:block}
-.big{width:64px;height:64px;border-radius:50%;background:var(--ac);color:var(--acx);display:grid;place-items:center}
-.row2{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:10px}
-.seg{display:flex;border:1px solid var(--ln);border-radius:12px;overflow:hidden;flex:none}
-.seg button{min-height:40px;padding:0 14px}
+.big{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#11857c);color:var(--acx);display:grid;place-items:center;box-shadow:0 4px 14px color-mix(in srgb,var(--ac) 45%,transparent);transition:transform .12s,box-shadow .12s;cursor:pointer}
+@media(hover:hover){.big:hover{transform:scale(1.06);box-shadow:0 6px 20px color-mix(in srgb,var(--ac) 60%,transparent)}}
+.big:active{transform:scale(0.96)}
+.row2{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-top:10px}
+.seg{display:flex;border:1px solid var(--ln);border-radius:14px;overflow:hidden;flex:none;background:var(--bg)}
+.seg button{min-height:38px;padding:0 12px;font-size:14px;font-weight:500;transition:all .15s}
 #ctl .seg{width:100%}
 #ctl .seg button{flex:1;padding:0 8px}
-.seg button[aria-pressed=true]{background:var(--ac);color:var(--acx)}
+#ctl .seg button[aria-pressed=true]{background:var(--ac);color:var(--acx);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1)}
 .row3{display:flex;align-items:stretch;gap:10px}
 .row3 .seg{flex:1}
 #ctl .row3 .seg button{padding:0 6px}
-#spdNorm{flex:2!important}
-.hlbtn{flex:none;min-height:40px;padding:0 14px;border-radius:12px;border:1px solid var(--ln)}
-.hlbtn[aria-pressed=true]{background:var(--hl);color:#1B1500;border-color:var(--hl)}
-#text.nohl .w.cur{background:none;box-shadow:none;color:inherit}
+#spdNorm{flex:2!important;font-weight:600}
+.hlbtn{flex:none;min-height:38px;padding:0 18px;border-radius:14px;border:1px solid var(--ln);font-size:14px;font-weight:600;background:var(--bg);transition:all .15s}
+.hlbtn[aria-pressed=true]{background:var(--hl);color:#1B1500;border-color:var(--hl);box-shadow:0 2px 8px color-mix(in srgb,var(--hl) 40%,transparent)}
+#text.nohl .w.cur{background:none!important;box-shadow:none!important;color:inherit!important}
+#text.nohl .w.voc.cur{color:var(--voc)!important;text-decoration:underline dotted 1.5px var(--voc)}
 .spd{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mu);min-width:0}
 .spd span{flex:none;width:7.6rem}
 .spd input{flex:1;min-width:0;margin:0;accent-color:var(--ac)}
@@ -81,6 +113,9 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 .scrim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
 .panel{position:relative;width:100%;max-width:36rem;max-height:82dvh;overflow:auto;background:var(--sf);border-radius:20px 20px 0 0;padding:18px 18px max(18px,env(safe-area-inset-bottom));animation:up .18s ease-out}
 @keyframes up{from{transform:translateY(24px);opacity:0}}
+#aboutDlg,#setDlg,#addDlg{align-items:center;padding:16px}
+#aboutDlg .panel,#setDlg .panel,#addDlg .panel{border-radius:20px;padding:22px;max-height:88dvh;animation:pop .18s ease-out;box-shadow:0 12px 36px rgba(0,0,0,.25)}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
 .shHead{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .shHead h2{margin:0;flex:1;font:600 28px/1.2 Georgia,serif;word-break:break-word}
 .lbl{margin:14px 0 2px;font-size:13px;color:var(--mu)}
@@ -91,53 +126,129 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px soli
 textarea.field{min-height:200px;resize:vertical}
 
 .wrap{max-width:36rem;margin:0 auto;padding:18px 18px 40px}
-.qno{color:var(--mu);font-size:14px;margin:0 0 8px}
-.q{font:600 22px/1.4 Georgia,serif;margin:0 0 12px}
-.opt{display:block;width:100%;text-align:left;padding:14px;margin:8px 0;min-height:48px;border:1px solid var(--ln);border-radius:12px;background:var(--sf)}
-.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--sf))}
-.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--sf))}
-.score{font:600 44px/1.1 Georgia,serif;margin:6px 0 4px}
-.wb{padding:14px 4px;border-bottom:1px solid var(--ln);display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.quiz-card{background:var(--sf);border:1px solid var(--ln);border-radius:18px;box-shadow:var(--card-sh);padding:22px 18px;margin-bottom:16px;animation:up .2s ease-out}
+.quiz-hdr{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.qno-badge{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--ac);background:var(--lb-bg);padding:3px 10px;border-radius:99px}
+.q{font:600 21px/1.38 Georgia,serif;margin:0 0 16px;color:var(--tx)}
+.opt{display:flex;align-items:center;width:100%;text-align:left;padding:14px 16px;margin:10px 0;min-height:50px;border:1.5px solid var(--ln);border-radius:14px;background:var(--sf);color:var(--tx);font-size:16px;transition:all .15s ease}
+@media(hover:hover){.opt:not(:disabled):hover{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 6%,var(--sf));transform:translateX(3px)}}
+.opt.ok{border-color:var(--ok);background:var(--lb-bg);color:var(--lb-tx);font-weight:600}
+.opt.bad{border-color:var(--bad);background:var(--la-bg);color:var(--la-tx)}
+.score-bowl{width:56px;height:56px;color:var(--honey);margin:0 auto 10px;display:block}
+.score{font:700 46px/1.1 Georgia,serif;margin:8px 0;color:var(--tx)}
+.score-sub{color:var(--mu);font-size:15px;line-height:1.5;margin:0 0 20px}
+.score-badge{display:inline-block;padding:3px 12px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+
+.words-grid{display:grid;gap:12px}
+.wb{padding:16px 18px;background:var(--sf);border:1px solid var(--ln);border-radius:16px;box-shadow:var(--card-sh);display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;transition:transform .15s ease,box-shadow .15s ease}
+@media(hover:hover){.wb:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(60,40,10,.08),0 10px 22px rgba(60,40,10,.10)}}
 .wb .t{flex:1 1 100%;min-width:0}
-.wb b{font:600 19px/1.3 Georgia,serif}
-.wb p{margin:2px 0 0;font-size:15px;color:var(--mu)}
+.wb b{font:600 20px/1.3 Georgia,serif;color:var(--voc);display:block;margin-bottom:4px}
+.wb p{margin:3px 0 0;font-size:15px;color:var(--mu);line-height:1.4}
+.wb p.arti{color:var(--tx);font-weight:500;font-size:16px}
+.wb .acts{padding:4px 0 0;display:flex;gap:8px;flex-wrap:wrap}
+
+.done{margin-top:2.5em;padding:26px 20px;background:var(--sf);border:1px solid var(--ln);border-radius:18px;box-shadow:var(--card-sh);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;animation:up .25s ease-out}
+.done-bowl{width:52px;height:52px;color:var(--ac);display:block;margin:0 auto}
+.done-title{font:700 24px/1.2 Georgia,serif;margin:4px 0 0;color:var(--tx)}
+.done-sub{font:italic 15px/1.4 Georgia,serif;color:var(--ac);margin:0 0 10px}
+.done-acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
+
+.empty-card{text-align:center;padding:36px 20px;background:var(--sf);border:1.5px dashed var(--ln);border-radius:18px;color:var(--mu);box-shadow:var(--card-sh)}
+.empty-card svg{width:54px;height:54px;color:var(--honey);display:block;margin:0 auto 12px;opacity:.85}
 #toast{position:fixed;left:50%;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 200px);transform:translateX(-50%);z-index:30;background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:12px;max-width:88vw;font-size:15px;text-align:center}
 .setrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0}
-.li.new{background:color-mix(in srgb,var(--hl) 30%,transparent);transition:background 1.2s}
+.li.new{background:color-mix(in srgb,var(--hl) 30%,var(--sf));transition:background 1.2s}
 .btn:disabled{opacity:.4;cursor:default}
 .acts{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 100%}
-.li .acts{padding:0 4px 14px}
-.search{position:relative;margin:12px 14px 0}
+.li .acts{padding:0 16px 14px}
+.search{position:relative;margin:16px 14px 0}
 .search input{width:100%;min-height:44px;padding:0 44px 0 14px;border:1px solid var(--ln);border-radius:12px;background:var(--sf);color:var(--tx);font:inherit}
 .search input::-webkit-search-cancel-button{display:none}
 .search button{position:absolute;right:0;top:0;width:44px;height:44px;display:grid;place-items:center;color:var(--mu)}
-.pager{display:flex;align-items:center;justify-content:center;gap:12px;padding:4px 14px 20px}
-.pager span{min-width:6.5rem;text-align:center;color:var(--mu);font-size:14px}
+.dt-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 14px 2px;font-size:13px;color:var(--mu);flex-wrap:wrap}
+.dt-row{display:flex;align-items:center;gap:6px}
+.dt-sel{min-height:34px;padding:0 8px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--tx);font:inherit;font-size:13px;cursor:pointer}
+.dt-sel:focus{outline:2px solid var(--ac)}
+.pager{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 14px 24px}
+.pager-nav{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.pg-nums{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.pg-nums .btn{min-width:34px;min-height:34px;padding:0 8px;border-radius:8px;font-size:13px}
+.pg-nums .btn.cur{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weight:600}
+.pg-info{color:var(--mu);font-size:13px;text-align:center}
 html{scroll-behavior:auto}
-@media(prefers-reduced-motion:reduce){.panel{animation:none}.w{transition:none}}
+@media(prefers-reduced-motion:reduce){.panel{animation:none}.w{transition:none}.steam{animation:none;opacity:.6}.li{transition:none}}
 </style>
 </head>
 <body>
 
+<!-- Ikon mangkuk (dipakai ulang) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="bowl" viewBox="0 0 64 64">
+    <path d="M8 28h48c0 14-9.5 24-24 24S8 42 8 28z" fill="currentColor"/>
+    <ellipse cx="32" cy="28" rx="24" ry="3.5" fill="var(--honey)"/>
+    <rect x="21" y="52" width="22" height="4" rx="2" fill="currentColor"/>
+  </symbol>
+</svg>
+
 <!-- Daftar cerita -->
 <section id="v-lib" class="view">
   <header class="top">
-    <h1>Baca Inggris</h1>
+    <h1 class="brand" title="PORRIDGE (Power Of Reading English)"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg><span class="sr">PORRIDGE</span></h1>
     <button class="btn" id="btnAbout">About</button>
     <button class="btn" id="btnPrompt">Copy prompt</button>
     <button class="btn" id="btnWords">My words</button>
-    <button class="btn pri" id="btnAdd">Add</button>
+    <button class="btn pri" id="btnAdd">+ Add</button>
   </header>
+  <div class="hero">
+    <svg class="bowlbig" viewBox="0 0 64 64" aria-hidden="true">
+      <path class="steam s1" d="M24 20c-3-3 3-6 0-10"/>
+      <path class="steam s2" d="M32 20c-3-3 3-6 0-10"/>
+      <path class="steam s3" d="M40 20c-3-3 3-6 0-10"/>
+      <use href="#bowl"/>
+    </svg>
+    <div class="hero-t">PORRIDGE</div>
+    <div class="hero-s">Power Of Reading English</div>
+    <div class="hero-g">&ldquo;Every page, a spoonful of knowledge.&rdquo;</div>
+    <svg class="wave" aria-hidden="true">
+      <defs><pattern id="wv" width="40" height="10" patternUnits="userSpaceOnUse"><path d="M0 5Q10 0 20 5T40 5"/></pattern></defs>
+      <rect width="100%" height="10" fill="url(#wv)"/>
+    </svg>
+  </div>
   <div class="search">
     <input id="search" type="search" placeholder="Search by title" aria-label="Search stories by title" enterkeyhint="search" autocomplete="off">
     <button id="searchClr" type="button" aria-label="Clear search" title="Clear search" hidden></button>
   </div>
+  <div class="dt-bar">
+    <div class="dt-row">
+      <span>Show</span>
+      <select id="dtSize" class="dt-sel" aria-label="Entries per page">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="25">25</option>
+        <option value="0">All</option>
+      </select>
+      <span>entries</span>
+    </div>
+    <div class="dt-row">
+      <span>Sort by</span>
+      <select id="dtSort" class="dt-sel" aria-label="Sort stories by">
+        <option value="title-asc">Title (A-Z) ↑</option>
+        <option value="title-desc">Title (Z-A) ↓</option>
+        <option value="time-desc">Time (Newest) ↓</option>
+        <option value="time-asc">Time (Oldest) ↑</option>
+      </select>
+    </div>
+  </div>
   <p class="hint" id="libHint" hidden></p>
   <ul class="list" id="list"></ul>
-  <div class="pager" id="pager" hidden>
-    <button class="btn" id="pgPrev">Previous</button>
-    <span id="pgInfo"></span>
-    <button class="btn" id="pgNext">Next</button>
+  <div class="pager" id="pager">
+    <div class="pager-nav">
+      <button class="btn sm" id="pgPrev">Previous</button>
+      <div id="pgNums" class="pg-nums"></div>
+      <button class="btn sm" id="pgNext">Next</button>
+    </div>
+    <div id="pgInfo" class="pg-info"></div>
   </div>
   <div class="foot">
     <button class="btn" id="btnReload">Reload stories</button>
@@ -249,7 +360,7 @@ html{scroll-behavior:auto}
       <div class="seg"><button id="fsDown" aria-label="Smaller font">A−</button><button id="fsUp" aria-label="Larger font">A+</button></div></div>
     <div class="setrow"><span>Text alignment</span>
       <div class="seg"><button id="alL" aria-pressed="true">Left</button><button id="alC" aria-pressed="false">Center</button></div></div>
-    <div class="shAct"><button class="btn pri" id="setClose">Done</button></div>
+    <div class="shAct"><button class="btn pri" id="setClose" style="width:100%">Done</button></div>
   </div>
 </div>
 
@@ -258,10 +369,14 @@ html{scroll-behavior:auto}
   <div class="scrim" id="aboutScrim"></div>
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="aboutH">
     <div class="shHead">
-      <h2 id="aboutH" class="serif" style="margin:0;font-size:24px">About Baca Inggris</h2>
+      <div>
+        <h2 id="aboutH" class="serif" style="margin:0;font-size:24px">PORRIDGE</h2>
+        <div style="font-size:13px;color:var(--mu);font-weight:600">Power Of Reading English</div>
+      </div>
       <button class="btn sm" id="aboutClose">Close</button>
     </div>
-    <div style="margin:16px 0;line-height:1.6">
+    <div style="margin:12px 0 16px;line-height:1.6">
+      <p style="margin:0 0 14px;font-style:italic;color:var(--ac);font-size:15px;font-weight:500">&ldquo;Every page, a spoonful of knowledge.&rdquo;</p>
       <p style="margin:0 0 14px">Jika anda merasa terbantu dengan program ini dan ingin mentraktir, traktiran dapat ditransfer melalui:</p>
       
       <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-bottom:12px">
@@ -339,7 +454,12 @@ function parseMD(src,id,fallbackTitle){
   });
   const all=blocks.map(b=>b.x).join(' ');
   const wc=(all.match(/[A-Za-z']+/g)||[]).length;
-  return {id,title:title||fallbackTitle||'Untitled',level:meta.level||'',blocks,vocab,quiz,wc};
+  let time=0;
+  if(meta.date||meta.time){
+    const dt=new Date(meta.date||meta.time);
+    if(!isNaN(dt.getTime()))time=dt.getTime();
+  }
+  return {id,title:title||fallbackTitle||'Untitled',level:meta.level||'',blocks,vocab,quiz,wc,time};
 }
 //#parse-end
 
@@ -383,6 +503,19 @@ function pickVoice(){
   voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&v.localService)||vs.find(v=>/en[-_]US/i.test(v.lang))||vs[0]||null;
 }
 if(hasTTS){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+async function copyToClipboard(text){
+  try{
+    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return true;}
+  }catch(e){}
+  try{
+    const ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';ta.style.top='0';
+    document.body.appendChild(ta);ta.focus();ta.select();
+    const ok=document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  }catch(e){return false;}
+}
 
 /* ---------- memuat cerita ---------- */
 async function discover(){
@@ -422,7 +555,10 @@ async function discover(){
 function normLocal(){
   const list=LS.get('localStories',[]);
   let seq=Math.max(LS.get('seq',0),0,...list.map(l=>typeof l.n==='number'?l.n:0)),changed=false;
-  list.forEach(l=>{if(typeof l.n!=='number'){l.n=++seq;changed=true}});
+  list.forEach(l=>{
+    if(typeof l.n!=='number'){l.n=++seq;changed=true;}
+    if(!l.time){l.time=Date.now();changed=true;}
+  });
   if(changed){LS.set('localStories',list);}
   LS.set('seq',seq);
   return list;
@@ -431,59 +567,96 @@ function buildLocal(l){
   const st=parseMD(l.md,'local:'+l.n,'Story '+l.n);
   if(l.title)st.title=l.title;
   st.local=true;st.n=l.n;
+  st.time=l.time||(1700000000000+(l.n||0)*10000);
   return st;
 }
 async function loadStories(){
   const files=await discover();
+  const ft=LS.get('fileTimes',{});
+  let ftChanged=false;
+  const now=Date.now();
+  files.forEach((f,idx)=>{
+    if(!ft[f]){ft[f]=now-(files.length-idx)*10000;ftChanged=true;}
+  });
+  if(ftChanged)LS.set('fileTimes',ft);
+
   const out=[];
   await Promise.all(files.map(async f=>{
     try{
       const r=await fetch('stories/'+encodeURIComponent(f),{cache:'no-cache'});
       if(!r.ok)return;
       const md=await r.text();
-      out.push(parseMD(md,f,f.replace(/\.md$/i,'').replace(/[-_]+/g,' ')));
+      const st=parseMD(md,f,f.replace(/\.md$/i,'').replace(/[-_]+/g,' '));
+      if(!st.time)st.time=ft[f]||0;
+      out.push(st);
     }catch(e){}
   }));
-  out.sort((a,b)=>a.id.localeCompare(b.id));
-  const loc=normLocal().sort((a,b)=>a.n-b.n).map(buildLocal);
+  const loc=normLocal().map(buildLocal);
   stories=[...out,...loc];
 }
 
 /* ---------- daftar ---------- */
-const PAGE_SIZE=10;
+let libPageSize=LS.get('libPageSize',10);
+let libSort=LS.get('libSort','title-asc');
 let libQ='',libPage=1;
 const LEVEL_EN={pemula:'Beginner',menengah:'Intermediate',lanjut:'Advanced',mahir:'Advanced'};
+const LEVEL_CLS={beginner:'lv-b',intermediate:'lv-i',advanced:'lv-a'};
+
 function filteredStories(){
+  let list=stories.slice();
   const q=libQ.trim().toLowerCase();
-  return q?stories.filter(s=>s.title.toLowerCase().includes(q)):stories;
+  if(q)list=list.filter(s=>s.title.toLowerCase().includes(q));
+  list.sort((a,b)=>{
+    if(libSort==='title-asc')return a.title.localeCompare(b.title,undefined,{numeric:true,sensitivity:'base'});
+    if(libSort==='title-desc')return b.title.localeCompare(a.title,undefined,{numeric:true,sensitivity:'base'});
+    if(libSort==='time-desc')return (b.time||0)-(a.time||0);
+    if(libSort==='time-asc')return (a.time||0)-(b.time||0);
+    return 0;
+  });
+  return list;
 }
+
 function renderLib(focusId){
   const ul=$('#list');ul.innerHTML='';
   const all=filteredStories();
-  const pages=Math.max(1,Math.ceil(all.length/PAGE_SIZE));
-  if(focusId){const k=all.findIndex(s=>s.id===focusId);if(k>=0)libPage=Math.floor(k/PAGE_SIZE)+1;}
+  const size=libPageSize===0?all.length:(libPageSize||10);
+  const pages=Math.max(1,Math.ceil(all.length/(size||1)));
+  if(focusId){const k=all.findIndex(s=>s.id===focusId);if(k>=0)libPage=Math.floor(k/(size||1))+1;}
   libPage=Math.min(Math.max(1,libPage),pages);
   const hint=$('#libHint');
   hint.hidden=!!all.length;
   hint.textContent=stories.length
     ?'No stories match "'+libQ.trim()+'".'
-    :'No stories yet. Put .md files in the stories folder and tap Reload stories, or tap Add to paste a text.';
+    :'No stories yet. Put .md files in the stories folder and tap Reload stories, or tap + Add to paste a text.';
   $('#searchClr').hidden=!libQ;
-  const start=(libPage-1)*PAGE_SIZE;
-  all.slice(start,start+PAGE_SIZE).forEach(s=>{
+  const start=(libPage-1)*size;
+  const end=Math.min(start+size,all.length);
+  const visible=size?all.slice(start,end):all;
+  visible.forEach((s,idx)=>{
     const li=document.createElement('li');li.className='li';li.dataset.id=s.id;
     const b=document.createElement('button');b.className='item';
-    const h=document.createElement('h2');h.textContent=s.title;
+    const num=start+idx+1;
+    const h=document.createElement('h2');h.textContent=num+'. '+s.title;
     const meta=document.createElement('div');meta.className='meta';
     const chip=(t,c)=>{const e=document.createElement('span');e.className='chip'+(c?' '+c:'');e.textContent=t;meta.append(e)};
-    if(s.local)chip('No. '+s.n);
-    if(s.level)chip(LEVEL_EN[s.level.toLowerCase()]||s.level);
-    chip(Math.max(1,Math.round(s.wc/150))+' min');
     const p=prog[s.id]||{};
-    if(p.quiz)chip('Quiz '+p.quiz.best+'/'+p.quiz.total,p.quiz.best===p.quiz.total?'ok':'');
-    b.append(h,meta);
     const pct=s.wc?Math.min(100,Math.round(((p.pos||0)/Math.max(1,s.wc-1))*100)):0;
-    if(pct>0&&pct<97){const bar=document.createElement('div');bar.className='bar';const i=document.createElement('i');i.style.width=pct+'%';bar.append(i);b.append(bar)}
+    if(s.local)chip('No. '+s.n);
+    if(s.level){
+      const lv=LEVEL_EN[s.level.toLowerCase()]||s.level;
+      chip(lv,LEVEL_CLS[lv.toLowerCase()]||'');
+    }
+    chip(Math.max(1,Math.round(s.wc/150))+' min');
+    if(p.quiz)chip('Quiz '+p.quiz.best+'/'+p.quiz.total,p.quiz.best===p.quiz.total?'ok':'');
+    if(p.done&&!(pct>0&&pct<97))chip('Finished','ok');
+    else if(!p.done&&!p.quiz&&pct<=0)chip('Not started','idle');
+    b.append(h,meta);
+    if(pct>0&&pct<97){
+      const bar=document.createElement('div');bar.className='bar';
+      const i=document.createElement('i');i.style.width=pct+'%';bar.append(i);
+      const lab=document.createElement('div');lab.className='pct';lab.textContent=pct+'% spoonful';
+      b.append(bar,lab);
+    }
     b.onclick=()=>{location.hash='#read='+encodeURIComponent(s.id)};
     li.append(b);
     if(s.local){
@@ -500,10 +673,27 @@ function renderLib(focusId){
     }
     ul.append(li);
   });
-  $('#pager').hidden=pages<=1;
-  $('#pgInfo').textContent='Page '+libPage+' of '+pages;
+  $('#pager').hidden=false;
+  if(all.length===0){
+    $('#pgInfo').textContent='No bowls here yet';
+  }else if(pages===1){
+    $('#pgInfo').textContent=all.length+(all.length===1?' bowl':' bowls')+' ready to read';
+  }else{
+    $('#pgInfo').textContent='Showing '+(start+1)+' to '+end+' of '+all.length+' bowls';
+  }
   $('#pgPrev').disabled=libPage<=1;
   $('#pgNext').disabled=libPage>=pages;
+  const pgNums=$('#pgNums');
+  pgNums.innerHTML='';
+  if(pages>1){
+    for(let p=1;p<=pages;p++){
+      const btn=document.createElement('button');
+      btn.className='btn sm'+(p===libPage?' cur':'');
+      btn.textContent=p;
+      btn.onclick=()=>{libPage=p;renderLib();window.scrollTo(0,0)};
+      pgNums.append(btn);
+    }
+  }
 }
 async function openLib(refresh=true){
   show('lib');renderLib();
@@ -580,7 +770,15 @@ function buildText(){
     }
   });
   const d=document.createElement('div');d.className='done';
-  d.innerHTML='<button class="btn pri" id="doneQuiz">Start quiz</button><button class="btn" id="doneAgain">Read from start</button>';
+  d.innerHTML=`
+    <svg class="done-bowl" viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg>
+    <h3 class="done-title">Bowl finished!</h3>
+    <p class="done-sub">&ldquo;Every page, a spoonful of knowledge.&rdquo;</p>
+    <div class="done-acts">
+      <button class="btn pri" id="doneQuiz">Start quiz</button>
+      <button class="btn" id="doneAgain">Read from start</button>
+    </div>
+  `;
   art.append(d);
 }
 function keepVisible(el){
@@ -731,7 +929,7 @@ function pause(){
 function finish(){
   playing=false;ended=true;cancelAnimationFrame(raf);clearTimeout(timer);clearTimeout(estTimer);setPlayUI();wake(false);
   if(hasTTS)speechSynthesis.cancel();
-  if(story){(prog[story.id]=prog[story.id]||{}).pos=0;saveProg(true);}
+  if(story){const pp=(prog[story.id]=prog[story.id]||{});pp.pos=0;pp.done=true;saveProg(true);}
   pos=0;toast('Finished reading. Try the quiz!',3000);
   const d=$('#doneQuiz');if(d)d.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
 }
@@ -793,7 +991,8 @@ function openStory(id){
   story=stories.find(s=>s.id===id);
   if(!story){location.hash='#';return;}
   show('read');
-  $('#rTitle').textContent=story.title;
+  const idx=storyIdx();
+  $('#rTitle').textContent=(idx>=0?(idx+1)+'. ':'')+story.title;
   applyFs();syncMode();syncSpd();setPlayUI();
   cur=-1;ended=false;buildText();applyAlign();applyHl();
   let p=(prog[id]&&prog[id].pos)||0;
@@ -895,8 +1094,9 @@ function openQuiz(id){
   const s=stories.find(x=>x.id===id);
   if(!s){location.hash='#';return;}
   story=s;
+  const idx=storyIdx();
   const qs=s.quiz.length?s.quiz:autoQuiz(s);
-  show('quiz');$('#qTitle').textContent=s.title;
+  show('quiz');$('#qTitle').textContent=(idx>=0?(idx+1)+'. ':'')+s.title;
   if(!qs.length){
     $('#quizBox').innerHTML='';
     const p=document.createElement('p');p.className='val';p.textContent='This story has no quiz yet. Add a "## Quiz" section to its .md file.';
@@ -907,26 +1107,31 @@ function openQuiz(id){
 function renderQ(){
   const box=$('#quizBox');box.innerHTML='';
   const q=qz.qs[qz.i];
-  const n=document.createElement('p');n.className='qno';n.textContent='Question '+(qz.i+1)+' of '+qz.qs.length;
-  const h=document.createElement('p');h.className='q';h.textContent=q.q;
-  box.append(n,h);
+  const card=document.createElement('div');card.className='quiz-card';
+  const hdr=document.createElement('div');hdr.className='quiz-hdr';
+  const badge=document.createElement('span');badge.className='qno-badge';
+  badge.textContent='Question '+(qz.i+1)+' of '+qz.qs.length;
+  hdr.append(badge);
+  const h=document.createElement('h3');h.className='q';h.textContent=q.q;
+  card.append(hdr,h);
   const opts=shuffle(q.o);let answered=false;
   opts.forEach(o=>{
     const b=document.createElement('button');b.className='opt';b.textContent=o.t;
     b.onclick=()=>{
       if(answered)return;answered=true;
       if(o.ok)qz.score++;
-      [...box.querySelectorAll('.opt')].forEach((e,k)=>{
+      [...card.querySelectorAll('.opt')].forEach((e,k)=>{
         e.disabled=true;
         if(opts[k].ok)e.classList.add('ok');else if(e===b)e.classList.add('bad');
       });
-      const nx=document.createElement('button');nx.className='btn pri';nx.style.marginTop='12px';
-      nx.textContent=qz.i+1<qz.qs.length?'Next question':'See results';
+      const nx=document.createElement('button');nx.className='btn pri';nx.style.marginTop='16px';nx.style.width='100%';
+      nx.textContent=qz.i+1<qz.qs.length?'Next question →':'See results';
       nx.onclick=()=>{qz.i++;qz.i<qz.qs.length?renderQ():renderResult()};
-      box.append(nx);nx.focus();
+      card.append(nx);nx.focus();
     };
-    box.append(b);
+    card.append(b);
   });
+  box.append(card);
 }
 function renderResult(){
   const box=$('#quizBox');box.innerHTML='';
@@ -934,17 +1139,26 @@ function renderResult(){
   const p=(prog[story.id]=prog[story.id]||{});
   if(!p.quiz||sc>=p.quiz.best)p.quiz={best:sc,total};
   saveProg(true);
-  const a=document.createElement('p');a.className='qno';a.textContent='Quiz results';
-  const b=document.createElement('p');b.className='score';b.textContent=sc+' of '+total;
-  const c=document.createElement('p');c.className='val';
-  c.textContent=sc===total?'Perfect. All answers are correct.':sc>=total/2?'Good. Read again the parts you missed for a full score.':'Try reading once more in Voice mode, then retake the quiz.';
-  box.append(a,b,c);
-  const act=document.createElement('div');act.className='shAct';
-  const mk=(t,cls,fn)=>{const x=document.createElement('button');x.className='btn '+cls;x.textContent=t;x.onclick=fn;act.append(x)};
-  mk('Retake quiz','pri',()=>openQuiz(story.id));
-  mk('Read again','',()=>{location.hash='#read='+encodeURIComponent(story.id)});
-  mk('Story list','',()=>{location.hash='#'});
-  box.append(act);
+  const card=document.createElement('div');card.className='quiz-card';card.style.textAlign='center';
+  const isPerfect=sc===total;
+  const isGood=sc>=Math.ceil(total/2);
+  const badgeClass=isPerfect?'chip lv-b':(isGood?'chip lv-i':'chip lv-a');
+  const badgeText=isPerfect?'Perfect Score!':(isGood?'Well Done!':'Keep Practicing');
+  card.innerHTML=`
+    <svg class="score-bowl" viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg>
+    <div><span class="${badgeClass} score-badge">${badgeText}</span></div>
+    <div class="score">${sc} / ${total}</div>
+    <p class="score-sub">${isPerfect?'Amazing! All answers are completely correct.':isGood?'Good job! Read again the parts you missed for a full score.':'Try reading once more in Voice or Scroll mode, then retake the quiz.'}</p>
+    <div class="shAct" style="justify-content:center">
+      <button class="btn pri" id="qRetake">Retake quiz</button>
+      <button class="btn" id="qReadAgain">Read again</button>
+      <button class="btn" id="qHome">Story list</button>
+    </div>
+  `;
+  box.append(card);
+  $('#qRetake').onclick=()=>openQuiz(story.id);
+  $('#qReadAgain').onclick=()=>{location.hash='#read='+encodeURIComponent(story.id)};
+  $('#qHome').onclick=()=>{location.hash='#'};
 }
 
 /* ---------- kata saya ---------- */
@@ -953,15 +1167,21 @@ function openWords(){
   const box=$('#wordsBox');box.innerHTML='';
   const list=LS.get('words',[]);
   if(!list.length){
-    const p=document.createElement('p');p.className='val';p.textContent='No saved words yet. Tap a word in a story, then choose Save word.';
-    box.append(p);return;
+    const empty=document.createElement('div');empty.className='empty-card';
+    empty.innerHTML=`
+      <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg>
+      <h3 class="serif" style="margin:0 0 6px;font-size:20px;font-weight:600">Your bowl is empty</h3>
+      <p style="margin:0;font-size:14px;color:var(--mu)">No saved words yet. Tap any word while reading a story, then tap <b>Save word</b>.</p>
+    `;
+    box.append(empty);return;
   }
+  const grid=document.createElement('div');grid.className='words-grid';
   list.forEach(x=>{
     const d=document.createElement('div');d.className='wb';
     const t=document.createElement('div');t.className='t';
     const b=document.createElement('b');b.textContent=x.w;
     t.append(b);
-    if(x.arti){const p=document.createElement('p');p.textContent=x.arti;t.append(p)}
+    if(x.arti){const p=document.createElement('p');p.className='arti';p.textContent=x.arti;t.append(p)}
     if(x.def){const p=document.createElement('p');p.textContent=x.def;t.append(p)}
     const ac=document.createElement('div');ac.className='acts';
     const mk=(txt,fn)=>{const e=document.createElement('button');e.className='btn sm';e.textContent=txt;e.onclick=fn;ac.append(e)};
@@ -969,13 +1189,16 @@ function openWords(){
     mk('Edit',()=>{
       const v=prompt('Meaning of "'+x.w+'"',x.arti||'');
       if(v===null)return;
-      const all=LS.get('words',[]),it=all.find(y=>y.w===x.w);
+      x.arti=v.trim();
+      const all=LS.get('words',[]);
+      const it=all.find(y=>y.w===x.w);
       if(it){it.arti=v.trim();LS.set('words',all)}
       openWords();
     });
     mk('Delete',()=>{LS.set('words',LS.get('words',[]).filter(y=>y.w!==x.w));openWords()});
-    d.append(t,ac);box.append(d);
+    d.append(t,ac);grid.append(d);
   });
+  box.append(grid);
 }
 
 /* ---------- tambah / edit cerita ---------- */
@@ -1006,14 +1229,14 @@ function saveAdd(dl){
   if(wasEdit){
     item=list.find(l=>l.n===editN);
     if(!item){toast('Story not found');return;}
-    item.title=title;item.md=md;
+    item.title=title;item.md=md;item.time=Date.now();
     LS.set('localStories',list);
     const k=stories.findIndex(s=>s.id==='local:'+item.n);
     if(k>=0)stories[k]=buildLocal(item);
     toast('Changes saved');
   }else{
     const n=Math.max(LS.get('seq',0),0,...list.map(l=>l.n))+1;
-    item={n,title,md};
+    item={n,title,md,time:Date.now()};
     list.push(item);
     LS.set('localStories',list);LS.set('seq',n);
     stories.push(buildLocal(item));
@@ -1145,7 +1368,7 @@ $('#fsDown').onclick=()=>{fs=Math.max(15,fs-2);LS.set('fs',fs);applyFs()};
 $('#rQuiz').onclick=()=>{location.hash='#quiz='+encodeURIComponent(story.id)};
 const back=()=>{if(history.length>1)history.back();else location.hash='#'};
 ['rBack','qBack','wBack'].forEach(id=>$('#'+id).onclick=back);
-const AI_PROMPT = `Tolong buatkan cerita bahasa Inggris untuk bahan latihan membaca dan belajar grammar (aplikasi Baca Inggris), lengkap dengan Vocab dan Quiz dalam format Markdown berikut:
+const AI_PROMPT = `Tolong buatkan cerita bahasa Inggris untuk bahan latihan membaca dan belajar grammar (aplikasi PORRIDGE - Power Of Reading English), lengkap dengan Vocab dan Quiz dalam format Markdown berikut:
 
 ---
 title: [Fokus Grammar / Tema] : [Judul Cerita dalam Bahasa Inggris, contoh: Past Tense : Telaga Ngebel]
@@ -1199,27 +1422,7 @@ Q: What is the moral of the story?
 Outputkan langsung kode Markdown-nya saja tanpa basa-basi pembuka atau penutup.`;
 
 async function copyPrompt(){
-  let ok=false;
-  try{
-    if(navigator.clipboard&&window.isSecureContext){
-      await navigator.clipboard.writeText(AI_PROMPT);
-      ok=true;
-    }
-  }catch(e){}
-  if(!ok){
-    try{
-      const ta=document.createElement('textarea');
-      ta.value=AI_PROMPT;
-      ta.style.position='fixed';
-      ta.style.left='-9999px';
-      ta.style.top='0';
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      ok=document.execCommand('copy');
-      document.body.removeChild(ta);
-    }catch(e){}
-  }
+  const ok=await copyToClipboard(AI_PROMPT);
   if(ok)toast('Prompt copied! Paste into ChatGPT / Gemini',3200);
   else toast('Failed to copy prompt',2000);
 }
@@ -1238,10 +1441,14 @@ $('#btnPrompt').onclick=copyPrompt;
 $('#btnWords').onclick=()=>{location.hash='#words'};
 $('#btnAdd').onclick=()=>openAdd();
 $('#btnReload').onclick=async()=>{await loadStories();renderLib();toast('Story list updated')};
+$('#dtSize').value=String(libPageSize);
+$('#dtSort').value=libSort;
+$('#dtSize').onchange=e=>{libPageSize=+e.target.value;libPage=1;LS.set('libPageSize',libPageSize);renderLib()};
+$('#dtSort').onchange=e=>{libSort=e.target.value;libPage=1;LS.set('libSort',libSort);renderLib()};
 $('#search').oninput=e=>{libQ=e.target.value;libPage=1;renderLib()};
 $('#searchClr').onclick=()=>{libQ='';$('#search').value='';libPage=1;renderLib();$('#search').focus()};
-$('#pgPrev').onclick=()=>{libPage--;renderLib();scrollTo(0,0)};
-$('#pgNext').onclick=()=>{libPage++;renderLib();scrollTo(0,0)};
+$('#pgPrev').onclick=()=>{if(libPage>1){libPage--;renderLib();window.scrollTo(0,0)}};
+$('#pgNext').onclick=()=>{libPage++;renderLib();window.scrollTo(0,0)};
 $('#btnFolder').hidden=!canDir;
 $('#btnFolder').onclick=async()=>{
   try{const h=await getDir(true);toast('Download folder: '+h.name)}

@@ -1,118 +1,105 @@
-BACA INGGRIS - cara pakai
-=========================
+# PORRIDGE (Power Of Reading English)
+> *"Every page, a spoonful of knowledge."*
 
-Seluruh menu di aplikasi memakai bahasa Inggris. Nama tombol di panduan ini
-ditulis sama persis seperti di aplikasi.
+=======================================================
 
-1. PASANG
-   - Ekstrak zip ini di HP. Hasilnya satu folder "english" berisi:
-     index.html, manifest.json, sw.js, folder icons, dan folder stories.
-   - Di aplikasi web server kamu, pilih folder "english" sebagai root, lalu Start.
-   - Buka Chrome, ketik http://localhost:PORT (port lihat di aplikasi server).
-     Pakai "localhost", jangan alamat IP, supaya bisa diinstal.
-   - Menu titik tiga -> Instal aplikasi / Tambahkan ke layar utama.
-   - Setelah terinstal, aplikasi tetap bisa dibuka walau servernya mati.
+Aplikasi latihan membaca bahasa Inggris interaktif dengan teks berjalan, pembacaan suara (Text-to-Speech), sorotan kata (highlight), terjemahan kosakata otomatis (Vocab), dan kuis pemahaman (Quiz). Seluruh menu di aplikasi memakai bahasa Inggris.
 
-2. TAMBAH / UPDATE CERITA
-   - Taruh file .md baru di folder "stories", lalu buka aplikasinya.
-     Daftar cerita diperbarui otomatis setiap kali halaman daftar dibuka
-     (atau tekan "Reload stories").
-   - Ganti isi file .md yang sudah ada = cerita ikut berubah.
-   - Hapus file .md = cerita hilang dari daftar.
-   - Kalau cerita baru tidak muncul, server kamu kemungkinan tidak
-     menampilkan daftar isi folder. Solusinya: buat file stories/index.json
-     berisi daftar nama file, contoh:
-         ["the-lost-key.md", "cerita-baru.md"]
-   - Cara lain tanpa folder: tombol "Add" di aplikasi. Tempel teks
-     (atau "Paste from clipboard", atau "Choose .md / .txt file"), tekan
-     "Save story", dan cerita langsung masuk daftar. Tiap cerita punya nomor
-     (No. 1, 2, 3...) sesuai urutan ditambahkan, dan nomor tidak dipakai ulang
-     walau ada yang dihapus. Disimpan di browser HP saja.
-   - Teks tempelan biasa (tanpa format) juga bisa: tiap baris jadi satu paragraf.
+---
 
-3. EDIT, DOWNLOAD, HAPUS CERITA YANG TERSIMPAN DI BROWSER
-   - Cerita hasil tombol "Add" punya tiga tombol di bawah judulnya:
-     Edit, Download, Delete.
-   - Edit: buka kembali judul dan teksnya, ubah, lalu "Save changes".
-     Posisi baca dan skor kuis tetap ada.
-   - Download: menyimpan cerita sebagai file .md (dengan judul di bagian atas
-     file) agar bisa masuk ke folder "stories" dan ikut terbaca server.
-       * Chrome di komputer: tekan "Choose stories folder" di bagian bawah
-         daftar (atau tekan Download pertama kali), pilih folder "stories".
-         Setelah itu file langsung tertulis ke folder tersebut. Kalau ada
-         stories/index.json, nama file ikut ditambahkan otomatis.
-       * Chrome di Android belum mendukung pilih-folder. File akan terunduh
-         ke folder Download. Pindahkan ke folder "stories" lewat aplikasi File.
-   - Di dialog Add / Edit ada tombol "Save & download": simpan di browser
-     sekaligus unduh file .md-nya.
-   - Setelah file ada di folder "stories", salinan di browser boleh dihapus
-     (Delete) supaya cerita tidak muncul dua kali.
-   - Halaman "My words": tiap kata punya tombol Listen, Edit (ubah arti), Delete.
+## 1. CARA PASANG
+- Ekstrak zip ini di HP atau komputer. Hasilnya folder berisi: `index.html`, `manifest.json`, `sw.js`, `.nojekyll`, folder `icons`, dan folder `stories`.
+- Di aplikasi web server kamu (misal XAMPP/Apache atau web server Android), pilih folder aplikasi ini sebagai root, lalu tekan **Start**.
+- Buka Chrome, ketik `http://localhost:PORT` (port lihat di aplikasi server) atau buka lewat GitHub Pages. Pakai `localhost` (jangan alamat IP) agar bisa diinstal sebagai PWA.
+- Buka Menu titik tiga Chrome -> **Instal aplikasi** / **Tambahkan ke layar utama**.
+- Setelah terinstal, aplikasi tetap bisa dibuka secara offline walau servernya mati.
 
-4. FORMAT FILE CERITA (.md)
-   ---
-   title: Judul Cerita
-   level: Intermediate
-   ---
+---
 
-   Paragraf pertama...
+## 2. TAMBAH / UPDATE CERITA
+- **Lewat Folder Stories**:
+  - Taruh file `.md` baru di folder `stories/`, lalu buka aplikasinya (atau tekan **Reload stories**).
+  - Ganti isi file `.md` yang sudah ada = cerita ikut terupdate otomatis.
+  - Hapus file `.md` = cerita otomatis hilang dari daftar.
+- **Lewat Tombol "Add" di Aplikasi**:
+  - Tekan tombol **Add** di kanan atas.
+  - Tempel teks (atau gunakan tombol *Paste from clipboard* / *Choose .md / .txt file*), lalu tekan **Save story**.
+  - Cerita langsung masuk ke daftar cerita lokal browser.
+  - Jika ingin menyimpan ke folder `stories/`, tekan **Save & download**.
 
-   Paragraf kedua...
+---
 
-   ## Vocab
-   kata: arti
-   kata lain: arti lain
+## 3. EDIT, DOWNLOAD, HAPUS CERITA LOKAL
+- Cerita hasil tombol **Add** memiliki 3 tombol aksi di bawah judulnya: **Edit**, **Download**, dan **Delete**.
+- **Edit**: Mengubah judul atau isi teks cerita tanpa menghilangkan progres baca dan skor kuis.
+- **Download**: Menyimpan cerita sebagai file `.md` ke folder komputer/HP.
+- **Delete**: Menghapus cerita dari penyimpanan lokal browser.
+- Halaman **My words**: Menyimpan daftar kata yang pernah Anda tandai/simpan beserta artinya.
 
-   ## Quiz
-   Q: Pertanyaan?
-   - [ ] Pilihan salah
-   - [x] Pilihan benar
-   - [ ] Pilihan salah
+---
 
-   Catatan:
-   - level: isi Beginner / Intermediate / Advanced. Tulisan lama (Pemula,
-     Menengah, Lanjut) tetap terbaca dan otomatis tampil dalam bahasa Inggris.
-   - Vocab dan Quiz boleh dihilangkan. Kalau Quiz kosong tapi Vocab ada
-     minimal 4 kata, kuis arti kata dibuat otomatis.
-   - Hindari singkatan bertitik seperti "p.m." karena dianggap akhir kalimat.
+## 4. FORMAT FILE CERITA (.md)
+File markdown cerita menggunakan format berikut:
 
-5. DAFTAR CERITA
-   - Kolom "Search by title" menyaring daftar sesuai judul (tanda X untuk
-     menghapus pencarian).
-   - Daftar ditampilkan 10 cerita per halaman. Pakai tombol Previous / Next
-     di bawah daftar untuk pindah halaman.
+```markdown
+---
+title: Past Tense : Telaga Ngebel
+level: Pemula
+grammar: Simple Past Tense
+---
+Paragraf pertama cerita...
 
-6. FITUR
-   - Teks berjalan: tombol putar. Kecepatan diatur dengan tombol - Normal +
-     (tiap tap 10 kata/menit; tap "Normal" untuk kembali ke 150).
-   - Tombol "Highlight" menampilkan atau menyembunyikan sorotan kata.
-   - Baris tombol putar: Cerita sebelumnya (kiri), kalimat sebelumnya, putar/jeda,
-     kalimat berikutnya, Cerita berikutnya (kanan). Urutan cerita sama dengan daftar.
-   - Tab ikon kecil di atas panel kontrol: ikon panah bawah menyembunyikan
-     pengaturan, ikon penggeser (sliders) menampilkannya lagi.
-   - Tombol ikon panah di pojok atas: layar penuh (keluar dengan tombol yang sama
-     atau gestur kembali).
-   - Tiga mode: Voice (dibacakan, highlight mengikuti), Silent (highlight saja),
-     Scroll (layar menggulir sendiri pelan-pelan, highlight di garis baca).
-     Geser layar dengan jari kapan saja, scroll akan lanjut dari posisi baru.
-   - Tombol "Aa": ukuran huruf dan rata teks (Left / Center).
-   - Tap kata: arti di cerita (Vocab), definisi dan terjemahan otomatis
-     (butuh internet; kata yang pernah dibuka tersimpan untuk offline).
-   - Simpan kata lewat "Save word", lihat di "My words".
-   - Di akhir bacaan: "Start quiz" dan "Read from start".
-   - Posisi baca dan skor kuis tersimpan otomatis.
+Paragraf kedua cerita...
 
-7. MASALAH UMUM
-   - Tidak ada suara: pastikan "Text-to-speech" bahasa Inggris aktif di
-     Pengaturan Android (Google Text-to-speech). Aplikasi otomatis pindah
-     ke mode Silent kalau suara gagal.
-   - Tombol Instal tidak muncul: pastikan alamatnya localhost, bukan IP.
-   - Perubahan aplikasi tidak terlihat: tutup aplikasi sepenuhnya lalu buka lagi.
+## Vocab
+long ago: dahulu kala
+lived: tinggal (verb-2)
+farmer: petani
+prayed: berdoa (verb-2)
 
-8. TRAKTIR  
-   Jika anda merasa terbantu dengan proram dan ingin mentraktir, traktiran dapat di transfer melalui  :
-   - BANK BRI 
-   - NOMOR REKENING : 0516 0101 7476 538
-   - ATAS NAMA : AGUS WALUYO
-   - NO TLP/WA : +62 819-4613-5363
-   - email : agusw.com@gmail.com 
+## Quiz
+Q: Where did the farmer live?
+- [x] In a village in Ponorogo
+- [ ] In a big city
+- [ ] On a high mountain
+
+Q: Choose the correct past tense sentence:
+- [ ] She pray for a child.
+- [x] She prayed for a child.
+- [ ] She praying for a child.
+```
+
+### Catatan Penulisan:
+- **level**: Diisi `Pemula` (Beginner), `Menengah` (Intermediate), atau `Lanjut` (Advanced).
+- **Vocab**: Kata-kata yang dicantumkan di bagian `## Vocab` akan **otomatis berwarna biru** pada teks cerita dan dapat diklik untuk melihat artinya langsung.
+- **Quiz**: Gunakan tanda `- [x]` untuk kunci jawaban benar dan `- [ ]` untuk pilihan salah.
+- **Penting**: Hindari singkatan bertitik seperti `p.m.`, `a.m.`, `Mr.`, atau `Dr.` agar pemotong kalimat otomatis tidak terputus keliru.
+
+---
+
+## 5. FITUR UTAMA APLIKASI
+- **Paging & Sorting (DataTables Style)**:
+  - Pilihan jumlah baris per halaman: **Show 5, 10, 25, All entries**.
+  - Pengurutan instan: **Title (A-Z) ↑**, **Title (Z-A) ↓**, **Time (Newest) ↓**, dan **Time (Oldest) ↑**.
+  - Navigasi halaman lengkap dengan nomor halaman dan nomor urut di setiap judul cerita.
+- **Tombol "Copy prompt"**:
+  - Salin prompt instruksi pembuatan cerita untuk ChatGPT, Claude, atau Gemini hanya dengan 1 klik.
+- **Tiga Mode Membaca**:
+  1. **Voice Mode**: Teks dibacakan dengan suara dan kata yang dibaca disorot kuning.
+  2. **Silent Mode**: Sorotan kuning berjalan otomatis tanpa suara.
+  3. **Scroll Mode**: Teks bergulir otomatis (*auto-scroll*). Jika kata diklik untuk melihat arti, guliran berhenti sementara dan **otomatis berjalan kembali saat pop-up ditutup**.
+- **Pengaturan Teks**:
+  - Tombol **Aa**: Pengaturan ukuran huruf (*Font size*) dan perataan teks (*Left / Center*).
+  - Pengatur kecepatan baca (*WPM - Words Per Minute*).
+- **Arti Kata Lengkap (Kamus & Terjemahan)**:
+  - Sentuh kata mana saja untuk melihat arti dari cerita, definisi bahasa Inggris, jenis kata, fonetik, dan terjemahan otomatis bahasa Indonesia.
+
+---
+
+## 6. TRAKTIR / DONASI
+Jika Anda merasa terbantu dengan program **PORRIDGE** dan ingin mentraktir, traktiran dapat ditransfer melalui:
+- **BANK BRI**
+- **NOMOR REKENING**: 0516 0101 7476 538
+- **ATAS NAMA**: AGUS WALUYO
+- **NO TLP / WA**: [+62 819-4613-5363](https://wa.me/6281946135363)
+- **EMAIL**: agusw.com@gmail.com
