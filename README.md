@@ -5,9 +5,9 @@ Seluruh menu di aplikasi memakai bahasa Inggris. Nama tombol di panduan ini
 ditulis sama persis seperti di aplikasi.
 
 1. PASANG
-   - Ekstrak zip ini di HP. Hasilnya satu folder "baca-inggris" berisi:
+   - Ekstrak zip ini di HP. Hasilnya satu folder "english" berisi:
      index.html, manifest.json, sw.js, folder icons, dan folder stories.
-   - Di aplikasi web server kamu, pilih folder "baca-inggris" sebagai root, lalu Start.
+   - Di aplikasi web server kamu, pilih folder "english" sebagai root, lalu Start.
    - Buka Chrome, ketik http://localhost:PORT (port lihat di aplikasi server).
      Pakai "localhost", jangan alamat IP, supaya bisa diinstal.
    - Menu titik tiga -> Instal aplikasi / Tambahkan ke layar utama.
@@ -108,3 +108,9 @@ ditulis sama persis seperti di aplikasi.
      ke mode Silent kalau suara gagal.
    - Tombol Instal tidak muncul: pastikan alamatnya localhost, bukan IP.
    - Perubahan aplikasi tidak terlihat: tutup aplikasi sepenuhnya lalu buka lagi.
+
+8. DONASI :
+   BANK BRI 
+   NOMOR REKENING : 0516 0101 7476 538
+   ATAS NAMA : AGUS WALUYO
+   NO TLP : +62 819-4613-5363
