@@ -3,6 +3,8 @@ title: Past Tense :The Legend of Watu Dodol
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-watu-dodol.webp)
 Long ago, a kind fisherman named Pak Darto lived in a small village near the sea in Banyuwangi. He was poor, but he was honest and hardworking.
 
 Every day, he went to the sea and caught fish for his family. One morning, he found a strange big stone on the beach.
