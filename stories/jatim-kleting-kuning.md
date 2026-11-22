@@ -3,6 +3,8 @@ title: Past Tense :Jawa Timur - Kleting Kuning
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-kleting-kuning.webp)
 Long ago, a kind girl named Kleting Kuning lived in a small village. Her mother died when she was young, so she lived with her stepmother and two stepsisters.
 
 Her stepmother was cruel. Every day, Kleting Kuning cooked, washed the clothes, and cleaned the house. Her stepsisters did nothing and only played.
