@@ -3,6 +3,8 @@ title: Past Tense :The Legend of Reog Ponorogo
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+!()[jatim-reog-ponorogo.webp]
 Long ago, a young king named Kelono Sewandono ruled the kingdom of Bantarangin. He was handsome and brave, and his people loved him.
 
 One day, the king heard about a beautiful princess named Dewi Songgolangit. She lived in the kingdom of Kediri, so he decided to marry her.
