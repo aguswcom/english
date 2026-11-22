@@ -3,6 +3,8 @@ title: Past Tense :The Legend of Suminten Edan
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-suminten-edan.webp)
 Long ago, a kind girl named Suminten lived in a village in Java. Her father was a poor farmer, and her mother died when she was young.
 
 Suminten worked hard at home every day. She cooked, cleaned the house, and took care of her father.
