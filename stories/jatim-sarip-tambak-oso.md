@@ -3,6 +3,8 @@ title: Past Tense :Jawa Timur - Sarip Tambak Oso
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-sarip-tambak-oso.webp)
 Long ago, a brave boy named Sarip lived in a village near Surabaya. His father died when he was a baby, so he lived with his mother.
 
 Sarip was poor, but he was strong and kind. He worked hard every day and helped his neighbors.
