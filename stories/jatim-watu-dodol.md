@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Watu Dodol
+title: Past Tense :Jawa Timur - The Legend of Watu Dodol
 level: Pemula
 grammar: Simple Past Tense
 ---
