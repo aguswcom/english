@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Trenggalek
+title: Past Tense :Jawa Timur - The Legend of Trenggalek
 level: Pemula
 grammar: Simple Past Tense
 ---
