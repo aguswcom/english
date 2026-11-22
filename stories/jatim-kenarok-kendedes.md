@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Ken Arok and Ken Dedes
+title: Past Tense :Jawa Timur - The Legend of Ken Arok and Ken Dedes
 level: Pemula
 grammar: Simple Past Tense
 ---
