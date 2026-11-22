@@ -3,6 +3,8 @@ title: Past Tense :The Legend of Trenggalek
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-trenggalek.webp)
 Long ago, a kind old woman named Mbok Randa lived in a small village in East Java. She had a big white elephant, and she loved it very much.
 
 In the same area, there lived a brave young man named Menak Sopal. He was strong and always helped other people.
