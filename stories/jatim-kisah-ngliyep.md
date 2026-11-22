@@ -3,6 +3,7 @@ title: Past Tense :The Legend of Ngliyep
 level: Pemula
 grammar: Simple Past Tense
 ---
+![](jatim-kisah-ngliyep.webp)
 Long ago, a beautiful young woman named Dewi Kunti lived near the south coast of Java. She loved the sea, and she often walked on the beach in the morning.
 
 One day, a fisherman found a strange stone on the sand. He took it home, and he showed it to his family.
