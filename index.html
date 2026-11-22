@@ -1,866 +1,1950 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#FBF6EC" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#17130E" media="(prefers-color-scheme: dark)">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/svg+xml" href="icons/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png?v=2">
-<link rel="shortcut icon" href="favicon.ico?v=2">
-<link rel="apple-touch-icon" href="icons/icon-192.png?v=2">
-<title>PORRIDGE - Power Of Reading English</title>
-<style>
-:root{--bg:#FBF6EC;--sf:#FFFFFF;--tx:#2B2118;--mu:#7A6A58;--ln:#E8DCC8;--ac:#0F766E;--acx:#FFFFFF;--hl:#FFC83D;--ok:#1B7F4B;--bad:#B3261E;--voc:#1D6AE5;--fs:21px;
---honey:#E8A33D;--card-sh:0 1px 2px rgba(60,40,10,.06),0 6px 16px rgba(60,40,10,.06);
---lb-bg:#DDF0E3;--lb-tx:#1B6B3F;--li-bg:#FBEBC8;--li-tx:#8A5A00;--la-bg:#F7DDD1;--la-tx:#9A3F1F;
-color-scheme:light dark}
-@media(prefers-color-scheme:dark){:root{--bg:#17130E;--sf:#211B14;--tx:#F3EADB;--mu:#B3A28C;--ln:#3A3025;--ac:#4FC3B3;--acx:#06201C;--hl:#E9B307;--ok:#5BD08D;--bad:#FF8A80;--voc:#60A5FA;
---honey:#E9B04A;--card-sh:none;
---lb-bg:#1E3A2B;--lb-tx:#7ADBA3;--li-bg:#3D3016;--li-tx:#F0C15E;--la-bg:#43251A;--la-tx:#F2A07F}}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
-button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
-[hidden]{display:none!important}
-.serif{font-family:Georgia,"Iowan Old Style","Noto Serif",serif}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#FBF6EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17130E" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png?v=2">
+  <link rel="shortcut icon" href="favicon.ico?v=2">
+  <link rel="apple-touch-icon" href="icons/icon-192.png?v=2">
+  <title>PORRIDGE - Power Of Reading English</title>
+  <style>
+    :root {
+      --bg: #FBF6EC;
+      --sf: #FFFFFF;
+      --tx: #2B2118;
+      --mu: #7A6A58;
+      --ln: #E8DCC8;
+      --ac: #0F766E;
+      --acx: #FFFFFF;
+      --hl: #FFC83D;
+      --ok: #1B7F4B;
+      --bad: #B3261E;
+      --voc: #1D6AE5;
+      --fs: 21px;
+      --honey: #E8A33D;
+      --card-sh: 0 1px 2px rgba(60, 40, 10, .06), 0 6px 16px rgba(60, 40, 10, .06);
+      --lb-bg: #DDF0E3;
+      --lb-tx: #1B6B3F;
+      --li-bg: #FBEBC8;
+      --li-tx: #8A5A00;
+      --la-bg: #F7DDD1;
+      --la-tx: #9A3F1F;
+      color-scheme: light dark
+    }
 
-.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:6px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:var(--bg);border-bottom:1px solid var(--ln)}
-.top h1{margin:0;flex:1;min-width:0;font:600 clamp(15px,3.5vw,24px)/1.2 Georgia,"Iowan Old Style",serif;padding-left:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.top h1.brand{display:flex;align-items:center}
-.brand svg{width:34px;height:34px;color:var(--ac);display:block}
-.top .btn{padding:0 8px;font-size:13px;white-space:nowrap}
-.top .ttl{flex:1;min-width:0;font:600 17px/1.2 Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.btn{min-height:44px;padding:0 14px;border-radius:12px;background:var(--sf);border:1px solid var(--ln)}
-.btn.pri{background:var(--ac);color:var(--acx);border-color:var(--ac)}
-.btn.sm{min-height:36px;padding:0 10px;font-size:14px}
-.ibtn{width:44px;height:44px;display:grid;place-items:center;border-radius:12px}
+    @media(prefers-color-scheme:dark) {
+      :root {
+        --bg: #17130E;
+        --sf: #211B14;
+        --tx: #F3EADB;
+        --mu: #B3A28C;
+        --ln: #3A3025;
+        --ac: #4FC3B3;
+        --acx: #06201C;
+        --hl: #E9B307;
+        --ok: #5BD08D;
+        --bad: #FF8A80;
+        --voc: #60A5FA;
+        --honey: #E9B04A;
+        --card-sh: none;
+        --lb-bg: #1E3A2B;
+        --lb-tx: #7ADBA3;
+        --li-bg: #3D3016;
+        --li-tx: #F0C15E;
+        --la-bg: #43251A;
+        --la-tx: #F2A07F
+      }
+    }
 
-/* hero */
-.hero{text-align:center;padding:22px 18px 0}
-.hero svg.bowlbig{width:76px;height:76px;color:var(--ac);display:block;margin:0 auto}
-.hero-t{margin:4px 0 0;font:700 clamp(34px,10vw,50px)/1.05 Georgia,"Iowan Old Style",serif;letter-spacing:.07em}
-.hero-s{margin:8px 0 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);font-weight:600}
-.hero-g{margin:10px 0 0;font:italic 17px/1.4 Georgia,"Iowan Old Style",serif;color:var(--ac)}
-.wave{display:block;width:calc(100% - 28px);height:10px;margin:16px 14px 0}
-.wave path{fill:none;stroke:var(--honey);stroke-width:2;stroke-linecap:round}
-.steam{fill:none;stroke:var(--honey);stroke-width:2.4;stroke-linecap:round;animation:steam 3.2s ease-in-out infinite}
-.steam.s2{animation-delay:.9s}
-.steam.s3{animation-delay:1.8s}
-@keyframes steam{0%{opacity:0;transform:translateY(5px)}40%{opacity:.85}100%{opacity:0;transform:translateY(-6px)}}
+    * {
+      box-sizing: border-box
+    }
 
-.hint{margin:0;padding:16px 18px;color:var(--mu)}
-.list{list-style:none;margin:0;padding:12px 14px 8px;display:grid;gap:12px}
-.li{display:flex;flex-wrap:wrap;align-items:flex-start;background:var(--sf);border:1px solid var(--ln);border-radius:16px;box-shadow:var(--card-sh);overflow:hidden;transition:transform .15s ease,box-shadow .15s ease}
-@media(hover:hover){.li:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(60,40,10,.08),0 10px 22px rgba(60,40,10,.10)}}
-.item{flex:1 1 100%;display:block;text-align:left;padding:16px;min-width:0}
-.item h2{margin:0 0 10px;font:600 20px/1.3 Georgia,"Iowan Old Style",serif}
-.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--mu);font-size:14px}
-.chip{padding:1px 10px;border-radius:99px;background:var(--bg);border:1px solid var(--ln)}
-.chip.ok{border-color:var(--ok);color:var(--ok)}
-.chip.lv-b{background:var(--lb-bg);color:var(--lb-tx);border-color:transparent;font-weight:600}
-.chip.lv-i{background:var(--li-bg);color:var(--li-tx);border-color:transparent;font-weight:600}
-.chip.lv-a{background:var(--la-bg);color:var(--la-tx);border-color:transparent;font-weight:600}
-.chip.idle{border-style:dashed;background:none}
-.bar{height:6px;background:var(--ln);border-radius:3px;margin-top:14px;overflow:hidden}
-.bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--ac),var(--honey))}
-.pct{margin-top:6px;font-size:12px;color:var(--mu)}
-.foot{padding:0 14px 40px;display:flex;gap:10px;flex-wrap:wrap}
+    html {
+      -webkit-text-size-adjust: 100%
+    }
 
-#text{max-width:36rem;margin:0 auto;padding:22px 20px 260px;font:var(--fs)/1.8 Georgia,"Iowan Old Style","Noto Serif",serif}
-#text p{margin:0 0 1.1em}
-#text h3{font:600 1.05em/1.4 Georgia,serif;margin:1.5em 0 .5em}
-.w{border-radius:4px;padding:1px 0;cursor:pointer;transition:background .12s}
-.w.voc{color:var(--voc);font-weight:600;text-decoration:underline dotted 1.5px var(--voc);text-underline-offset:3px}
-.w.cur{background:var(--hl);color:#1B1500!important;box-shadow:0 0 0 3px var(--hl);text-decoration:none}
-#text.center{text-align:center}
-#text.center .done{justify-content:center}
-.story-fig{margin:20px auto;padding:0;text-align:center;max-width:100%}
-.story-fig img{max-width:100%;height:auto;border-radius:14px;box-shadow:var(--card-sh);border:1px solid var(--ln);display:block;margin:0 auto}
-.story-fig figcaption{font-size:13px;color:var(--mu);margin-top:8px;font-style:italic;font-family:system-ui,-apple-system,sans-serif}
-#text.gulir{padding-top:max(22px,calc(38vh - 76px));padding-bottom:56vh}
-#ctl{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:38rem;z-index:6;background:var(--sf);border:1px solid var(--ln);border-bottom:0;border-radius:24px 24px 0 0;padding:0 18px max(14px,env(safe-area-inset-bottom));box-shadow:0 -6px 28px rgba(60,40,10,.09);transition:all .2s ease}
-@media(prefers-color-scheme:dark){#ctl{box-shadow:0 -6px 28px rgba(0,0,0,.45)}}
-.prog{height:4px;background:var(--ln);margin:0 -18px 10px;border-radius:24px 24px 0 0;overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--honey));border-radius:2px;transition:width .1s linear}
-.row{display:flex;justify-content:center;align-items:center;gap:14px;padding:2px 0}
-.sbtn{border:1px solid var(--ln);background:var(--bg);border-radius:12px;transition:all .15s ease}
-.sbtn:disabled{opacity:.35;cursor:default}
-@media(hover:hover){.sbtn:not(:disabled):hover{background:var(--sf);border-color:var(--ac);color:var(--ac);transform:scale(1.06)}}
-.tab{position:absolute;top:-32px;right:20px;height:32px;width:56px;padding:0;display:flex;align-items:center;justify-content:center;color:var(--mu);background:var(--sf);border:1px solid var(--ln);border-bottom:0;border-radius:12px 12px 0 0;box-shadow:0 -4px 10px rgba(60,40,10,.05);cursor:pointer;transition:color .15s}
-@media(hover:hover){.tab:hover{color:var(--ac)}}
-.tab svg{display:block}
-.big{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#11857c);color:var(--acx);display:grid;place-items:center;box-shadow:0 4px 14px color-mix(in srgb,var(--ac) 45%,transparent);transition:transform .12s,box-shadow .12s;cursor:pointer}
-@media(hover:hover){.big:hover{transform:scale(1.06);box-shadow:0 6px 20px color-mix(in srgb,var(--ac) 60%,transparent)}}
-.big:active{transform:scale(0.96)}
-.row2{display:flex;flex-direction:column;align-items:stretch;gap:8px;margin-top:10px}
-.seg{display:flex;border:1px solid var(--ln);border-radius:14px;overflow:hidden;flex:none;background:var(--bg)}
-.seg button{min-height:38px;padding:0 12px;font-size:14px;font-weight:500;transition:all .15s}
-#ctl .seg{width:100%}
-#ctl .seg button{flex:1;padding:0 8px}
-#ctl .seg button[aria-pressed=true]{background:var(--ac);color:var(--acx);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1)}
-.row3{display:flex;align-items:stretch;gap:10px}
-.row3 .seg{flex:1}
-#ctl .row3 .seg button{padding:0 6px}
-#spdNorm{flex:2!important;font-weight:600}
-.hlbtn{flex:none;min-height:38px;padding:0 18px;border-radius:14px;border:1px solid var(--ln);font-size:14px;font-weight:600;background:var(--bg);transition:all .15s}
-.hlbtn[aria-pressed=true]{background:var(--hl);color:#1B1500;border-color:var(--hl);box-shadow:0 2px 8px color-mix(in srgb,var(--hl) 40%,transparent)}
-#text.nohl .w.cur{background:none!important;box-shadow:none!important;color:inherit!important}
-#text.nohl .w.voc.cur{color:var(--voc)!important;text-decoration:underline dotted 1.5px var(--voc)}
-.spd{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mu);min-width:0}
-.spd span{flex:none;width:7.6rem}
-.spd input{flex:1;min-width:0;margin:0;accent-color:var(--ac)}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--tx);
+      font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent
+    }
 
-.sheet{position:fixed;inset:0;z-index:20;display:flex;align-items:flex-end;justify-content:center}
-.scrim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.panel{position:relative;width:100%;max-width:36rem;max-height:82dvh;overflow:auto;background:var(--sf);border-radius:20px 20px 0 0;padding:18px 18px max(18px,env(safe-area-inset-bottom));animation:up .18s ease-out}
-@keyframes up{from{transform:translateY(24px);opacity:0}}
-#aboutDlg,#setDlg,#addDlg{align-items:center;padding:16px}
-#aboutDlg .panel,#setDlg .panel,#addDlg .panel{border-radius:20px;padding:22px;max-height:88dvh;animation:pop .18s ease-out;box-shadow:0 12px 36px rgba(0,0,0,.25)}
-@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
-.shHead{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.shHead h2{margin:0;flex:1;font:600 28px/1.2 Georgia,serif;word-break:break-word}
-.lbl{margin:14px 0 2px;font-size:13px;color:var(--mu)}
-.val{margin:0;font-size:17px}
-.val.serif{font-size:18px}
-.shAct{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-.field{display:block;width:100%;margin:6px 0 12px;padding:12px;border:1px solid var(--ln);border-radius:12px;background:var(--bg);color:var(--tx);font:inherit}
-textarea.field{min-height:200px;resize:vertical}
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0
+    }
 
-.wrap{max-width:36rem;margin:0 auto;padding:18px 18px 40px}
-.quiz-card{background:var(--sf);border:1px solid var(--ln);border-radius:18px;box-shadow:var(--card-sh);padding:22px 18px;margin-bottom:16px;animation:up .2s ease-out}
-.quiz-hdr{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
-.qno-badge{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--ac);background:var(--lb-bg);padding:3px 10px;border-radius:99px}
-.q{font:600 21px/1.38 Georgia,serif;margin:0 0 16px;color:var(--tx)}
-.opt{display:flex;align-items:center;width:100%;text-align:left;padding:14px 16px;margin:10px 0;min-height:50px;border:1.5px solid var(--ln);border-radius:14px;background:var(--sf);color:var(--tx);font-size:16px;transition:all .15s ease}
-@media(hover:hover){.opt:not(:disabled):hover{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 6%,var(--sf));transform:translateX(3px)}}
-.opt.ok{border-color:var(--ok);background:var(--lb-bg);color:var(--lb-tx);font-weight:600}
-.opt.bad{border-color:var(--bad);background:var(--la-bg);color:var(--la-tx)}
-.score-bowl{width:56px;height:56px;color:var(--honey);margin:0 auto 10px;display:block}
-.score{font:700 46px/1.1 Georgia,serif;margin:8px 0;color:var(--tx)}
-.score-sub{color:var(--mu);font-size:15px;line-height:1.5;margin:0 0 20px}
-.score-badge{display:inline-block;padding:3px 12px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--ac);
+      outline-offset: 2px
+    }
 
-.words-grid{display:grid;gap:12px}
-.wb{padding:16px 18px;background:var(--sf);border:1px solid var(--ln);border-radius:16px;box-shadow:var(--card-sh);display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start;transition:transform .15s ease,box-shadow .15s ease}
-@media(hover:hover){.wb:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(60,40,10,.08),0 10px 22px rgba(60,40,10,.10)}}
-.wb .t{flex:1 1 100%;min-width:0}
-.wb b{font:600 20px/1.3 Georgia,serif;color:var(--voc);display:block;margin-bottom:4px}
-.wb p{margin:3px 0 0;font-size:15px;color:var(--mu);line-height:1.4}
-.wb p.arti{color:var(--tx);font-weight:500;font-size:16px}
-.wb .acts{padding:4px 0 0;display:flex;gap:8px;flex-wrap:wrap}
+    [hidden] {
+      display: none !important
+    }
 
-.done{margin-top:2.5em;padding:26px 20px;background:var(--sf);border:1px solid var(--ln);border-radius:18px;box-shadow:var(--card-sh);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;animation:up .25s ease-out}
-.done-bowl{width:52px;height:52px;color:var(--ac);display:block;margin:0 auto}
-.done-title{font:700 24px/1.2 Georgia,serif;margin:4px 0 0;color:var(--tx)}
-.done-sub{font:italic 15px/1.4 Georgia,serif;color:var(--ac);margin:0 0 10px}
-.done-acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:100%}
+    .serif {
+      font-family: Georgia, "Iowan Old Style", "Noto Serif", serif
+    }
 
-.empty-card{text-align:center;padding:36px 20px;background:var(--sf);border:1.5px dashed var(--ln);border-radius:18px;color:var(--mu);box-shadow:var(--card-sh)}
-.empty-card svg{width:54px;height:54px;color:var(--honey);display:block;margin:0 auto 12px;opacity:.85}
-#toast{position:fixed;left:50%;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 200px);transform:translateX(-50%);z-index:30;background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:12px;max-width:88vw;font-size:15px;text-align:center}
-.setrow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0}
-.li.new{background:color-mix(in srgb,var(--hl) 30%,var(--sf));transition:background 1.2s}
-.btn:disabled{opacity:.4;cursor:default}
-.acts{display:flex;flex-wrap:wrap;gap:8px;flex:1 1 100%}
-.li .acts{padding:0 16px 14px}
-.search{position:relative;margin:16px 14px 0}
-.search input{width:100%;min-height:44px;padding:0 44px 0 14px;border:1px solid var(--ln);border-radius:12px;background:var(--sf);color:var(--tx);font:inherit}
-.search input::-webkit-search-cancel-button{display:none}
-.search button{position:absolute;right:0;top:0;width:44px;height:44px;display:grid;place-items:center;color:var(--mu)}
-.dt-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 14px 2px;font-size:13px;color:var(--mu);flex-wrap:wrap}
-.dt-row{display:flex;align-items:center;gap:6px}
-.dt-sel{min-height:34px;padding:0 8px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--tx);font:inherit;font-size:13px;cursor:pointer}
-.dt-sel:focus{outline:2px solid var(--ac)}
-.pager{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 14px 24px}
-.pager-nav{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
-.pg-nums{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
-.pg-nums .btn{min-width:34px;min-height:34px;padding:0 8px;border-radius:8px;font-size:13px}
-.pg-nums .btn.cur{background:var(--ac);color:var(--acx);border-color:var(--ac);font-weight:600}
-.pg-info{color:var(--mu);font-size:13px;text-align:center}
-html{scroll-behavior:auto}
-@media(prefers-reduced-motion:reduce){.panel{animation:none}.w{transition:none}.steam{animation:none;opacity:.6}.li{transition:none}}
-</style>
+    .sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 12px;
+      padding-top: max(10px, env(safe-area-inset-top));
+      background: var(--bg);
+      border-bottom: 1px solid var(--ln)
+    }
+
+    .top h1 {
+      margin: 0;
+      flex: 1;
+      min-width: 0;
+      font: 600 clamp(15px, 3.5vw, 24px)/1.2 Georgia, "Iowan Old Style", serif;
+      padding-left: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .top h1.brand {
+      display: flex;
+      align-items: center
+    }
+
+    .brand svg {
+      width: 34px;
+      height: 34px;
+      color: var(--ac);
+      display: block
+    }
+
+    .top .btn {
+      padding: 0 8px;
+      font-size: 13px;
+      white-space: nowrap
+    }
+
+    .top .ttl {
+      flex: 1;
+      min-width: 0;
+      font: 600 17px/1.2 Georgia, serif;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .btn {
+      min-height: 44px;
+      padding: 0 14px;
+      border-radius: 12px;
+      background: var(--sf);
+      border: 1px solid var(--ln)
+    }
+
+    .btn.pri {
+      background: var(--ac);
+      color: var(--acx);
+      border-color: var(--ac)
+    }
+
+    .btn.sm {
+      min-height: 36px;
+      padding: 0 10px;
+      font-size: 14px
+    }
+
+    .ibtn {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px
+    }
+
+    /* hero */
+    .hero {
+      text-align: center;
+      padding: 22px 18px 0
+    }
+
+    .hero svg.bowlbig {
+      width: 76px;
+      height: 76px;
+      color: var(--ac);
+      display: block;
+      margin: 0 auto
+    }
+
+    .hero-t {
+      margin: 4px 0 0;
+      font: 700 clamp(34px, 10vw, 50px)/1.05 Georgia, "Iowan Old Style", serif;
+      letter-spacing: .07em
+    }
+
+    .hero-s {
+      margin: 8px 0 0;
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--mu);
+      font-weight: 600
+    }
+
+    .hero-g {
+      margin: 10px 0 0;
+      font: italic 17px/1.4 Georgia, "Iowan Old Style", serif;
+      color: var(--ac)
+    }
+
+    .wave {
+      display: block;
+      width: calc(100% - 28px);
+      height: 10px;
+      margin: 16px 14px 0
+    }
+
+    .wave path {
+      fill: none;
+      stroke: var(--honey);
+      stroke-width: 2;
+      stroke-linecap: round
+    }
+
+    .steam {
+      fill: none;
+      stroke: var(--honey);
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      animation: steam 3.2s ease-in-out infinite
+    }
+
+    .steam.s2 {
+      animation-delay: .9s
+    }
+
+    .steam.s3 {
+      animation-delay: 1.8s
+    }
+
+    @keyframes steam {
+      0% {
+        opacity: 0;
+        transform: translateY(5px)
+      }
+
+      40% {
+        opacity: .85
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-6px)
+      }
+    }
+
+    .hint {
+      margin: 0;
+      padding: 16px 18px;
+      color: var(--mu)
+    }
+
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 12px 14px 8px;
+      display: grid;
+      gap: 12px
+    }
+
+    .li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      background: var(--sf);
+      border: 1px solid var(--ln);
+      border-radius: 16px;
+      box-shadow: var(--card-sh);
+      overflow: hidden;
+      transition: transform .15s ease, box-shadow .15s ease
+    }
+
+    @media(hover:hover) {
+      .li:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(60, 40, 10, .08), 0 10px 22px rgba(60, 40, 10, .10)
+      }
+    }
+
+    .item {
+      flex: 1 1 100%;
+      display: block;
+      text-align: left;
+      padding: 16px;
+      min-width: 0
+    }
+
+    .item h2 {
+      margin: 0 0 10px;
+      font: 600 20px/1.3 Georgia, "Iowan Old Style", serif
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--mu);
+      font-size: 14px
+    }
+
+    .chip {
+      padding: 1px 10px;
+      border-radius: 99px;
+      background: var(--bg);
+      border: 1px solid var(--ln)
+    }
+
+    .chip.ok {
+      border-color: var(--ok);
+      color: var(--ok)
+    }
+
+    .chip.lv-b {
+      background: var(--lb-bg);
+      color: var(--lb-tx);
+      border-color: transparent;
+      font-weight: 600
+    }
+
+    .chip.lv-i {
+      background: var(--li-bg);
+      color: var(--li-tx);
+      border-color: transparent;
+      font-weight: 600
+    }
+
+    .chip.lv-a {
+      background: var(--la-bg);
+      color: var(--la-tx);
+      border-color: transparent;
+      font-weight: 600
+    }
+
+    .chip.idle {
+      border-style: dashed;
+      background: none
+    }
+
+    .bar {
+      height: 6px;
+      background: var(--ln);
+      border-radius: 3px;
+      margin-top: 14px;
+      overflow: hidden
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--ac), var(--honey))
+    }
+
+    .pct {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--mu)
+    }
+
+    .foot {
+      padding: 0 14px 40px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    #text {
+      max-width: 36rem;
+      margin: 0 auto;
+      padding: 22px 20px 260px;
+      font: var(--fs)/1.8 Georgia, "Iowan Old Style", "Noto Serif", serif
+    }
+
+    #text p {
+      margin: 0 0 1.1em
+    }
+
+    #text h3 {
+      font: 600 1.05em/1.4 Georgia, serif;
+      margin: 1.5em 0 .5em
+    }
+
+    .w {
+      border-radius: 4px;
+      padding: 1px 0;
+      cursor: pointer;
+      transition: background .12s
+    }
+
+    .w.voc {
+      color: var(--voc);
+      font-weight: 600;
+      text-decoration: underline dotted 1.5px var(--voc);
+      text-underline-offset: 3px
+    }
+
+    .w.cur {
+      background: var(--hl);
+      color: #1B1500 !important;
+      box-shadow: 0 0 0 3px var(--hl);
+      text-decoration: none
+    }
+
+    #text.center {
+      text-align: center
+    }
+
+    #text.center .done {
+      justify-content: center
+    }
+
+    .story-fig {
+      margin: 20px auto;
+      padding: 0;
+      text-align: center;
+      max-width: 100%
+    }
+
+    .story-fig img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: var(--card-sh);
+      border: 1px solid var(--ln);
+      display: block;
+      margin: 0 auto
+    }
+
+    .story-fig figcaption {
+      font-size: 13px;
+      color: var(--mu);
+      margin-top: 8px;
+      font-style: italic;
+      font-family: system-ui, -apple-system, sans-serif
+    }
+
+    #text.gulir {
+      padding-top: max(22px, calc(38vh - 76px));
+      padding-bottom: 56vh
+    }
+
+    #ctl {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 38rem;
+      z-index: 6;
+      background: var(--sf);
+      border: 1px solid var(--ln);
+      border-bottom: 0;
+      border-radius: 24px 24px 0 0;
+      padding: 0 18px max(14px, env(safe-area-inset-bottom));
+      box-shadow: 0 -6px 28px rgba(60, 40, 10, .09);
+      transition: all .2s ease
+    }
+
+    @media(prefers-color-scheme:dark) {
+      #ctl {
+        box-shadow: 0 -6px 28px rgba(0, 0, 0, .45)
+      }
+    }
+
+    .prog {
+      height: 4px;
+      background: var(--ln);
+      margin: 0 -18px 10px;
+      border-radius: 24px 24px 0 0;
+      overflow: hidden
+    }
+
+    .prog i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--ac), var(--honey));
+      border-radius: 2px;
+      transition: width .1s linear
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      padding: 2px 0
+    }
+
+    .sbtn {
+      border: 1px solid var(--ln);
+      background: var(--bg);
+      border-radius: 12px;
+      transition: all .15s ease
+    }
+
+    .sbtn:disabled {
+      opacity: .35;
+      cursor: default
+    }
+
+    @media(hover:hover) {
+      .sbtn:not(:disabled):hover {
+        background: var(--sf);
+        border-color: var(--ac);
+        color: var(--ac);
+        transform: scale(1.06)
+      }
+    }
+
+    .tab {
+      position: absolute;
+      top: -32px;
+      right: 20px;
+      height: 32px;
+      width: 56px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mu);
+      background: var(--sf);
+      border: 1px solid var(--ln);
+      border-bottom: 0;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -4px 10px rgba(60, 40, 10, .05);
+      cursor: pointer;
+      transition: color .15s
+    }
+
+    @media(hover:hover) {
+      .tab:hover {
+        color: var(--ac)
+      }
+    }
+
+    .tab svg {
+      display: block
+    }
+
+    .big {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ac), #11857c);
+      color: var(--acx);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 14px color-mix(in srgb, var(--ac) 45%, transparent);
+      transition: transform .12s, box-shadow .12s;
+      cursor: pointer
+    }
+
+    @media(hover:hover) {
+      .big:hover {
+        transform: scale(1.06);
+        box-shadow: 0 6px 20px color-mix(in srgb, var(--ac) 60%, transparent)
+      }
+    }
+
+    .big:active {
+      transform: scale(0.96)
+    }
+
+    .row2 {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      margin-top: 10px
+    }
+
+    .seg {
+      display: flex;
+      border: 1px solid var(--ln);
+      border-radius: 14px;
+      overflow: hidden;
+      flex: none;
+      background: var(--bg)
+    }
+
+    .seg button {
+      min-height: 38px;
+      padding: 0 12px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all .15s
+    }
+
+    #ctl .seg {
+      width: 100%
+    }
+
+    #ctl .seg button {
+      flex: 1;
+      padding: 0 8px
+    }
+
+    #ctl .seg button[aria-pressed=true] {
+      background: var(--ac);
+      color: var(--acx);
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .1)
+    }
+
+    .row3 {
+      display: flex;
+      align-items: stretch;
+      gap: 10px
+    }
+
+    .row3 .seg {
+      flex: 1
+    }
+
+    #ctl .row3 .seg button {
+      padding: 0 6px
+    }
+
+    #spdNorm {
+      flex: 2 !important;
+      font-weight: 600
+    }
+
+    .hlbtn {
+      flex: none;
+      min-height: 38px;
+      padding: 0 18px;
+      border-radius: 14px;
+      border: 1px solid var(--ln);
+      font-size: 14px;
+      font-weight: 600;
+      background: var(--bg);
+      transition: all .15s
+    }
+
+    .hlbtn[aria-pressed=true] {
+      background: var(--hl);
+      color: #1B1500;
+      border-color: var(--hl);
+      box-shadow: 0 2px 8px color-mix(in srgb, var(--hl) 40%, transparent)
+    }
+
+    #text.nohl .w.cur {
+      background: none !important;
+      box-shadow: none !important;
+      color: inherit !important
+    }
+
+    #text.nohl .w.voc.cur {
+      color: var(--voc) !important;
+      text-decoration: underline dotted 1.5px var(--voc)
+    }
+
+    .spd {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--mu);
+      min-width: 0
+    }
+
+    .spd span {
+      flex: none;
+      width: 7.6rem
+    }
+
+    .spd input {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+      accent-color: var(--ac)
+    }
+
+    .sheet {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center
+    }
+
+    .scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .45)
+    }
+
+    .panel {
+      position: relative;
+      width: 100%;
+      max-width: 36rem;
+      max-height: 82dvh;
+      overflow: auto;
+      background: var(--sf);
+      border-radius: 20px 20px 0 0;
+      padding: 18px 18px max(18px, env(safe-area-inset-bottom));
+      animation: up .18s ease-out
+    }
+
+    @keyframes up {
+      from {
+        transform: translateY(24px);
+        opacity: 0
+      }
+    }
+
+    #aboutDlg,
+    #setDlg,
+    #addDlg {
+      align-items: center;
+      padding: 16px
+    }
+
+    #aboutDlg .panel,
+    #setDlg .panel,
+    #addDlg .panel {
+      border-radius: 20px;
+      padding: 22px;
+      max-height: 88dvh;
+      animation: pop .18s ease-out;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .25)
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(.96);
+        opacity: 0
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    .shHead {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px
+    }
+
+    .shHead h2 {
+      margin: 0;
+      flex: 1;
+      font: 600 28px/1.2 Georgia, serif;
+      word-break: break-word
+    }
+
+    .lbl {
+      margin: 14px 0 2px;
+      font-size: 13px;
+      color: var(--mu)
+    }
+
+    .val {
+      margin: 0;
+      font-size: 17px
+    }
+
+    .val.serif {
+      font-size: 18px
+    }
+
+    .shAct {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap
+    }
+
+    .field {
+      display: block;
+      width: 100%;
+      margin: 6px 0 12px;
+      padding: 12px;
+      border: 1px solid var(--ln);
+      border-radius: 12px;
+      background: var(--bg);
+      color: var(--tx);
+      font: inherit
+    }
+
+    textarea.field {
+      min-height: 200px;
+      resize: vertical
+    }
+
+    .wrap {
+      max-width: 36rem;
+      margin: 0 auto;
+      padding: 18px 18px 40px
+    }
+
+    .quiz-card {
+      background: var(--sf);
+      border: 1px solid var(--ln);
+      border-radius: 18px;
+      box-shadow: var(--card-sh);
+      padding: 22px 18px;
+      margin-bottom: 16px;
+      animation: up .2s ease-out
+    }
+
+    .quiz-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px
+    }
+
+    .qno-badge {
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ac);
+      background: var(--lb-bg);
+      padding: 3px 10px;
+      border-radius: 99px
+    }
+
+    .q {
+      font: 600 21px/1.38 Georgia, serif;
+      margin: 0 0 16px;
+      color: var(--tx)
+    }
+
+    .opt {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      margin: 10px 0;
+      min-height: 50px;
+      border: 1.5px solid var(--ln);
+      border-radius: 14px;
+      background: var(--sf);
+      color: var(--tx);
+      font-size: 16px;
+      transition: all .15s ease
+    }
+
+    @media(hover:hover) {
+      .opt:not(:disabled):hover {
+        border-color: var(--ac);
+        background: color-mix(in srgb, var(--ac) 6%, var(--sf));
+        transform: translateX(3px)
+      }
+    }
+
+    .opt.ok {
+      border-color: var(--ok);
+      background: var(--lb-bg);
+      color: var(--lb-tx);
+      font-weight: 600
+    }
+
+    .opt.bad {
+      border-color: var(--bad);
+      background: var(--la-bg);
+      color: var(--la-tx)
+    }
+
+    .score-bowl {
+      width: 56px;
+      height: 56px;
+      color: var(--honey);
+      margin: 0 auto 10px;
+      display: block
+    }
+
+    .score {
+      font: 700 46px/1.1 Georgia, serif;
+      margin: 8px 0;
+      color: var(--tx)
+    }
+
+    .score-sub {
+      color: var(--mu);
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0 0 20px
+    }
+
+    .score-badge {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 8px
+    }
+
+    .words-grid {
+      display: grid;
+      gap: 12px
+    }
+
+    .wb {
+      padding: 16px 18px;
+      background: var(--sf);
+      border: 1px solid var(--ln);
+      border-radius: 16px;
+      box-shadow: var(--card-sh);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+      transition: transform .15s ease, box-shadow .15s ease
+    }
+
+    @media(hover:hover) {
+      .wb:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(60, 40, 10, .08), 0 10px 22px rgba(60, 40, 10, .10)
+      }
+    }
+
+    .wb .t {
+      flex: 1 1 100%;
+      min-width: 0
+    }
+
+    .wb b {
+      font: 600 20px/1.3 Georgia, serif;
+      color: var(--voc);
+      display: block;
+      margin-bottom: 4px
+    }
+
+    .wb p {
+      margin: 3px 0 0;
+      font-size: 15px;
+      color: var(--mu);
+      line-height: 1.4
+    }
+
+    .wb p.arti {
+      color: var(--tx);
+      font-weight: 500;
+      font-size: 16px
+    }
+
+    .wb .acts {
+      padding: 4px 0 0;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .done {
+      margin-top: 2.5em;
+      padding: 26px 20px;
+      background: var(--sf);
+      border: 1px solid var(--ln);
+      border-radius: 18px;
+      box-shadow: var(--card-sh);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 10px;
+      animation: up .25s ease-out
+    }
+
+    .done-bowl {
+      width: 52px;
+      height: 52px;
+      color: var(--ac);
+      display: block;
+      margin: 0 auto
+    }
+
+    .done-title {
+      font: 700 24px/1.2 Georgia, serif;
+      margin: 4px 0 0;
+      color: var(--tx)
+    }
+
+    .done-sub {
+      font: italic 15px/1.4 Georgia, serif;
+      color: var(--ac);
+      margin: 0 0 10px
+    }
+
+    .done-acts {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%
+    }
+
+    .empty-card {
+      text-align: center;
+      padding: 36px 20px;
+      background: var(--sf);
+      border: 1.5px dashed var(--ln);
+      border-radius: 18px;
+      color: var(--mu);
+      box-shadow: var(--card-sh)
+    }
+
+    .empty-card svg {
+      width: 54px;
+      height: 54px;
+      color: var(--honey);
+      display: block;
+      margin: 0 auto 12px;
+      opacity: .85
+    }
+
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(max(12px, env(safe-area-inset-bottom)) + 200px);
+      transform: translateX(-50%);
+      z-index: 30;
+      background: var(--tx);
+      color: var(--bg);
+      padding: 10px 16px;
+      border-radius: 12px;
+      max-width: 88vw;
+      font-size: 15px;
+      text-align: center
+    }
+
+    .setrow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 16px 0
+    }
+
+    .li.new {
+      background: color-mix(in srgb, var(--hl) 30%, var(--sf));
+      transition: background 1.2s
+    }
+
+    .btn:disabled {
+      opacity: .4;
+      cursor: default
+    }
+
+    .acts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      flex: 1 1 100%
+    }
+
+    .li .acts {
+      padding: 0 16px 14px
+    }
+
+    .search {
+      position: relative;
+      margin: 16px 14px 0
+    }
+
+    .search input {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 44px 0 14px;
+      border: 1px solid var(--ln);
+      border-radius: 12px;
+      background: var(--sf);
+      color: var(--tx);
+      font: inherit
+    }
+
+    .search input::-webkit-search-cancel-button {
+      display: none
+    }
+
+    .search button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: var(--mu)
+    }
+
+    .dt-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 10px 14px 2px;
+      font-size: 13px;
+      color: var(--mu);
+      flex-wrap: wrap
+    }
+
+    .dt-row {
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .dt-sel {
+      min-height: 34px;
+      padding: 0 8px;
+      border-radius: 10px;
+      border: 1px solid var(--ln);
+      background: var(--sf);
+      color: var(--tx);
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer
+    }
+
+    .dt-sel:focus {
+      outline: 2px solid var(--ac)
+    }
+
+    .pager {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px 24px
+    }
+
+    .pager-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap
+    }
+
+    .pg-nums {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .pg-nums .btn {
+      min-width: 34px;
+      min-height: 34px;
+      padding: 0 8px;
+      border-radius: 8px;
+      font-size: 13px
+    }
+
+    .pg-nums .btn.cur {
+      background: var(--ac);
+      color: var(--acx);
+      border-color: var(--ac);
+      font-weight: 600
+    }
+
+    .pg-info {
+      color: var(--mu);
+      font-size: 13px;
+      text-align: center
+    }
+
+    html {
+      scroll-behavior: auto
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .panel {
+        animation: none
+      }
+
+      .w {
+        transition: none
+      }
+
+      .steam {
+        animation: none;
+        opacity: .6
+      }
+
+      .li {
+        transition: none
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- Ikon mangkuk (dipakai ulang) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="bowl" viewBox="0 0 64 64">
-    <path d="M8 28h48c0 14-9.5 24-24 24S8 42 8 28z" fill="currentColor"/>
-    <ellipse cx="32" cy="28" rx="24" ry="3.5" fill="var(--honey)"/>
-    <rect x="21" y="52" width="22" height="4" rx="2" fill="currentColor"/>
-  </symbol>
-</svg>
+  <!-- Ikon mangkuk (dipakai ulang) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="bowl" viewBox="0 0 64 64">
+      <path d="M8 28h48c0 14-9.5 24-24 24S8 42 8 28z" fill="currentColor" />
+      <ellipse cx="32" cy="28" rx="24" ry="3.5" fill="var(--honey)" />
+      <rect x="21" y="52" width="22" height="4" rx="2" fill="currentColor" />
+    </symbol>
+  </svg>
 
-<!-- Daftar cerita -->
-<section id="v-lib" class="view">
-  <header class="top">
-    <h1 class="brand" title="PORRIDGE (Power Of Reading English)"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg><span class="sr">PORRIDGE</span></h1>
-    <button class="btn" id="btnAbout">About</button>
-    <button class="btn" id="btnPrompt">Copy prompt</button>
-    <button class="btn" id="btnWords">My words</button>
-    <button class="btn pri" id="btnAdd">+ Add</button>
-  </header>
-  <div class="hero">
-    <svg class="bowlbig" viewBox="0 0 64 64" aria-hidden="true">
-      <path class="steam s1" d="M24 20c-3-3 3-6 0-10"/>
-      <path class="steam s2" d="M32 20c-3-3 3-6 0-10"/>
-      <path class="steam s3" d="M40 20c-3-3 3-6 0-10"/>
-      <use href="#bowl"/>
-    </svg>
-    <div class="hero-t">PORRIDGE</div>
-    <div class="hero-s">Power Of Reading English</div>
-    <div class="hero-g">&ldquo;Every page, a spoonful of knowledge.&rdquo;</div>
-    <svg class="wave" aria-hidden="true">
-      <defs><pattern id="wv" width="40" height="10" patternUnits="userSpaceOnUse"><path d="M0 5Q10 0 20 5T40 5"/></pattern></defs>
-      <rect width="100%" height="10" fill="url(#wv)"/>
-    </svg>
-  </div>
-  <div class="search">
-    <input id="search" type="search" placeholder="Search by title" aria-label="Search stories by title" enterkeyhint="search" autocomplete="off">
-    <button id="searchClr" type="button" aria-label="Clear search" title="Clear search" hidden></button>
-  </div>
-  <div class="dt-bar">
-    <div class="dt-row">
-      <span>Show</span>
-      <select id="dtSize" class="dt-sel" aria-label="Entries per page">
-        <option value="5">5</option>
-        <option value="10" selected>10</option>
-        <option value="25">25</option>
-        <option value="0">All</option>
-      </select>
-      <span>entries</span>
+  <!-- Daftar cerita -->
+  <section id="v-lib" class="view">
+    <header class="top">
+      <h1 class="brand" title="PORRIDGE (Power Of Reading English)"><svg viewBox="0 0 64 64" aria-hidden="true">
+          <use href="#bowl" />
+        </svg><span class="sr">PORRIDGE</span></h1>
+      <button class="btn" id="btnAbout">About</button>
+      <button class="btn" id="btnPrompt">Copy prompt</button>
+      <button class="btn" id="btnWords">My words</button>
+      <button class="btn pri" id="btnAdd">+ Add</button>
+    </header>
+    <div class="hero">
+      <svg class="bowlbig" viewBox="0 0 64 64" aria-hidden="true">
+        <path class="steam s1" d="M24 20c-3-3 3-6 0-10" />
+        <path class="steam s2" d="M32 20c-3-3 3-6 0-10" />
+        <path class="steam s3" d="M40 20c-3-3 3-6 0-10" />
+        <use href="#bowl" />
+      </svg>
+      <div class="hero-t">PORRIDGE</div>
+      <div class="hero-s">Power Of Reading English</div>
+      <div class="hero-g">&ldquo;Every page, a spoonful of knowledge.&rdquo;</div>
+      <svg class="wave" aria-hidden="true">
+        <defs>
+          <pattern id="wv" width="40" height="10" patternUnits="userSpaceOnUse">
+            <path d="M0 5Q10 0 20 5T40 5" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="10" fill="url(#wv)" />
+      </svg>
     </div>
-    <div class="dt-row">
-      <span>Sort by</span>
-      <select id="dtSort" class="dt-sel" aria-label="Sort stories by">
-        <option value="title-asc">Title (A-Z) ↑</option>
-        <option value="title-desc">Title (Z-A) ↓</option>
-        <option value="time-desc">Time (Newest) ↓</option>
-        <option value="time-asc">Time (Oldest) ↑</option>
-      </select>
+    <div class="search">
+      <input id="search" type="search" placeholder="Search by title" aria-label="Search stories by title"
+        enterkeyhint="search" autocomplete="off">
+      <button id="searchClr" type="button" aria-label="Clear search" title="Clear search" hidden></button>
     </div>
-  </div>
-  <p class="hint" id="libHint" hidden></p>
-  <ul class="list" id="list"></ul>
-  <div class="pager" id="pager">
-    <div class="pager-nav">
-      <button class="btn sm" id="pgPrev">Previous</button>
-      <div id="pgNums" class="pg-nums"></div>
-      <button class="btn sm" id="pgNext">Next</button>
-    </div>
-    <div id="pgInfo" class="pg-info"></div>
-  </div>
-  <div class="foot">
-    <button class="btn" id="btnReload">Reload stories</button>
-    <button class="btn" id="btnAboutFoot">About</button>
-    <button class="btn" id="btnFolder" hidden>Choose stories folder</button>
-  </div>
-</section>
-
-<!-- Membaca -->
-<section id="v-read" class="view" hidden>
-  <header class="top">
-    <button class="ibtn" id="rBack" aria-label="Back"></button>
-    <div class="ttl" id="rTitle"></div>
-    <button class="ibtn" id="rFull" aria-label="Full screen" title="Full screen"></button>
-    <button class="btn sm" id="rSet" aria-label="Text settings" title="Text settings">Aa</button>
-    <button class="btn sm pri" id="rQuiz">Quiz</button>
-  </header>
-  <article id="text"></article>
-  <div id="ctl">
-    <button class="tab" id="optTab" aria-expanded="true" aria-controls="opts" aria-label="Hide settings" title="Hide settings"><span id="optArrow"></span></button>
-    <div class="prog"><i id="progBar"></i></div>
-    <div class="row">
-      <button class="ibtn sbtn" id="prevStory" aria-label="Previous story" title="Previous story"></button>
-      <button class="ibtn" id="prevS" aria-label="Previous sentence"></button>
-      <button class="big" id="play" aria-label="Play"></button>
-      <button class="ibtn" id="nextS" aria-label="Next sentence"></button>
-      <button class="ibtn sbtn" id="nextStory" aria-label="Next story" title="Next story"></button>
-    </div>
-    <div class="row2" id="opts">
-      <div class="seg" role="group" aria-label="Mode">
-        <button id="mVoice" aria-pressed="true">Voice</button>
-        <button id="mSilent" aria-pressed="false">Silent</button>
-        <button id="mScroll" aria-pressed="false">Scroll</button>
+    <div class="dt-bar">
+      <div class="dt-row">
+        <span>Show</span>
+        <select id="dtSize" class="dt-sel" aria-label="Entries per page">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="25">25</option>
+          <option value="0">All</option>
+        </select>
+        <span>entries</span>
       </div>
-      <div class="row3">
-        <div class="seg" role="group" aria-label="Playback speed">
-          <button id="spdDown" aria-label="Slower">−</button>
-          <button id="spdNorm" aria-label="Normal speed">Normal</button>
-          <button id="spdUp" aria-label="Faster">+</button>
+      <div class="dt-row">
+        <span>Sort by</span>
+        <select id="dtSort" class="dt-sel" aria-label="Sort stories by">
+          <option value="title-asc">Title (A-Z) ↑</option>
+          <option value="title-desc">Title (Z-A) ↓</option>
+          <option value="time-desc">Time (Newest) ↓</option>
+          <option value="time-asc">Time (Oldest) ↑</option>
+        </select>
+      </div>
+    </div>
+    <p class="hint" id="libHint" hidden></p>
+    <ul class="list" id="list"></ul>
+    <div class="pager" id="pager">
+      <div class="pager-nav">
+        <button class="btn sm" id="pgPrev">Previous</button>
+        <div id="pgNums" class="pg-nums"></div>
+        <button class="btn sm" id="pgNext">Next</button>
+      </div>
+      <div id="pgInfo" class="pg-info"></div>
+    </div>
+    <div class="foot">
+      <button class="btn" id="btnReload">Reload stories</button>
+      <button class="btn" id="btnAboutFoot">About</button>
+      <button class="btn" id="btnFolder" hidden>Choose stories folder</button>
+    </div>
+  </section>
+
+  <!-- Membaca -->
+  <section id="v-read" class="view" hidden>
+    <header class="top">
+      <button class="ibtn" id="rBack" aria-label="Back"></button>
+      <div class="ttl" id="rTitle"></div>
+      <button class="ibtn" id="rFull" aria-label="Full screen" title="Full screen"></button>
+      <button class="btn sm" id="rSet" aria-label="Text settings" title="Text settings">Aa</button>
+      <button class="btn sm pri" id="rQuiz">Quiz</button>
+    </header>
+    <article id="text"></article>
+    <div id="ctl">
+      <button class="tab" id="optTab" aria-expanded="true" aria-controls="opts" aria-label="Hide settings"
+        title="Hide settings"><span id="optArrow"></span></button>
+      <div class="prog"><i id="progBar"></i></div>
+      <div class="row">
+        <button class="ibtn sbtn" id="prevStory" aria-label="Previous story" title="Previous story"></button>
+        <button class="ibtn" id="prevS" aria-label="Previous sentence"></button>
+        <button class="big" id="play" aria-label="Play"></button>
+        <button class="ibtn" id="nextS" aria-label="Next sentence"></button>
+        <button class="ibtn sbtn" id="nextStory" aria-label="Next story" title="Next story"></button>
+      </div>
+      <div class="row2" id="opts">
+        <div class="seg" role="group" aria-label="Mode">
+          <button id="mVoice" aria-pressed="true">Voice</button>
+          <button id="mSilent" aria-pressed="false">Silent</button>
+          <button id="mScroll" aria-pressed="false">Scroll</button>
         </div>
-        <button class="hlbtn" id="hlBtn" aria-pressed="true" aria-label="Show or hide highlight">Highlight</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Kuis -->
-<section id="v-quiz" class="view" hidden>
-  <header class="top">
-    <button class="ibtn" id="qBack" aria-label="Back"></button>
-    <div class="ttl" id="qTitle"></div>
-  </header>
-  <div class="wrap" id="quizBox"></div>
-</section>
-
-<!-- Kata saya -->
-<section id="v-words" class="view" hidden>
-  <header class="top">
-    <button class="ibtn" id="wBack" aria-label="Back"></button>
-    <div class="ttl">My words</div>
-  </header>
-  <div class="wrap" id="wordsBox"></div>
-</section>
-
-<!-- Arti kata -->
-<div id="sheet" class="sheet" hidden>
-  <div class="scrim" id="shScrim"></div>
-  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="shWord">
-    <div class="shHead">
-      <h2 id="shWord"></h2>
-      <button class="btn sm" id="shSpeak">Listen</button>
-      <button class="btn sm" id="shClose">Close</button>
-    </div>
-    <div id="shBody"></div>
-    <div class="shAct">
-      <button class="btn pri" id="shFrom">Start from here</button>
-      <button class="btn" id="shSave">Save word</button>
-    </div>
-  </div>
-</div>
-
-<!-- Tambah cerita -->
-<div id="addDlg" class="sheet" hidden>
-  <div class="scrim" id="addScrim"></div>
-  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="addH">
-    <h2 id="addH" class="serif" style="margin:0 0 10px;font-size:24px">Add story</h2>
-    <input class="field" id="addTitle" placeholder="Title (optional)">
-    <textarea class="field" id="addText" placeholder="Paste the English text here. Markdown with Vocab and Quiz sections also works."></textarea>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn" id="addPaste" type="button">Paste from clipboard</button>
-      <label class="btn" style="display:inline-flex;align-items:center" for="addFile">Choose .md / .txt file</label>
-    </div>
-    <input type="file" id="addFile" accept=".md,.txt,text/markdown,text/plain" hidden>
-    <p class="lbl">Stories appear in the list right away, numbered in the order added. They are saved in this browser only. Use Save &amp; download to also keep a .md file in the stories folder.</p>
-    <div class="shAct">
-      <button class="btn pri" id="addSave">Save story</button>
-      <button class="btn" id="addSaveDl">Save &amp; download</button>
-      <button class="btn" id="addCancel">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<!-- Tampilan teks -->
-<div id="setDlg" class="sheet" hidden>
-  <div class="scrim" id="setScrim"></div>
-  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="setH">
-    <h2 id="setH" class="serif" style="margin:0 0 4px;font-size:24px">Text settings</h2>
-    <div class="setrow"><span>Font size</span>
-      <div class="seg"><button id="fsDown" aria-label="Smaller font">A−</button><button id="fsUp" aria-label="Larger font">A+</button></div></div>
-    <div class="setrow"><span>Text alignment</span>
-      <div class="seg"><button id="alL" aria-pressed="true">Left</button><button id="alC" aria-pressed="false">Center</button></div></div>
-    <div class="shAct"><button class="btn pri" id="setClose" style="width:100%">Done</button></div>
-  </div>
-</div>
-
-<!-- Dialog About -->
-<div id="aboutDlg" class="sheet" hidden>
-  <div class="scrim" id="aboutScrim"></div>
-  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="aboutH">
-    <div class="shHead">
-      <div>
-        <h2 id="aboutH" class="serif" style="margin:0;font-size:24px">PORRIDGE</h2>
-        <div style="font-size:13px;color:var(--mu);font-weight:600">Power Of Reading English</div>
-      </div>
-      <button class="btn sm" id="aboutClose">Close</button>
-    </div>
-    <div style="margin:12px 0 16px;line-height:1.6">
-      <p style="margin:0 0 14px;font-style:italic;color:var(--ac);font-size:15px;font-weight:500">&ldquo;Every page, a spoonful of knowledge.&rdquo;</p>
-      <p style="margin:0 0 14px">Jika anda merasa terbantu dengan program ini dan ingin mentraktir, traktiran dapat ditransfer melalui:</p>
-      
-      <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-bottom:12px">
-        <span style="font-size:13px;color:var(--mu);font-weight:600;display:block;margin-bottom:10px">HITUNG TRAKTIRAN</span>
-        
-        <!-- Traktir Minum -->
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px">
-          <div>
-            <div style="font-size:15px;font-weight:600">☕ Traktir Minum</div>
-            <div style="font-size:12px;color:var(--mu)">@ Rp 10.000</div>
+        <div class="row3">
+          <div class="seg" role="group" aria-label="Playback speed">
+            <button id="spdDown" aria-label="Slower">−</button>
+            <button id="spdNorm" aria-label="Normal speed">Normal</button>
+            <button id="spdUp" aria-label="Faster">+</button>
           </div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <button type="button" class="btn sm" id="btnMinDrink" style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700" aria-label="Kurangi minum">−</button>
-            <input type="number" id="qtyDrink" min="0" max="999" value="1" style="width:52px;height:30px;text-align:center;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx);font-weight:600;padding:0" aria-label="Jumlah traktir minum">
-            <button type="button" class="btn sm" id="btnPlusDrink" style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700" aria-label="Tambah minum">+</button>
-          </div>
+          <button class="hlbtn" id="hlBtn" aria-pressed="true" aria-label="Show or hide highlight">Highlight</button>
         </div>
-        <div style="font-size:13px;color:var(--mu);text-align:right;margin-bottom:12px">
-          Traktir Minum = <span id="calcDrinkText">1 x 10.000</span> = <b style="color:var(--tx)" id="subDrink">Rp 10.000</b>
-        </div>
-
-        <!-- Traktir Makan -->
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;padding-top:10px;border-top:1px dashed var(--ln)">
-          <div>
-            <div style="font-size:15px;font-weight:600">🍲 Traktir Makan</div>
-            <div style="font-size:12px;color:var(--mu)">@ Rp 20.000</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px">
-            <button type="button" class="btn sm" id="btnMinFood" style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700" aria-label="Kurangi makan">−</button>
-            <input type="number" id="qtyFood" min="0" max="999" value="0" style="width:52px;height:30px;text-align:center;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx);font-weight:600;padding:0" aria-label="Jumlah traktir makan">
-            <button type="button" class="btn sm" id="btnPlusFood" style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700" aria-label="Tambah makan">+</button>
-          </div>
-        </div>
-        <div style="font-size:13px;color:var(--mu);text-align:right;margin-bottom:12px">
-          Traktir Makan = <span id="calcFoodText">0 x 20.000</span> = <b style="color:var(--tx)" id="subFood">Rp 0</b>
-        </div>
-
-        <!-- Total Transfer -->
-        <div style="padding:10px 14px;background:color-mix(in srgb,var(--ac) 10%,var(--sf));border:1px solid color-mix(in srgb,var(--ac) 25%,transparent);border-radius:10px;display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:14px;font-weight:700;color:var(--tx)">Total Transfer</span>
-          <span style="font-size:18px;font-weight:800;color:var(--ac)" id="totalTransfer">Rp 10.000</span>
-        </div>
-      </div>
-      
-      <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <span style="font-size:13px;color:var(--mu);font-weight:600">BANK TRANSFER</span>
-          <button class="btn sm" id="btnCopyRek" type="button" style="font-size:12px;padding:2px 8px;min-height:30px">Copy Rekening</button>
-        </div>
-        <div style="font-size:15px"><b>Bank:</b> BANK BRI</div>
-        <div style="font-size:16px;margin:4px 0"><b>Nomor Rekening:</b> <span style="font-family:monospace;font-weight:bold;letter-spacing:1px">0516 0101 7476 538</span></div>
-        <div style="font-size:15px"><b>Atas Nama:</b> AGUS WALUYO</div>
-      </div>
-
-      <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px">
-        <span style="font-size:13px;color:var(--mu);font-weight:600;display:block;margin-bottom:8px">KONTAK</span>
-        <div style="font-size:15px;margin-bottom:6px"><b>No. Telp / WA:</b> <a href="https://wa.me/6281946135363" target="_blank" rel="noopener" style="color:var(--ac);text-decoration:none">+62 819-4613-5363</a></div>
-        <div style="font-size:15px"><b>Email:</b> <a href="mailto:agusw.com@gmail.com" style="color:var(--ac);text-decoration:none">agusw.com@gmail.com</a></div>
       </div>
     </div>
-    <div class="shAct">
-      <button class="btn pri" id="aboutOk" type="button" style="width:100%">Tutup</button>
+  </section>
+
+  <!-- Kuis -->
+  <section id="v-quiz" class="view" hidden>
+    <header class="top">
+      <button class="ibtn" id="qBack" aria-label="Back"></button>
+      <div class="ttl" id="qTitle"></div>
+    </header>
+    <div class="wrap" id="quizBox"></div>
+  </section>
+
+  <!-- Kata saya -->
+  <section id="v-words" class="view" hidden>
+    <header class="top">
+      <button class="ibtn" id="wBack" aria-label="Back"></button>
+      <div class="ttl">My words</div>
+    </header>
+    <div class="wrap" id="wordsBox"></div>
+  </section>
+
+  <!-- Arti kata -->
+  <div id="sheet" class="sheet" hidden>
+    <div class="scrim" id="shScrim"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="shWord">
+      <div class="shHead">
+        <h2 id="shWord"></h2>
+        <button class="btn sm" id="shSpeak">Listen</button>
+        <button class="btn sm" id="shClose">Close</button>
+      </div>
+      <div id="shBody"></div>
+      <div class="shAct">
+        <button class="btn pri" id="shFrom">Start from here</button>
+        <button class="btn" id="shSave">Save word</button>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="toast" hidden></div>
+  <!-- Tambah cerita -->
+  <div id="addDlg" class="sheet" hidden>
+    <div class="scrim" id="addScrim"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="addH">
+      <h2 id="addH" class="serif" style="margin:0 0 10px;font-size:24px">Add story</h2>
+      <input class="field" id="addTitle" placeholder="Title (optional)">
+      <textarea class="field" id="addText"
+        placeholder="Paste the English text here. Markdown with Vocab and Quiz sections also works."></textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" id="addPaste" type="button">Paste from clipboard</button>
+        <label class="btn" style="display:inline-flex;align-items:center" for="addFile">Choose .md / .txt file</label>
+      </div>
+      <input type="file" id="addFile" accept=".md,.txt,text/markdown,text/plain" hidden>
+      <p class="lbl">Stories appear in the list right away, numbered in the order added. They are saved in this browser
+        only. Use Save &amp; download to also keep a .md file in the stories folder.</p>
+      <div class="shAct">
+        <button class="btn pri" id="addSave">Save story</button>
+        <button class="btn" id="addSaveDl">Save &amp; download</button>
+        <button class="btn" id="addCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
 
-<script>
-//#parse-start
-const WORD=/([A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*)/;
-const ABBR=/^(Mr|Mrs|Ms|Dr|St)$/i;
+  <!-- Tampilan teks -->
+  <div id="setDlg" class="sheet" hidden>
+    <div class="scrim" id="setScrim"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="setH">
+      <h2 id="setH" class="serif" style="margin:0 0 4px;font-size:24px">Text settings</h2>
+      <div class="setrow"><span>Font size</span>
+        <div class="seg"><button id="fsDown" aria-label="Smaller font">A−</button><button id="fsUp"
+            aria-label="Larger font">A+</button></div>
+      </div>
+      <div class="setrow"><span>Text alignment</span>
+        <div class="seg"><button id="alL" aria-pressed="true">Left</button><button id="alC"
+            aria-pressed="false">Center</button></div>
+      </div>
+      <div class="shAct"><button class="btn pri" id="setClose" style="width:100%">Done</button></div>
+    </div>
+  </div>
 
-function parseQuiz(txt){
-  const qs=[];let q=null;
-  txt.split('\n').forEach(l=>{
-    l=l.trim();let m;
-    if((m=l.match(/^Q\d*\s*[:.)]\s*(.+)/i))){q={q:m[1],o:[]};qs.push(q);}
-    else if(q&&(m=l.match(/^[-*]\s*\[( |x|X)\]\s*(.+)/))){q.o.push({t:m[2].trim(),ok:m[1].toLowerCase()==='x'});}
-  });
-  return qs.filter(q=>q.o.length>=2&&q.o.some(o=>o.ok));
-}
-function parseVocab(txt){
-  const v={};
-  txt.split('\n').forEach(l=>{
-    const m=l.trim().replace(/^[-*]\s*/,'').match(/^([^:=]+)[:=]\s*(.+)$/);
-    if(m) v[m[1].trim().toLowerCase()]=m[2].trim();
-  });
-  return v;
-}
-function parseMD(src,id,fallbackTitle){
-  let meta={},body=String(src).replace(/\r/g,'');
-  const fm=body.match(/^---\n([\s\S]*?)\n---\n?/);
-  if(fm){
-    fm[1].split('\n').forEach(l=>{const m=l.match(/^(\w+):\s*(.*)$/);if(m)meta[m[1].toLowerCase()]=m[2].trim();});
-    body=body.slice(fm[0].length);
-  }
-  const parts=body.split(/^##\s+(Vocab|Quiz)\s*$/gim);
-  let main=parts[0],vocab={},quiz=[];
-  for(let i=1;i<parts.length;i+=2){
-    const name=parts[i].toLowerCase(),txt=parts[i+1]||'';
-    if(name==='vocab') vocab=parseVocab(txt); else quiz=parseQuiz(txt);
-  }
-  let title=meta.title||'';
-  const blocks=[];
-  main=main.replace(/^(#{1,3}\s+.+)\n(?!\s*\n)/gm,'$1\n\n');
-  let chunks=main.split(/\n\s*\n/).filter(c=>c.trim());
-  if(chunks.length===1&&/\n/.test(chunks[0].trim()))chunks=chunks[0].trim().split('\n');
-  chunks.forEach(chunk=>{
-    chunk=chunk.trim();if(!chunk)return;
-    const h=chunk.match(/^(#{1,3})\s+(.+)$/);
-    const clean=s=>s.replace(/[*`]/g,'').replace(/\s*\n\s*/g,' ').trim();
-    if(h){
-      if(h[1].length===1){if(!title)title=clean(h[2]);}
-      else blocks.push({t:'h',x:clean(h[2])});
-    } else {
-      const lines=chunk.split('\n').map(l=>l.trim()).filter(Boolean);
-      let pBuf=[];
-      const flushP=()=>{if(pBuf.length){blocks.push({t:'p',x:clean(pBuf.join(' '))});pBuf=[];}};
-      lines.forEach(line=>{
-        const im=line.match(/^!\[(.*?)\]\((.+?)\)$/);
-        if(im){
+  <!-- Dialog About -->
+  <div id="aboutDlg" class="sheet" hidden>
+    <div class="scrim" id="aboutScrim"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="aboutH">
+      <div class="shHead">
+        <div>
+          <h2 id="aboutH" class="serif" style="margin:0;font-size:24px">PORRIDGE</h2>
+          <div style="font-size:13px;color:var(--mu);font-weight:600">Power Of Reading English</div>
+        </div>
+        <button class="btn sm" id="aboutClose">Close</button>
+      </div>
+      <div style="margin:12px 0 16px;line-height:1.6">
+        <p style="margin:0 0 14px;font-style:italic;color:var(--ac);font-size:15px;font-weight:500">&ldquo;Every page, a
+          spoonful of knowledge.&rdquo;</p>
+        <p style="margin:0 0 14px">Jika anda merasa terbantu dengan program ini dan ingin mentraktir, traktiran dapat
+          ditransfer melalui:</p>
+
+        <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-bottom:12px">
+          <span style="font-size:13px;color:var(--mu);font-weight:600;display:block;margin-bottom:10px">HITUNG
+            TRAKTIRAN</span>
+
+          <!-- Traktir Minum -->
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px">
+            <div>
+              <div style="font-size:15px;font-weight:600">☕ Traktir Minum</div>
+              <div style="font-size:12px;color:var(--mu)">@ Rp 10.000</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <button type="button" class="btn sm" id="btnMinDrink"
+                style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700"
+                aria-label="Kurangi minum">−</button>
+              <input type="number" id="qtyDrink" min="0" max="999" value="1"
+                style="width:52px;height:30px;text-align:center;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx);font-weight:600;padding:0"
+                aria-label="Jumlah traktir minum">
+              <button type="button" class="btn sm" id="btnPlusDrink"
+                style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700"
+                aria-label="Tambah minum">+</button>
+            </div>
+          </div>
+          <div style="font-size:13px;color:var(--mu);text-align:right;margin-bottom:12px">
+            Traktir Minum = <span id="calcDrinkText">1 x 10.000</span> = <b style="color:var(--tx)" id="subDrink">Rp
+              10.000</b>
+          </div>
+
+          <!-- Traktir Makan -->
+          <div
+            style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;padding-top:10px;border-top:1px dashed var(--ln)">
+            <div>
+              <div style="font-size:15px;font-weight:600">🍲 Traktir Makan</div>
+              <div style="font-size:12px;color:var(--mu)">@ Rp 20.000</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <button type="button" class="btn sm" id="btnMinFood"
+                style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700"
+                aria-label="Kurangi makan">−</button>
+              <input type="number" id="qtyFood" min="0" max="999" value="0"
+                style="width:52px;height:30px;text-align:center;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx);font-weight:600;padding:0"
+                aria-label="Jumlah traktir makan">
+              <button type="button" class="btn sm" id="btnPlusFood"
+                style="width:30px;height:30px;padding:0;min-height:unset;border-radius:8px;font-weight:700"
+                aria-label="Tambah makan">+</button>
+            </div>
+          </div>
+          <div style="font-size:13px;color:var(--mu);text-align:right;margin-bottom:12px">
+            Traktir Makan = <span id="calcFoodText">0 x 20.000</span> = <b style="color:var(--tx)" id="subFood">Rp 0</b>
+          </div>
+
+          <!-- Total Transfer -->
+          <div
+            style="padding:10px 14px;background:color-mix(in srgb,var(--ac) 10%,var(--sf));border:1px solid color-mix(in srgb,var(--ac) 25%,transparent);border-radius:10px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:14px;font-weight:700;color:var(--tx)">Total Transfer</span>
+            <span style="font-size:18px;font-weight:800;color:var(--ac)" id="totalTransfer">Rp 10.000</span>
+          </div>
+        </div>
+
+        <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-size:13px;color:var(--mu);font-weight:600">BANK TRANSFER</span>
+            <button class="btn sm" id="btnCopyRek" type="button"
+              style="font-size:12px;padding:2px 8px;min-height:30px">Copy Rekening</button>
+          </div>
+          <div style="font-size:15px"><b>Bank:</b> BANK BRI</div>
+          <div style="font-size:16px;margin:4px 0"><b>Nomor Rekening:</b> <span
+              style="font-family:monospace;font-weight:bold;letter-spacing:1px">0516 0101 7476 538</span></div>
+          <div style="font-size:15px"><b>Atas Nama:</b> AGUS WALUYO</div>
+        </div>
+
+        <div style="background:var(--bg);border:1px solid var(--ln);border-radius:12px;padding:14px">
+          <span style="font-size:13px;color:var(--mu);font-weight:600;display:block;margin-bottom:8px">KONTAK</span>
+          <div style="font-size:15px;margin-bottom:6px"><b>No. Telp / WA:</b> <a href="https://wa.me/6281946135363"
+              target="_blank" rel="noopener" style="color:var(--ac);text-decoration:none">+62 819-4613-5363</a></div>
+          <div style="font-size:15px"><b>Email:</b> <a href="mailto:agusw.com@gmail.com"
+              style="color:var(--ac);text-decoration:none">agusw.com@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="shAct">
+        <button class="btn pri" id="aboutOk" type="button" style="width:100%">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" hidden></div>
+
+  <script>
+    //#parse-start
+    const WORD = /([A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*)/;
+    const ABBR = /^(Mr|Mrs|Ms|Dr|St)$/i;
+
+    function parseQuiz(txt) {
+      const qs = []; let q = null;
+      txt.split('\n').forEach(l => {
+        l = l.trim(); let m;
+        if ((m = l.match(/^Q\d*\s*[:.)]\s*(.+)/i))) { q = { q: m[1], o: [] }; qs.push(q); }
+        else if (q && (m = l.match(/^[-*]\s*\[( |x|X)\]\s*(.+)/))) { q.o.push({ t: m[2].trim(), ok: m[1].toLowerCase() === 'x' }); }
+      });
+      return qs.filter(q => q.o.length >= 2 && q.o.some(o => o.ok));
+    }
+    function parseVocab(txt) {
+      const v = {};
+      txt.split('\n').forEach(l => {
+        const m = l.trim().replace(/^[-*]\s*/, '').match(/^([^:=]+)[:=]\s*(.+)$/);
+        if (m) v[m[1].trim().toLowerCase()] = m[2].trim();
+      });
+      return v;
+    }
+    function parseMD(src, id, fallbackTitle) {
+      let meta = {}, body = String(src).replace(/\r/g, '');
+      const fm = body.match(/^---\n([\s\S]*?)\n---\n?/);
+      if (fm) {
+        fm[1].split('\n').forEach(l => { const m = l.match(/^(\w+):\s*(.*)$/); if (m) meta[m[1].toLowerCase()] = m[2].trim(); });
+        body = body.slice(fm[0].length);
+      }
+      const parts = body.split(/^##\s+(Vocab|Quiz)\s*$/gim);
+      let main = parts[0], vocab = {}, quiz = [];
+      for (let i = 1; i < parts.length; i += 2) {
+        const name = parts[i].toLowerCase(), txt = parts[i + 1] || '';
+        if (name === 'vocab') vocab = parseVocab(txt); else quiz = parseQuiz(txt);
+      }
+      let title = meta.title || '';
+      const blocks = [];
+      main = main.replace(/^(#{1,3}\s+.+)\n(?!\s*\n)/gm, '$1\n\n');
+      let chunks = main.split(/\n\s*\n/).filter(c => c.trim());
+      if (chunks.length === 1 && /\n/.test(chunks[0].trim())) chunks = chunks[0].trim().split('\n');
+      chunks.forEach(chunk => {
+        chunk = chunk.trim(); if (!chunk) return;
+        const h = chunk.match(/^(#{1,3})\s+(.+)$/);
+        const clean = s => s.replace(/[*`]/g, '').replace(/\s*\n\s*/g, ' ').trim();
+        if (h) {
+          if (h[1].length === 1) { if (!title) title = clean(h[2]); }
+          else blocks.push({ t: 'h', x: clean(h[2]) });
+        } else {
+          const lines = chunk.split('\n').map(l => l.trim()).filter(Boolean);
+          let pBuf = [];
+          const flushP = () => { if (pBuf.length) { blocks.push({ t: 'p', x: clean(pBuf.join(' ')) }); pBuf = []; } };
+          lines.forEach(line => {
+            const im = line.match(/^!\[(.*?)\]\((.+?)\)$/);
+            if (im) {
+              flushP();
+              blocks.push({ t: 'img', alt: clean(im[1]), src: im[2].trim() });
+            } else {
+              pBuf.push(line);
+            }
+          });
           flushP();
-          blocks.push({t:'img',alt:clean(im[1]),src:im[2].trim()});
-        }else{
-          pBuf.push(line);
         }
       });
-      flushP();
-    }
-  });
-  const all=blocks.filter(b=>b.x).map(b=>b.x).join(' ');
-  const wc=(all.match(/[A-Za-z']+/g)||[]).length;
-  let time=0;
-  if(meta.date||meta.time){
-    const dt=new Date(meta.date||meta.time);
-    if(!isNaN(dt.getTime()))time=dt.getTime();
-  }
-  return {id,title:title||fallbackTitle||'Untitled',level:meta.level||'',blocks,vocab,quiz,wc,time};
-}
-//#parse-end
-
-const $=s=>document.querySelector(s);
-const LS={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const ICON={
-  play:'<svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
-  pause:'<svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>',
-  prev:'<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 6h2v12H6zM9.5 12 18 6v12z"/></svg>',
-  next:'<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M16 6h2v12h-2zM14.5 12 6 18V6z"/></svg>',
-  back:'<svg viewBox="0 0 24 24" width="26" height="26"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-};
-['rBack','qBack','wBack'].forEach(id=>$('#'+id).innerHTML=ICON.back);
-$('#prevS').innerHTML=ICON.prev;$('#nextS').innerHTML=ICON.next;
-ICON.full='<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
-ICON.exit='<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
-ICON.prevStory='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6l-6 6 6 6M19 6l-6 6 6 6"/></svg>';
-ICON.nextStory='<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6l6 6-6 6M5 6l6 6-6 6"/></svg>';
-ICON.sliders='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>';
-ICON.up='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>';
-ICON.down='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
-$('#prevStory').innerHTML=ICON.prevStory;$('#nextStory').innerHTML=ICON.nextStory;
-$('#searchClr').innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
-
-let stories=[],story=null,words=[],sentences=[],w2s=[];
-let cur=-1,pos=0,playing=false,timer=0,estTimer=0,token=0,voice=null,lockRef=null,resumeScrollOnClose=false;
-let raf=0,acc=0,lastSet=0,lastT=0,lastHl=0,pxPerWord=20,ended=false;
-let mode=LS.get('mode','voice'),wpm=LS.get('wpm',150),fs=LS.get('fs',21),align=LS.get('align','left'),hlOn=LS.get('hl',true);
-let prog=LS.get('prog',{}),saveT=0;
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const hasTTS='speechSynthesis' in window&&typeof SpeechSynthesisUtterance!=='undefined';
-
-/* ---------- util ---------- */
-function toast(msg,ms=2200){const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,ms)}
-function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function saveProg(now){clearTimeout(saveT);if(now)LS.set('prog',prog);else saveT=setTimeout(()=>LS.set('prog',prog),800)}
-function show(v){['lib','read','quiz','words'].forEach(n=>$('#v-'+n).hidden=n!==v);window.scrollTo(0,0)}
-function pickVoice(){
-  if(!hasTTS)return;
-  const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
-  voice=vs.find(v=>/en[-_]US/i.test(v.lang)&&v.localService)||
-        vs.find(v=>v.localService&&/^en/i.test(v.lang))||
-        vs.find(v=>/en[-_]US/i.test(v.lang))||
-        vs[0]||null;
-}
-if(hasTTS){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
-async function copyToClipboard(text){
-  try{
-    if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return true;}
-  }catch(e){}
-  try{
-    const ta=document.createElement('textarea');
-    ta.value=text;ta.style.position='fixed';ta.style.left='-9999px';ta.style.top='0';
-    document.body.appendChild(ta);ta.focus();ta.select();
-    const ok=document.execCommand('copy');
-    document.body.removeChild(ta);
-    return ok;
-  }catch(e){return false;}
-}
-
-/* ---------- memuat cerita ---------- */
-async function discover(){
-  let files=[];
-  try{
-    const r=await fetch('stories/index.json',{cache:'no-cache'});
-    if(r.ok){const j=await r.json();files=Array.isArray(j)?j:(j.files||[]);}
-  }catch(e){}
-  if(!files.length && location.hostname.endsWith('github.io')){
-    try{
-      const owner=location.hostname.split('.')[0];
-      const repo=location.pathname.split('/').filter(Boolean)[0];
-      if(owner && repo){
-        const r=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/stories`);
-        if(r.ok){
-          const items=await r.json();
-          if(Array.isArray(items))files=items.map(x=>x.name);
-        }
+      const all = blocks.filter(b => b.x).map(b => b.x).join(' ');
+      const wc = (all.match(/[A-Za-z']+/g) || []).length;
+      let time = 0;
+      if (meta.date || meta.time) {
+        const dt = new Date(meta.date || meta.time);
+        if (!isNaN(dt.getTime())) time = dt.getTime();
       }
-    }catch(e){}
-  }
-  if(!files.length){
-    try{
-      const r=await fetch('stories/',{cache:'no-cache'});
-      if(r.ok){
-        const doc=new DOMParser().parseFromString(await r.text(),'text/html');
-        files=[...doc.querySelectorAll('a')].map(a=>a.getAttribute('href')||'')
-          .filter(h=>/\.md$/i.test(h.split('?')[0]))
-          .map(h=>decodeURIComponent(h.split('?')[0].split('/').pop()));
+      return { id, title: title || fallbackTitle || 'Untitled', level: meta.level || '', blocks, vocab, quiz, wc, time };
+    }
+    //#parse-end
+
+    const $ = s => document.querySelector(s);
+    const LS = { get(k, d) { try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v } catch (e) { return d } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)) } catch (e) { } } };
+    const ICON = {
+      play: '<svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+      pause: '<svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>',
+      prev: '<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 6h2v12H6zM9.5 12 18 6v12z"/></svg>',
+      next: '<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M16 6h2v12h-2zM14.5 12 6 18V6z"/></svg>',
+      back: '<svg viewBox="0 0 24 24" width="26" height="26"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    };
+    ['rBack', 'qBack', 'wBack'].forEach(id => $('#' + id).innerHTML = ICON.back);
+    $('#prevS').innerHTML = ICON.prev; $('#nextS').innerHTML = ICON.next;
+    ICON.full = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+    ICON.exit = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+    ICON.prevStory = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6l-6 6 6 6M19 6l-6 6 6 6"/></svg>';
+    ICON.nextStory = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6l6 6-6 6M5 6l6 6-6 6"/></svg>';
+    ICON.sliders = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>';
+    ICON.up = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>';
+    ICON.down = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+    $('#prevStory').innerHTML = ICON.prevStory; $('#nextStory').innerHTML = ICON.nextStory;
+    $('#searchClr').innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+    let stories = [], story = null, words = [], sentences = [], w2s = [];
+    let cur = -1, pos = 0, playing = false, timer = 0, estTimer = 0, token = 0, voice = null, lockRef = null, resumeScrollOnClose = false;
+    let raf = 0, acc = 0, lastSet = 0, lastT = 0, lastHl = 0, pxPerWord = 20, ended = false;
+    let mode = LS.get('mode', 'voice'), wpm = LS.get('wpm', 150), fs = LS.get('fs', 21), align = LS.get('align', 'left'), hlOn = LS.get('hl', true);
+    let prog = LS.get('prog', {}), saveT = 0;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasTTS = 'speechSynthesis' in window && typeof SpeechSynthesisUtterance !== 'undefined';
+
+    /* ---------- util ---------- */
+    function toast(msg, ms = 2200) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, ms) }
+    function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]] } return a }
+    function saveProg(now) { clearTimeout(saveT); if (now) LS.set('prog', prog); else saveT = setTimeout(() => LS.set('prog', prog), 800) }
+    function show(v) { ['lib', 'read', 'quiz', 'words'].forEach(n => $('#v-' + n).hidden = n !== v); window.scrollTo(0, 0) }
+    function pickVoice() {
+      if (!hasTTS) return;
+      const vs = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang));
+      voice = vs.find(v => /en[-_]US/i.test(v.lang) && v.localService) ||
+        vs.find(v => v.localService && /^en/i.test(v.lang)) ||
+        vs.find(v => /en[-_]US/i.test(v.lang)) ||
+        vs[0] || null;
+    }
+    if (hasTTS) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice }
+    async function copyToClipboard(text) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+      } catch (e) { }
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px'; ta.style.top = '0';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      } catch (e) { return false; }
+    }
+
+    /* ---------- memuat cerita ---------- */
+    async function discover() {
+      let files = [];
+      try {
+        const r = await fetch('stories/index.json', { cache: 'no-cache' });
+        if (r.ok) { const j = await r.json(); files = Array.isArray(j) ? j : (j.files || []); }
+      } catch (e) { }
+      if (!files.length && location.hostname.endsWith('github.io')) {
+        try {
+          const owner = location.hostname.split('.')[0];
+          const repo = location.pathname.split('/').filter(Boolean)[0];
+          if (owner && repo) {
+            const r = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/stories`);
+            if (r.ok) {
+              const items = await r.json();
+              if (Array.isArray(items)) files = items.map(x => x.name);
+            }
+          }
+        } catch (e) { }
       }
-    }catch(e){}
-  }
-  files=[...new Set(files)].filter(f=>typeof f==='string'&&!/^readme/i.test(f)&&/\.md$/i.test(f));
-  if(files.length)LS.set('fileList',files);else files=LS.get('fileList',[]);
-  return files;
-}
-function normLocal(){
-  const list=LS.get('localStories',[]);
-  let seq=Math.max(LS.get('seq',0),0,...list.map(l=>typeof l.n==='number'?l.n:0)),changed=false;
-  list.forEach(l=>{
-    if(typeof l.n!=='number'){l.n=++seq;changed=true;}
-    if(!l.time){l.time=Date.now();changed=true;}
-  });
-  if(changed){LS.set('localStories',list);}
-  LS.set('seq',seq);
-  return list;
-}
-function buildLocal(l){
-  const st=parseMD(l.md,'local:'+l.n,'Story '+l.n);
-  if(l.title)st.title=l.title;
-  st.local=true;st.n=l.n;
-  st.time=l.time||(1700000000000+(l.n||0)*10000);
-  return st;
-}
-async function loadStories(){
-  const files=await discover();
-  const ft=LS.get('fileTimes',{});
-  let ftChanged=false;
-  const now=Date.now();
-  files.forEach((f,idx)=>{
-    if(!ft[f]){ft[f]=now-(files.length-idx)*10000;ftChanged=true;}
-  });
-  if(ftChanged)LS.set('fileTimes',ft);
-
-  const out=[];
-  await Promise.all(files.map(async f=>{
-    try{
-      const r=await fetch('stories/'+encodeURIComponent(f),{cache:'no-cache'});
-      if(!r.ok)return;
-      const md=await r.text();
-      const st=parseMD(md,f,f.replace(/\.md$/i,'').replace(/[-_]+/g,' '));
-      if(!st.time)st.time=ft[f]||0;
-      out.push(st);
-    }catch(e){}
-  }));
-  const loc=normLocal().map(buildLocal);
-  stories=[...out,...loc];
-}
-
-/* ---------- daftar ---------- */
-let libPageSize=LS.get('libPageSize',10);
-let libSort=LS.get('libSort','title-asc');
-let libQ='',libPage=1;
-const LEVEL_EN={pemula:'Beginner',menengah:'Intermediate',lanjut:'Advanced',mahir:'Advanced'};
-const LEVEL_CLS={beginner:'lv-b',intermediate:'lv-i',advanced:'lv-a'};
-
-function filteredStories(){
-  let list=stories.slice();
-  const q=libQ.trim().toLowerCase();
-  if(q)list=list.filter(s=>s.title.toLowerCase().includes(q));
-  list.sort((a,b)=>{
-    if(libSort==='title-asc')return a.title.localeCompare(b.title,undefined,{numeric:true,sensitivity:'base'});
-    if(libSort==='title-desc')return b.title.localeCompare(a.title,undefined,{numeric:true,sensitivity:'base'});
-    if(libSort==='time-desc')return (b.time||0)-(a.time||0);
-    if(libSort==='time-asc')return (a.time||0)-(b.time||0);
-    return 0;
-  });
-  return list;
-}
-
-function renderLib(focusId){
-  const ul=$('#list');ul.innerHTML='';
-  const all=filteredStories();
-  const size=libPageSize===0?all.length:(libPageSize||10);
-  const pages=Math.max(1,Math.ceil(all.length/(size||1)));
-  if(focusId){const k=all.findIndex(s=>s.id===focusId);if(k>=0)libPage=Math.floor(k/(size||1))+1;}
-  libPage=Math.min(Math.max(1,libPage),pages);
-  const hint=$('#libHint');
-  hint.hidden=!!all.length;
-  hint.textContent=stories.length
-    ?'No stories match "'+libQ.trim()+'".'
-    :'No stories yet. Put .md files in the stories folder and tap Reload stories, or tap + Add to paste a text.';
-  $('#searchClr').hidden=!libQ;
-  const start=(libPage-1)*size;
-  const end=Math.min(start+size,all.length);
-  const visible=size?all.slice(start,end):all;
-  visible.forEach((s,idx)=>{
-    const li=document.createElement('li');li.className='li';li.dataset.id=s.id;
-    const b=document.createElement('button');b.className='item';
-    const num=start+idx+1;
-    const h=document.createElement('h2');h.textContent=num+'. '+s.title;
-    const meta=document.createElement('div');meta.className='meta';
-    const chip=(t,c)=>{const e=document.createElement('span');e.className='chip'+(c?' '+c:'');e.textContent=t;meta.append(e)};
-    const p=prog[s.id]||{};
-    const pct=s.wc?Math.min(100,Math.round(((p.pos||0)/Math.max(1,s.wc-1))*100)):0;
-    if(s.local)chip('No. '+s.n);
-    if(s.level){
-      const lv=LEVEL_EN[s.level.toLowerCase()]||s.level;
-      chip(lv,LEVEL_CLS[lv.toLowerCase()]||'');
+      if (!files.length) {
+        try {
+          const r = await fetch('stories/', { cache: 'no-cache' });
+          if (r.ok) {
+            const doc = new DOMParser().parseFromString(await r.text(), 'text/html');
+            files = [...doc.querySelectorAll('a')].map(a => a.getAttribute('href') || '')
+              .filter(h => /\.md$/i.test(h.split('?')[0]))
+              .map(h => decodeURIComponent(h.split('?')[0].split('/').pop()));
+          }
+        } catch (e) { }
+      }
+      files = [...new Set(files)].filter(f => typeof f === 'string' && !/^readme/i.test(f) && /\.md$/i.test(f));
+      if (files.length) LS.set('fileList', files); else files = LS.get('fileList', []);
+      return files;
     }
-    chip(Math.max(1,Math.round(s.wc/150))+' min');
-    if(p.quiz)chip('Quiz '+p.quiz.best+'/'+p.quiz.total,p.quiz.best===p.quiz.total?'ok':'');
-    if(p.done&&!(pct>0&&pct<97))chip('Finished','ok');
-    else if(!p.done&&!p.quiz&&pct<=0)chip('Not started','idle');
-    b.append(h,meta);
-    if(pct>0&&pct<97){
-      const bar=document.createElement('div');bar.className='bar';
-      const i=document.createElement('i');i.style.width=pct+'%';bar.append(i);
-      const lab=document.createElement('div');lab.className='pct';lab.textContent=pct+'% spoonful';
-      b.append(bar,lab);
-    }
-    b.onclick=()=>{location.hash='#read='+encodeURIComponent(s.id)};
-    li.append(b);
-    if(s.local){
-      const ac=document.createElement('div');ac.className='acts';
-      const mk=(t,fn)=>{const x=document.createElement('button');x.className='btn sm';x.textContent=t;x.onclick=fn;ac.append(x)};
-      mk('Edit',()=>openAdd(s.n));
-      mk('Download',()=>{const l=LS.get('localStories',[]).find(x=>x.n===s.n);if(l)downloadStory(l)});
-      mk('Delete',()=>{
-        if(!confirm('Delete "'+s.title+'"?'))return;
-        LS.set('localStories',LS.get('localStories',[]).filter(l=>'local:'+l.n!==s.id));
-        stories=stories.filter(x=>x.id!==s.id);renderLib();
+    function normLocal() {
+      const list = LS.get('localStories', []);
+      let seq = Math.max(LS.get('seq', 0), 0, ...list.map(l => typeof l.n === 'number' ? l.n : 0)), changed = false;
+      list.forEach(l => {
+        if (typeof l.n !== 'number') { l.n = ++seq; changed = true; }
+        if (!l.time) { l.time = Date.now(); changed = true; }
       });
-      li.append(ac);
+      if (changed) { LS.set('localStories', list); }
+      LS.set('seq', seq);
+      return list;
     }
-    ul.append(li);
-  });
-  $('#pager').hidden=false;
-  if(all.length===0){
-    $('#pgInfo').textContent='No bowls here yet';
-  }else if(pages===1){
-    $('#pgInfo').textContent=all.length+(all.length===1?' bowl':' bowls')+' ready to read';
-  }else{
-    $('#pgInfo').textContent='Showing '+(start+1)+' to '+end+' of '+all.length+' bowls';
-  }
-  $('#pgPrev').disabled=libPage<=1;
-  $('#pgNext').disabled=libPage>=pages;
-  const pgNums=$('#pgNums');
-  pgNums.innerHTML='';
-  if(pages>1){
-    for(let p=1;p<=pages;p++){
-      const btn=document.createElement('button');
-      btn.className='btn sm'+(p===libPage?' cur':'');
-      btn.textContent=p;
-      btn.onclick=()=>{libPage=p;renderLib();window.scrollTo(0,0)};
-      pgNums.append(btn);
+    function buildLocal(l) {
+      const st = parseMD(l.md, 'local:' + l.n, 'Story ' + l.n);
+      if (l.title) st.title = l.title;
+      st.local = true; st.n = l.n;
+      st.time = l.time || (1700000000000 + (l.n || 0) * 10000);
+      return st;
     }
-  }
-}
-async function openLib(refresh=true){
-  show('lib');renderLib();
-  if(refresh){await loadStories();if(!$('#v-lib').hidden)renderLib();}
-}
+    async function loadStories() {
+      const files = await discover();
+      const ft = LS.get('fileTimes', {});
+      let ftChanged = false;
+      const now = Date.now();
+      files.forEach((f, idx) => {
+        if (!ft[f]) { ft[f] = now - (files.length - idx) * 10000; ftChanged = true; }
+      });
+      if (ftChanged) LS.set('fileTimes', ft);
 
-/* ---------- membaca ---------- */
-function applyFs(){document.documentElement.style.setProperty('--fs',fs+'px')}
-function applyAlign(){
-  $('#text').classList.toggle('center',align==='center');
-  $('#alL').setAttribute('aria-pressed',align!=='center');
-  $('#alC').setAttribute('aria-pressed',align==='center');
-  LS.set('align',align);
-}
-function buildText(){
-  const art=$('#text');art.innerHTML='';words=[];sentences=[];w2s=[];
-  const vocab=(story&&story.vocab)||{};
-  const vKeys=Object.keys(vocab);
-  const multiKeys=vKeys.filter(k=>/\s+/.test(k)).sort((a,b)=>b.length-a.length);
-  const singleMap=Object.create(null);
-  vKeys.filter(k=>!/\s+/.test(k)).forEach(k=>{singleMap[k]=true});
-
-  story.blocks.forEach(b=>{
-    if(b.t==='img'){
-      const fig=document.createElement('figure');
-      fig.className='story-fig';
-      const img=document.createElement('img');
-      let src=b.src;
-      if(story&&!story.local&&!/^([a-z]+:|\/|stories\/)/i.test(src)){
-        src='stories/'+src.replace(/^\.\//,'');
-      }
-      img.src=src;
-      img.alt=b.alt||'';
-      img.loading='lazy';
-      img.onerror=()=>{
-        if(!img.dataset.retry&&!/^([a-z]+:|\/)/i.test(b.src)){
-          img.dataset.retry='1';
-          img.src=b.src.startsWith('stories/')?b.src.slice(8):'stories/'+b.src.replace(/^\.\//,'');
-        }
-      };
-      fig.append(img);
-      if(b.alt){
-        const cap=document.createElement('figcaption');
-        cap.textContent=b.alt;
-        fig.append(cap);
-      }
-      art.append(fig);
-      return;
-    }
-    const el=document.createElement(b.t==='h'?'h3':'p');art.append(el);
-    const parts=b.x.split(WORD);
-    const matchedVoc=new Array(parts.length).fill(null);
-
-    for(const vk of multiKeys){
-      const mw=vk.split(/\s+/).filter(Boolean);
-      const mlen=mw.length;
-      for(let i=1;i<=parts.length-(mlen*2-1);i+=2){
-        let ok=true;
-        for(let j=0;j<mlen;j++){
-          const segW=(parts[i+j*2]||'').toLowerCase().replace(/['’]s$/,'');
-          if(segW!==mw[j]&&(parts[i+j*2]||'').toLowerCase()!==mw[j]){ok=false;break;}
-        }
-        if(ok){
-          for(let j=0;j<mlen;j++) matchedVoc[i+j*2]=vk;
-        }
-      }
-    }
-    for(let i=1;i<parts.length;i+=2){
-      if(!matchedVoc[i]){
-        const segW=parts[i].toLowerCase().replace(/['’]s$/,'');
-        if(singleMap[segW]) matchedVoc[i]=segW;
-        else if(singleMap[parts[i].toLowerCase()]) matchedVoc[i]=parts[i].toLowerCase();
-      }
+      const out = [];
+      await Promise.all(files.map(async f => {
+        try {
+          const r = await fetch('stories/' + encodeURIComponent(f), { cache: 'no-cache' });
+          if (!r.ok) return;
+          const md = await r.text();
+          const st = parseMD(md, f, f.replace(/\.md$/i, '').replace(/[-_]+/g, ' '));
+          if (!st.time) st.time = ft[f] || 0;
+          out.push(st);
+        } catch (e) { }
+      }));
+      const loc = normLocal().map(buildLocal);
+      stories = [...out, ...loc];
     }
 
-    let raw='',offs=[],s0=-1,skip=0;
-    for(let i=0;i<parts.length;i++){
-      const seg=parts[i];
-      if(i%2===0){
-        if(seg){el.append(document.createTextNode(seg));raw+=seg.slice(skip);}
-        skip=0;
-      }else{
-        const sp=document.createElement('span');
-        const vocKey=matchedVoc[i];
-        sp.className=vocKey?'w voc':'w';
-        if(vocKey) sp.dataset.vocKey=vocKey;
-        sp.textContent=seg;
-        const idx=words.length;sp.dataset.i=idx;el.append(sp);words.push(sp);
-        if(s0<0)s0=idx;
-        offs.push(raw.length);raw+=seg;w2s.push(sentences.length);
-        const nxt=parts[i+1]||'';
-        const last=i>=parts.length-2;
-        if(last||(/[.!?…]/.test(nxt)&&!ABBR.test(seg))){
-          const lead=(nxt.match(/^\S*/)||[''])[0];
-          raw+=lead;skip=lead.length;
-          sentences.push({s:s0,e:idx,raw,offs});
-          raw='';offs=[];s0=-1;
+    /* ---------- daftar ---------- */
+    let libPageSize = LS.get('libPageSize', 10);
+    let libSort = LS.get('libSort', 'title-asc');
+    let libQ = '', libPage = 1;
+    const LEVEL_EN = { pemula: 'Beginner', menengah: 'Intermediate', lanjut: 'Advanced', mahir: 'Advanced' };
+    const LEVEL_CLS = { beginner: 'lv-b', intermediate: 'lv-i', advanced: 'lv-a' };
+
+    function sortedStories() {
+      let list = stories.slice();
+      list.sort((a, b) => {
+        if (libSort === 'title-asc') return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
+        if (libSort === 'title-desc') return b.title.localeCompare(a.title, undefined, { numeric: true, sensitivity: 'base' });
+        if (libSort === 'time-desc') return (b.time || 0) - (a.time || 0);
+        if (libSort === 'time-asc') return (a.time || 0) - (b.time || 0);
+        return 0;
+      });
+      return list;
+    }
+
+    function filteredStories() {
+      let list = sortedStories();
+      const q = libQ.trim().toLowerCase();
+      if (q) list = list.filter(s => s.title.toLowerCase().includes(q));
+      return list;
+    }
+
+    function activeStoryList() {
+      const f = filteredStories();
+      if (story && f.some(s => s.id === story.id)) return f;
+      return sortedStories();
+    }
+
+    function renderLib(focusId) {
+      const ul = $('#list'); ul.innerHTML = '';
+      const all = filteredStories();
+      const size = libPageSize === 0 ? all.length : (libPageSize || 10);
+      const pages = Math.max(1, Math.ceil(all.length / (size || 1)));
+      if (focusId) { const k = all.findIndex(s => s.id === focusId); if (k >= 0) libPage = Math.floor(k / (size || 1)) + 1; }
+      libPage = Math.min(Math.max(1, libPage), pages);
+      const hint = $('#libHint');
+      hint.hidden = !!all.length;
+      hint.textContent = stories.length
+        ? 'No stories match "' + libQ.trim() + '".'
+        : 'No stories yet. Put .md files in the stories folder and tap Reload stories, or tap + Add to paste a text.';
+      $('#searchClr').hidden = !libQ;
+      const start = (libPage - 1) * size;
+      const end = Math.min(start + size, all.length);
+      const visible = size ? all.slice(start, end) : all;
+      visible.forEach((s, idx) => {
+        const li = document.createElement('li'); li.className = 'li'; li.dataset.id = s.id;
+        const b = document.createElement('button'); b.className = 'item';
+        const num = start + idx + 1;
+        const h = document.createElement('h2'); h.textContent = num + '. ' + s.title;
+        const meta = document.createElement('div'); meta.className = 'meta';
+        const chip = (t, c) => { const e = document.createElement('span'); e.className = 'chip' + (c ? ' ' + c : ''); e.textContent = t; meta.append(e) };
+        const p = prog[s.id] || {};
+        const pct = s.wc ? Math.min(100, Math.round(((p.pos || 0) / Math.max(1, s.wc - 1)) * 100)) : 0;
+        if (s.local) chip('No. ' + s.n);
+        if (s.level) {
+          const lv = LEVEL_EN[s.level.toLowerCase()] || s.level;
+          chip(lv, LEVEL_CLS[lv.toLowerCase()] || '');
+        }
+        chip(Math.max(1, Math.round(s.wc / 150)) + ' min');
+        if (p.quiz) chip('Quiz ' + p.quiz.best + '/' + p.quiz.total, p.quiz.best === p.quiz.total ? 'ok' : '');
+        if (p.done && !(pct > 0 && pct < 97)) chip('Finished', 'ok');
+        else if (!p.done && !p.quiz && pct <= 0) chip('Not started', 'idle');
+        b.append(h, meta);
+        if (pct > 0 && pct < 97) {
+          const bar = document.createElement('div'); bar.className = 'bar';
+          const i = document.createElement('i'); i.style.width = pct + '%'; bar.append(i);
+          const lab = document.createElement('div'); lab.className = 'pct'; lab.textContent = pct + '% spoonful';
+          b.append(bar, lab);
+        }
+        b.onclick = () => { location.hash = '#read=' + encodeURIComponent(s.id) };
+        li.append(b);
+        if (s.local) {
+          const ac = document.createElement('div'); ac.className = 'acts';
+          const mk = (t, fn) => { const x = document.createElement('button'); x.className = 'btn sm'; x.textContent = t; x.onclick = fn; ac.append(x) };
+          mk('Edit', () => openAdd(s.n));
+          mk('Download', () => { const l = LS.get('localStories', []).find(x => x.n === s.n); if (l) downloadStory(l) });
+          mk('Delete', () => {
+            if (!confirm('Delete "' + s.title + '"?')) return;
+            LS.set('localStories', LS.get('localStories', []).filter(l => 'local:' + l.n !== s.id));
+            stories = stories.filter(x => x.id !== s.id); renderLib();
+          });
+          li.append(ac);
+        }
+        ul.append(li);
+      });
+      $('#pager').hidden = false;
+      if (all.length === 0) {
+        $('#pgInfo').textContent = 'No bowls here yet';
+      } else if (pages === 1) {
+        $('#pgInfo').textContent = all.length + (all.length === 1 ? ' bowl' : ' bowls') + ' ready to read';
+      } else {
+        $('#pgInfo').textContent = 'Showing ' + (start + 1) + ' to ' + end + ' of ' + all.length + ' bowls';
+      }
+      $('#pgPrev').disabled = libPage <= 1;
+      $('#pgNext').disabled = libPage >= pages;
+      const pgNums = $('#pgNums');
+      pgNums.innerHTML = '';
+      if (pages > 1) {
+        for (let p = 1; p <= pages; p++) {
+          const btn = document.createElement('button');
+          btn.className = 'btn sm' + (p === libPage ? ' cur' : '');
+          btn.textContent = p;
+          btn.onclick = () => { libPage = p; renderLib(); window.scrollTo(0, 0) };
+          pgNums.append(btn);
         }
       }
     }
-  });
-  const d=document.createElement('div');d.className='done';
-  d.innerHTML=`
+    async function openLib(refresh = true) {
+      show('lib'); renderLib();
+      if (refresh) { await loadStories(); if (!$('#v-lib').hidden) renderLib(); }
+    }
+
+    /* ---------- membaca ---------- */
+    function applyFs() { document.documentElement.style.setProperty('--fs', fs + 'px') }
+    function applyAlign() {
+      $('#text').classList.toggle('center', align === 'center');
+      $('#alL').setAttribute('aria-pressed', align !== 'center');
+      $('#alC').setAttribute('aria-pressed', align === 'center');
+      LS.set('align', align);
+    }
+    function buildText() {
+      const art = $('#text'); art.innerHTML = ''; words = []; sentences = []; w2s = [];
+      const vocab = (story && story.vocab) || {};
+      const vKeys = Object.keys(vocab);
+      const multiKeys = vKeys.filter(k => /\s+/.test(k)).sort((a, b) => b.length - a.length);
+      const singleMap = Object.create(null);
+      vKeys.filter(k => !/\s+/.test(k)).forEach(k => { singleMap[k] = true });
+
+      story.blocks.forEach(b => {
+        if (b.t === 'img') {
+          const fig = document.createElement('figure');
+          fig.className = 'story-fig';
+          const img = document.createElement('img');
+          let src = b.src;
+          if (story && !story.local && !/^([a-z]+:|\/|stories\/)/i.test(src)) {
+            src = 'stories/' + src.replace(/^\.\//, '');
+          }
+          img.src = src;
+          img.alt = b.alt || '';
+          img.loading = 'lazy';
+          img.onerror = () => {
+            if (!img.dataset.retry && !/^([a-z]+:|\/)/i.test(b.src)) {
+              img.dataset.retry = '1';
+              img.src = b.src.startsWith('stories/') ? b.src.slice(8) : 'stories/' + b.src.replace(/^\.\//, '');
+            }
+          };
+          fig.append(img);
+          if (b.alt) {
+            const cap = document.createElement('figcaption');
+            cap.textContent = b.alt;
+            fig.append(cap);
+          }
+          art.append(fig);
+          return;
+        }
+        const el = document.createElement(b.t === 'h' ? 'h3' : 'p'); art.append(el);
+        const parts = b.x.split(WORD);
+        const matchedVoc = new Array(parts.length).fill(null);
+
+        for (const vk of multiKeys) {
+          const mw = vk.split(/\s+/).filter(Boolean);
+          const mlen = mw.length;
+          for (let i = 1; i <= parts.length - (mlen * 2 - 1); i += 2) {
+            let ok = true;
+            for (let j = 0; j < mlen; j++) {
+              const segW = (parts[i + j * 2] || '').toLowerCase().replace(/['’]s$/, '');
+              if (segW !== mw[j] && (parts[i + j * 2] || '').toLowerCase() !== mw[j]) { ok = false; break; }
+            }
+            if (ok) {
+              for (let j = 0; j < mlen; j++) matchedVoc[i + j * 2] = vk;
+            }
+          }
+        }
+        for (let i = 1; i < parts.length; i += 2) {
+          if (!matchedVoc[i]) {
+            const segW = parts[i].toLowerCase().replace(/['’]s$/, '');
+            if (singleMap[segW]) matchedVoc[i] = segW;
+            else if (singleMap[parts[i].toLowerCase()]) matchedVoc[i] = parts[i].toLowerCase();
+          }
+        }
+
+        let raw = '', offs = [], s0 = -1, skip = 0;
+        for (let i = 0; i < parts.length; i++) {
+          const seg = parts[i];
+          if (i % 2 === 0) {
+            if (seg) { el.append(document.createTextNode(seg)); raw += seg.slice(skip); }
+            skip = 0;
+          } else {
+            const sp = document.createElement('span');
+            const vocKey = matchedVoc[i];
+            sp.className = vocKey ? 'w voc' : 'w';
+            if (vocKey) sp.dataset.vocKey = vocKey;
+            sp.textContent = seg;
+            const idx = words.length; sp.dataset.i = idx; el.append(sp); words.push(sp);
+            if (s0 < 0) s0 = idx;
+            offs.push(raw.length); raw += seg; w2s.push(sentences.length);
+            const nxt = parts[i + 1] || '';
+            const last = i >= parts.length - 2;
+            if (last || (/[.!?…]/.test(nxt) && !ABBR.test(seg))) {
+              const lead = (nxt.match(/^\S*/) || [''])[0];
+              raw += lead; skip = lead.length;
+              sentences.push({ s: s0, e: idx, raw, offs });
+              raw = ''; offs = []; s0 = -1;
+            }
+          }
+        }
+      });
+      const d = document.createElement('div'); d.className = 'done';
+      d.innerHTML = `
     <svg class="done-bowl" viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg>
     <h3 class="done-title">Bowl finished!</h3>
     <p class="done-sub">&ldquo;Every page, a spoonful of knowledge.&rdquo;</p>
@@ -869,618 +1953,624 @@ function buildText(){
       <button class="btn" id="doneAgain">Read from start</button>
     </div>
   `;
-  art.append(d);
-}
-function keepVisible(el){
-  const r=el.getBoundingClientRect();
-  if(r.top<100||r.bottom>innerHeight-250){
-    scrollTo({top:scrollY+r.top-innerHeight*0.3,behavior:reduce?'auto':'smooth'});
-  }
-}
-function highlight(i,scroll=true){
-  if(cur>=0&&words[cur])words[cur].classList.remove('cur');
-  cur=i;pos=i;
-  const w=words[i];if(!w)return;
-  w.classList.add('cur');
-  if(scroll)keepVisible(w);
-  $('#progBar').style.width=(i/Math.max(1,words.length-1)*100)+'%';
-  if(story){(prog[story.id]=prog[story.id]||{}).pos=i;saveProg();}
-}
-function setPlayUI(){
-  $('#play').innerHTML=playing?ICON.pause:ICON.play;
-  $('#play').setAttribute('aria-label',playing?'Pause':'Play');
-}
-function syncMode(){
-  if(mode==='voice'&&!hasTTS)mode='silent';
-  [['voice','mVoice'],['silent','mSilent'],['scroll','mScroll']].forEach(([m,id])=>$('#'+id).setAttribute('aria-pressed',mode===m));
-  $('#text').classList.toggle('gulir',mode==='scroll');
-  LS.set('mode',mode);
-}
-const WPM_NORMAL=150,WPM_MIN=60,WPM_MAX=300,WPM_STEP=10;
-function syncSpd(){
-  const n=$('#spdNorm');
-  n.textContent=wpm===WPM_NORMAL?'Normal':wpm+' wpm';
-  $('#spdDown').disabled=wpm<=WPM_MIN;$('#spdUp').disabled=wpm>=WPM_MAX;
-  $('#spdDown').style.opacity=wpm<=WPM_MIN?.4:1;$('#spdUp').style.opacity=wpm>=WPM_MAX?.4:1;
-}
-function setWpm(v){wpm=Math.max(WPM_MIN,Math.min(WPM_MAX,v));LS.set('wpm',wpm);syncSpd();}
-let optOpen=LS.get('opts',true);
-function applyOpts(){
-  $('#opts').hidden=!optOpen;
-  $('#optTab').setAttribute('aria-expanded',optOpen);
-  const olb=optOpen?'Hide settings':'Show settings';
-  $('#optTab').setAttribute('aria-label',olb);$('#optTab').title=olb;
-  $('#optArrow').innerHTML=optOpen?ICON.down:ICON.sliders;
-  LS.set('opts',optOpen);
-}
-const fsEl=()=>document.fullscreenElement||document.webkitFullscreenElement;
-function syncFull(){
-  const on=!!fsEl();
-  $('#rFull').innerHTML=on?ICON.exit:ICON.full;
-  $('#rFull').setAttribute('aria-label',on?'Exit full screen':'Full screen');
-  $('#rFull').title=on?'Exit full screen':'Full screen';
-}
-function toggleFull(){
-  const d=document,e=d.documentElement;
-  try{
-    if(fsEl()){const x=d.exitFullscreen||d.webkitExitFullscreen;x&&x.call(d);}
-    else{
-      const x=e.requestFullscreen||e.webkitRequestFullscreen;
-      if(!x){toast('Full screen is not supported in this browser');return;}
-      const r=x.call(e);if(r&&r.catch)r.catch(()=>toast('Full screen was blocked by the browser'));
+      art.append(d);
     }
-  }catch(err){toast('Full screen is not available');}
-}
-function storyIdx(){return story?stories.findIndex(s=>s.id===story.id):-1}
-function syncNav(){
-  const i=storyIdx();
-  $('#prevStory').disabled=i<=0;
-  $('#nextStory').disabled=i<0||i>=stories.length-1;
-}
-function gotoStory(d){
-  const i=storyIdx()+d;
-  if(i<0||i>=stories.length)return;
-  const was=playing;
-  pause();saveProg(true);
-  history.replaceState(null,'','#read='+encodeURIComponent(stories[i].id));
-  route();
-  if(was)setTimeout(play,250);
-}
-function applyHl(){
-  $('#text').classList.toggle('nohl',!hlOn);
-  $('#hlBtn').setAttribute('aria-pressed',hlOn);
-  LS.set('hl',hlOn);
-}
-function msFor(i){
-  const w=words[i].textContent;
-  const base=60000/Math.max(80,wpm);
-  const len=w.length;
-  let factor=0.85;
-  if(len<=2) factor=0.45;
-  else if(len<=4) factor=0.65;
-  else if(len<=7) factor=0.90;
-  else factor=1.15;
-  let ms=base*factor;
-  const n=words[i].nextSibling,t=n&&n.nodeType===3?n.textContent:'';
-  if(/[.!?…]/.test(t)) ms+=base*0.6;
-  else if(/[,;:—]/.test(t)) ms+=base*0.3;
-  return ms;
-}
-async function wake(on){
-  try{
-    if(on&&'wakeLock' in navigator){lockRef=await navigator.wakeLock.request('screen');}
-    else if(lockRef){await lockRef.release();lockRef=null;}
-  }catch(e){}
-}
-function goTo(i){
-  highlight(i,false);
-  if(mode==='scroll')scrollToWord(i);else keepVisible(words[i]);
-}
-function scrollToWord(i){
-  const r=words[i].getBoundingClientRect();
-  scrollTo(0,Math.max(0,scrollY+r.top-innerHeight*0.38+2));
-}
-function syncReadLine(){
-  const ty=innerHeight*0.38,last=words.length-1;
-  let lo=0,hi=last;
-  while(lo<hi){const m=(lo+hi)>>1;if(words[m].getBoundingClientRect().bottom<ty)lo=m+1;else hi=m;}
-  const r0=words[lo].getBoundingClientRect();
-  if(lo===last&&r0.bottom<ty){highlight(last,false);if(playing)finish();return;}
-  let n=1;
-  while(lo+n<=last&&Math.abs(words[lo+n].getBoundingClientRect().top-r0.top)<4)n++;
-  const f=Math.max(0,Math.min(.999,(ty-r0.top)/Math.max(1,r0.height)));
-  const idx=lo+Math.min(n-1,Math.floor(f*n));
-  if(idx!==cur)highlight(idx,false);
-}
-function scrollLoop(t){
-  if(!playing||mode!=='scroll')return;
-  if(!lastT)lastT=t;
-  const dt=Math.min(64,t-lastT)/1000;lastT=t;
-  if(Math.abs(scrollY-lastSet)>2)acc=scrollY;
-  const max=document.documentElement.scrollHeight-innerHeight;
-  acc=Math.min(max,acc+(wpm/60)*pxPerWord*dt);
-  scrollTo(0,acc);lastSet=acc;
-  if(t-lastHl>80){lastHl=t;syncReadLine();if(!playing)return;}
-  if(acc>=max-1){highlight(words.length-1,false);finish();return;}
-  raf=requestAnimationFrame(scrollLoop);
-}
-function startScroll(){
-  const a=words[0].getBoundingClientRect().top,b=words[words.length-1].getBoundingClientRect().top;
-  pxPerWord=Math.max(8,(b-a)/Math.max(1,words.length-1));
-  acc=scrollY;lastSet=acc;lastT=0;lastHl=0;
-  syncReadLine();
-  if(!playing)return;
-  cancelAnimationFrame(raf);raf=requestAnimationFrame(scrollLoop);
-}
-function play(){
-  if(!story||!words.length)return;
-  if(ended){ended=false;pos=0;highlight(0,false);scrollTo(0,0);}
-  playing=true;setPlayUI();wake(true);
-  if(mode==='scroll'){startScroll();return;}
-  if(mode==='voice'&&hasTTS)speakAt(pos);else tick(pos);
-}
-function pause(){
-  playing=false;token++;clearTimeout(timer);clearTimeout(estTimer);cancelAnimationFrame(raf);
-  if(hasTTS)speechSynthesis.cancel();
-  setPlayUI();wake(false);
-}
-function finish(){
-  playing=false;ended=true;cancelAnimationFrame(raf);clearTimeout(timer);clearTimeout(estTimer);setPlayUI();wake(false);
-  if(hasTTS)speechSynthesis.cancel();
-  if(story){const pp=(prog[story.id]=prog[story.id]||{});pp.pos=0;pp.done=true;saveProg(true);}
-  pos=0;toast('Finished reading. Try the quiz!',3000);
-  const d=$('#doneQuiz');if(d)d.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
-}
-function tick(i){
-  clearTimeout(timer);if(!playing)return;
-  if(i>=words.length){finish();return;}
-  highlight(i);
-  timer=setTimeout(()=>tick(i+1),msFor(i));
-}
-function speakAt(i){
-  if(!playing)return;
-  if(i>=words.length){finish();return;}
-  const s=sentences[w2s[i]],my=++token;
-  clearTimeout(estTimer);
-  const k0=i-s.s,off=s.offs[k0],text=s.raw.slice(off);
-  highlight(i);
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang='en-US';if(voice)u.voice=voice;
-  u.rate=Math.max(.5,Math.min(1.8,wpm/150));
-
-  const scheduleEst=k=>{
-    clearTimeout(estTimer);
-    if(my!==token||s.s+k>s.e)return;
-    const dur=msFor(s.s+k-1);
-    estTimer=setTimeout(()=>{
-      if(my!==token||s.s+k>s.e)return;
-      highlight(s.s+k);
-      scheduleEst(k+1);
-    },dur);
-  };
-
-  u.onstart=()=>{
-    if(my!==token)return;
-    highlight(i);
-    scheduleEst(k0+1);
-  };
-
-  u.onboundary=e=>{
-    if(my!==token)return;
-    if(e.name&&e.name!=='word')return;
-    const c=e.charIndex+off;let k=0;
-    while(k+1<s.offs.length&&s.offs[k+1]<=c+1)k++;
-    highlight(s.s+k);
-    scheduleEst(k+1);
-  };
-
-  u.onend=()=>{if(my!==token)return;clearTimeout(estTimer);speakAt(s.e+1);};
-  u.onerror=ev=>{
-    if(my!==token)return;
-    if(ev.error==='interrupted'||ev.error==='canceled')return;
-    clearTimeout(estTimer);mode='silent';syncMode();
-    toast('Voice is not available. Switched to Silent mode.');tick(cur);
-  };
-
-  speechSynthesis.cancel();
-  setTimeout(()=>{
-    if(my!==token)return;
-    speechSynthesis.speak(u);
-    scheduleEst(k0+1);
-  },40);
-}
-function jumpSent(d){
-  if(!words.length)return;
-  const was=playing,si=w2s[Math.max(0,cur)];
-  let t=d<0?(cur>sentences[si].s?si:si-1):si+1;
-  t=Math.max(0,Math.min(sentences.length-1,t));
-  const i=sentences[t].s;
-  if(was)pause();
-  goTo(i);
-  if(was)play();
-}
-function openStory(id){
-  story=stories.find(s=>s.id===id);
-  if(!story){location.hash='#';return;}
-  show('read');
-  const idx=storyIdx();
-  $('#rTitle').textContent=(idx>=0?(idx+1)+'. ':'')+story.title;
-  applyFs();syncMode();syncSpd();setPlayUI();
-  cur=-1;ended=false;buildText();applyAlign();applyHl();
-  let p=(prog[id]&&prog[id].pos)||0;
-  if(p>=words.length-1)p=0;
-  highlight(p,false);syncNav();
-  if(p>0)setTimeout(()=>{const r=words[p].getBoundingClientRect();scrollTo(0,scrollY+r.top-innerHeight*0.3)},30);
-}
-
-/* ---------- arti kata ---------- */
-let sh=null;
-async function fj(url){
-  const c=new AbortController(),t=setTimeout(()=>c.abort(),7000);
-  try{const r=await fetch(url,{signal:c.signal});if(!r.ok)throw new Error(r.status);return await r.json();}
-  finally{clearTimeout(t)}
-}
-function row(label,text,serif){
-  const l=document.createElement('p');l.className='lbl';l.textContent=label;
-  const v=document.createElement('p');v.className='val'+(serif?' serif':'');v.textContent=text;
-  $('#shBody').append(l,v);
-}
-function renderSheet(note){
-  const b=$('#shBody');b.textContent='';
-  if(sh.gloss)row('Meaning in story',sh.gloss,true);
-  if(sh.auto)row('Translation (Indonesian)',sh.auto);
-  if(sh.def)row('Definition'+(sh.pos?' ('+sh.pos+')':'')+(sh.phon?'  '+sh.phon:''),sh.def);
-  if(sh.ex)row('Example',sh.ex);
-  if(note){const n=document.createElement('p');n.className='lbl';n.textContent=note;b.append(n);}
-  const saved=LS.get('words',[]).some(x=>x.w===sh.w);
-  $('#shSave').textContent=saved?'Saved':'Save word';
-}
-async function showSheet(i){
-  resumeScrollOnClose = playing && (mode === 'scroll');
-  if(playing)pause();
-  const sp=words[i];
-  const raw=sp.textContent;
-  const key=raw.toLowerCase().replace(/['’]s$/,'');
-  const vocKey=sp.dataset.vocKey;
-  const gloss=(vocKey&&story.vocab[vocKey])||story.vocab[key]||story.vocab[raw.toLowerCase()]||'';
-  const lookup=vocKey||key;
-  sh={w:lookup,idx:i,gloss,auto:'',def:'',ex:'',pos:'',phon:''};
-  $('#shWord').textContent=vocKey||raw;
-  $('#sheet').hidden=false;
-  const cache=LS.get('lk',{})[lookup];
-  if(cache){Object.assign(sh,cache);renderSheet();return;}
-  renderSheet('Looking up…');
-  const cands=[...new Set([lookup,lookup.replace(/ies$/,'y'),lookup.replace(/(ing|ed|es|s)$/,''),lookup.replace(/(ing|ed)$/,'e')])].filter(Boolean);
-  const dictP=(async()=>{for(const c of cands){try{return await fj('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(c))}catch(e){}}throw new Error('x')})();
-  const trP=fj('https://api.mymemory.translated.net/get?q='+encodeURIComponent(lookup)+'&langpair=en|id');
-  const [d,t]=await Promise.allSettled([dictP,trP]);
-  if(!sh||sh.w!==lookup)return;
-  if(d.status==='fulfilled'&&d.value&&d.value[0]){
-    const e=d.value[0],m=(e.meanings||[])[0],df=m&&(m.definitions||[])[0];
-    sh.phon=e.phonetic||((e.phonetics||[]).map(p=>p.text).find(Boolean))||'';
-    sh.pos=(m&&m.partOfSpeech)||'';sh.def=(df&&df.definition)||'';sh.ex=(df&&df.example)||'';
-  }
-  if(t.status==='fulfilled'){
-    const tr=t.value&&t.value.responseData&&t.value.responseData.translatedText;
-    if(tr&&tr.toLowerCase()!==key&&!/MYMEMORY|QUERY LENGTH/i.test(tr))sh.auto=tr;
-  }
-  const got=sh.def||sh.auto;
-  if(got){const lk=LS.get('lk',{});lk[key]={auto:sh.auto,def:sh.def,ex:sh.ex,pos:sh.pos,phon:sh.phon};LS.set('lk',lk);}
-  renderSheet(got||sh.gloss?'':'No connection. Full meanings need internet. Words you have opened before are kept for offline use.');
-}
-function closeSheet(){
-  $('#sheet').hidden=true;
-  sh=null;
-  if(resumeScrollOnClose){
-    resumeScrollOnClose=false;
-    if(!playing&&mode==='scroll'&&!ended&&story&&!$('#v-read').hidden){
-      play();
+    function keepVisible(el) {
+      const r = el.getBoundingClientRect();
+      if (r.top < 100 || r.bottom > innerHeight - 250) {
+        scrollTo({ top: scrollY + r.top - innerHeight * 0.3, behavior: reduce ? 'auto' : 'smooth' });
+      }
     }
-  }
-}
-function speakWord(w){
-  if(!hasTTS)return;
-  speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(w);u.lang='en-US';if(voice)u.voice=voice;u.rate=.85;
-  speechSynthesis.speak(u);
-}
-function saveWord(){
-  if(!sh)return;
-  const list=LS.get('words',[]);
-  if(list.some(x=>x.w===sh.w)){toast('Already saved');return;}
-  list.unshift({w:sh.w,arti:sh.gloss||sh.auto||'',def:sh.def||'',story:story?story.title:''});
-  LS.set('words',list);renderSheet();toast('Word saved');
-}
+    function highlight(i, scroll = true) {
+      if (cur >= 0 && words[cur]) words[cur].classList.remove('cur');
+      cur = i; pos = i;
+      const w = words[i]; if (!w) return;
+      w.classList.add('cur');
+      if (scroll) keepVisible(w);
+      $('#progBar').style.width = (i / Math.max(1, words.length - 1) * 100) + '%';
+      if (story) { (prog[story.id] = prog[story.id] || {}).pos = i; saveProg(); }
+    }
+    function setPlayUI() {
+      $('#play').innerHTML = playing ? ICON.pause : ICON.play;
+      $('#play').setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    }
+    function syncMode() {
+      if (mode === 'voice' && !hasTTS) mode = 'silent';
+      [['voice', 'mVoice'], ['silent', 'mSilent'], ['scroll', 'mScroll']].forEach(([m, id]) => $('#' + id).setAttribute('aria-pressed', mode === m));
+      $('#text').classList.toggle('gulir', mode === 'scroll');
+      LS.set('mode', mode);
+    }
+    const WPM_NORMAL = 150, WPM_MIN = 60, WPM_MAX = 300, WPM_STEP = 10;
+    function syncSpd() {
+      const n = $('#spdNorm');
+      n.textContent = wpm === WPM_NORMAL ? 'Normal' : wpm + ' wpm';
+      $('#spdDown').disabled = wpm <= WPM_MIN; $('#spdUp').disabled = wpm >= WPM_MAX;
+      $('#spdDown').style.opacity = wpm <= WPM_MIN ? .4 : 1; $('#spdUp').style.opacity = wpm >= WPM_MAX ? .4 : 1;
+    }
+    function setWpm(v) { wpm = Math.max(WPM_MIN, Math.min(WPM_MAX, v)); LS.set('wpm', wpm); syncSpd(); }
+    let optOpen = LS.get('opts', true);
+    function applyOpts() {
+      $('#opts').hidden = !optOpen;
+      $('#optTab').setAttribute('aria-expanded', optOpen);
+      const olb = optOpen ? 'Hide settings' : 'Show settings';
+      $('#optTab').setAttribute('aria-label', olb); $('#optTab').title = olb;
+      $('#optArrow').innerHTML = optOpen ? ICON.down : ICON.sliders;
+      LS.set('opts', optOpen);
+    }
+    const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+    function syncFull() {
+      const on = !!fsEl();
+      $('#rFull').innerHTML = on ? ICON.exit : ICON.full;
+      $('#rFull').setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen');
+      $('#rFull').title = on ? 'Exit full screen' : 'Full screen';
+    }
+    function toggleFull() {
+      const d = document, e = d.documentElement;
+      try {
+        if (fsEl()) { const x = d.exitFullscreen || d.webkitExitFullscreen; x && x.call(d); }
+        else {
+          const x = e.requestFullscreen || e.webkitRequestFullscreen;
+          if (!x) { toast('Full screen is not supported in this browser'); return; }
+          const r = x.call(e); if (r && r.catch) r.catch(() => toast('Full screen was blocked by the browser'));
+        }
+      } catch (err) { toast('Full screen is not available'); }
+    }
+    function storyIdx() {
+      if (!story) return -1;
+      const list = activeStoryList();
+      return list.findIndex(s => s.id === story.id);
+    }
+    function syncNav() {
+      const list = activeStoryList();
+      const i = storyIdx();
+      $('#prevStory').disabled = i <= 0;
+      $('#nextStory').disabled = i < 0 || i >= list.length - 1;
+    }
+    function gotoStory(d) {
+      const list = activeStoryList();
+      const i = storyIdx() + d;
+      if (i < 0 || i >= list.length) return;
+      const was = playing;
+      pause(); saveProg(true);
+      history.replaceState(null, '', '#read=' + encodeURIComponent(list[i].id));
+      route();
+      if (was) setTimeout(play, 250);
+    }
+    function applyHl() {
+      $('#text').classList.toggle('nohl', !hlOn);
+      $('#hlBtn').setAttribute('aria-pressed', hlOn);
+      LS.set('hl', hlOn);
+    }
+    function msFor(i) {
+      const w = words[i].textContent;
+      const base = 60000 / Math.max(80, wpm);
+      const len = w.length;
+      let factor = 0.85;
+      if (len <= 2) factor = 0.45;
+      else if (len <= 4) factor = 0.65;
+      else if (len <= 7) factor = 0.90;
+      else factor = 1.15;
+      let ms = base * factor;
+      const n = words[i].nextSibling, t = n && n.nodeType === 3 ? n.textContent : '';
+      if (/[.!?…]/.test(t)) ms += base * 0.6;
+      else if (/[,;:—]/.test(t)) ms += base * 0.3;
+      return ms;
+    }
+    async function wake(on) {
+      try {
+        if (on && 'wakeLock' in navigator) { lockRef = await navigator.wakeLock.request('screen'); }
+        else if (lockRef) { await lockRef.release(); lockRef = null; }
+      } catch (e) { }
+    }
+    function goTo(i) {
+      highlight(i, false);
+      if (mode === 'scroll') scrollToWord(i); else keepVisible(words[i]);
+    }
+    function scrollToWord(i) {
+      const r = words[i].getBoundingClientRect();
+      scrollTo(0, Math.max(0, scrollY + r.top - innerHeight * 0.38 + 2));
+    }
+    function syncReadLine() {
+      const ty = innerHeight * 0.38, last = words.length - 1;
+      let lo = 0, hi = last;
+      while (lo < hi) { const m = (lo + hi) >> 1; if (words[m].getBoundingClientRect().bottom < ty) lo = m + 1; else hi = m; }
+      const r0 = words[lo].getBoundingClientRect();
+      if (lo === last && r0.bottom < ty) { highlight(last, false); if (playing) finish(); return; }
+      let n = 1;
+      while (lo + n <= last && Math.abs(words[lo + n].getBoundingClientRect().top - r0.top) < 4) n++;
+      const f = Math.max(0, Math.min(.999, (ty - r0.top) / Math.max(1, r0.height)));
+      const idx = lo + Math.min(n - 1, Math.floor(f * n));
+      if (idx !== cur) highlight(idx, false);
+    }
+    function scrollLoop(t) {
+      if (!playing || mode !== 'scroll') return;
+      if (!lastT) lastT = t;
+      const dt = Math.min(64, t - lastT) / 1000; lastT = t;
+      if (Math.abs(scrollY - lastSet) > 2) acc = scrollY;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      acc = Math.min(max, acc + (wpm / 60) * pxPerWord * dt);
+      scrollTo(0, acc); lastSet = acc;
+      if (t - lastHl > 80) { lastHl = t; syncReadLine(); if (!playing) return; }
+      if (acc >= max - 1) { highlight(words.length - 1, false); finish(); return; }
+      raf = requestAnimationFrame(scrollLoop);
+    }
+    function startScroll() {
+      const a = words[0].getBoundingClientRect().top, b = words[words.length - 1].getBoundingClientRect().top;
+      pxPerWord = Math.max(8, (b - a) / Math.max(1, words.length - 1));
+      acc = scrollY; lastSet = acc; lastT = 0; lastHl = 0;
+      syncReadLine();
+      if (!playing) return;
+      cancelAnimationFrame(raf); raf = requestAnimationFrame(scrollLoop);
+    }
+    function play() {
+      if (!story || !words.length) return;
+      if (ended) { ended = false; pos = 0; highlight(0, false); scrollTo(0, 0); }
+      playing = true; setPlayUI(); wake(true);
+      if (mode === 'scroll') { startScroll(); return; }
+      if (mode === 'voice' && hasTTS) speakAt(pos); else tick(pos);
+    }
+    function pause() {
+      playing = false; token++; clearTimeout(timer); clearTimeout(estTimer); cancelAnimationFrame(raf);
+      if (hasTTS) speechSynthesis.cancel();
+      setPlayUI(); wake(false);
+    }
+    function finish() {
+      playing = false; ended = true; cancelAnimationFrame(raf); clearTimeout(timer); clearTimeout(estTimer); setPlayUI(); wake(false);
+      if (hasTTS) speechSynthesis.cancel();
+      if (story) { const pp = (prog[story.id] = prog[story.id] || {}); pp.pos = 0; pp.done = true; saveProg(true); }
+      pos = 0; toast('Finished reading. Try the quiz!', 3000);
+      const d = $('#doneQuiz'); if (d) d.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+    }
+    function tick(i) {
+      clearTimeout(timer); if (!playing) return;
+      if (i >= words.length) { finish(); return; }
+      highlight(i);
+      timer = setTimeout(() => tick(i + 1), msFor(i));
+    }
+    function speakAt(i) {
+      if (!playing) return;
+      if (i >= words.length) { finish(); return; }
+      const s = sentences[w2s[i]], my = ++token;
+      clearTimeout(estTimer);
+      const k0 = i - s.s, off = s.offs[k0], text = s.raw.slice(off);
+      highlight(i);
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US'; if (voice) u.voice = voice;
+      u.rate = Math.max(.5, Math.min(1.8, wpm / 150));
 
-/* ---------- kuis ---------- */
-function autoQuiz(s){
-  const keys=Object.keys(s.vocab);
-  if(keys.length<4)return [];
-  return shuffle(keys).slice(0,5).map(k=>{
-    const wrong=shuffle(keys.filter(x=>x!==k)).slice(0,3).map(x=>({t:s.vocab[x],ok:false}));
-    return {q:'What is the meaning of "'+k+'"?',o:[{t:s.vocab[k],ok:true},...wrong]};
-  });
-}
-let qz=null;
-function openQuiz(id){
-  const s=stories.find(x=>x.id===id);
-  if(!s){location.hash='#';return;}
-  story=s;
-  const idx=storyIdx();
-  const qs=s.quiz.length?s.quiz:autoQuiz(s);
-  show('quiz');$('#qTitle').textContent=(idx>=0?(idx+1)+'. ':'')+s.title;
-  if(!qs.length){
-    $('#quizBox').innerHTML='';
-    const p=document.createElement('p');p.className='val';p.textContent='This story has no quiz yet. Add a "## Quiz" section to its .md file.';
-    $('#quizBox').append(p);return;
-  }
-  qz={qs,i:0,score:0};renderQ();
-}
-function renderQ(){
-  const box=$('#quizBox');box.innerHTML='';
-  const q=qz.qs[qz.i];
-  const card=document.createElement('div');card.className='quiz-card';
-  const hdr=document.createElement('div');hdr.className='quiz-hdr';
-  const badge=document.createElement('span');badge.className='qno-badge';
-  badge.textContent='Question '+(qz.i+1)+' of '+qz.qs.length;
-  hdr.append(badge);
-  const h=document.createElement('h3');h.className='q';h.textContent=q.q;
-  card.append(hdr,h);
-  const opts=shuffle(q.o);let answered=false;
-  opts.forEach(o=>{
-    const b=document.createElement('button');b.className='opt';b.textContent=o.t;
-    b.onclick=()=>{
-      if(answered)return;answered=true;
-      if(o.ok)qz.score++;
-      [...card.querySelectorAll('.opt')].forEach((e,k)=>{
-        e.disabled=true;
-        if(opts[k].ok)e.classList.add('ok');else if(e===b)e.classList.add('bad');
+      const scheduleEst = k => {
+        clearTimeout(estTimer);
+        if (my !== token || s.s + k > s.e) return;
+        const dur = msFor(s.s + k - 1);
+        estTimer = setTimeout(() => {
+          if (my !== token || s.s + k > s.e) return;
+          highlight(s.s + k);
+          scheduleEst(k + 1);
+        }, dur);
+      };
+
+      u.onstart = () => {
+        if (my !== token) return;
+        highlight(i);
+        scheduleEst(k0 + 1);
+      };
+
+      u.onboundary = e => {
+        if (my !== token) return;
+        if (e.name && e.name !== 'word') return;
+        const c = e.charIndex + off; let k = 0;
+        while (k + 1 < s.offs.length && s.offs[k + 1] <= c + 1) k++;
+        highlight(s.s + k);
+        scheduleEst(k + 1);
+      };
+
+      u.onend = () => { if (my !== token) return; clearTimeout(estTimer); speakAt(s.e + 1); };
+      u.onerror = ev => {
+        if (my !== token) return;
+        if (ev.error === 'interrupted' || ev.error === 'canceled') return;
+        clearTimeout(estTimer); mode = 'silent'; syncMode();
+        toast('Voice is not available. Switched to Silent mode.'); tick(cur);
+      };
+
+      speechSynthesis.cancel();
+      setTimeout(() => {
+        if (my !== token) return;
+        speechSynthesis.speak(u);
+        scheduleEst(k0 + 1);
+      }, 40);
+    }
+    function jumpSent(d) {
+      if (!words.length) return;
+      const was = playing, si = w2s[Math.max(0, cur)];
+      let t = d < 0 ? (cur > sentences[si].s ? si : si - 1) : si + 1;
+      t = Math.max(0, Math.min(sentences.length - 1, t));
+      const i = sentences[t].s;
+      if (was) pause();
+      goTo(i);
+      if (was) play();
+    }
+    function openStory(id) {
+      story = stories.find(s => s.id === id);
+      if (!story) { location.hash = '#'; return; }
+      show('read');
+      const idx = storyIdx();
+      $('#rTitle').textContent = (idx >= 0 ? (idx + 1) + '. ' : '') + story.title;
+      applyFs(); syncMode(); syncSpd(); setPlayUI();
+      cur = -1; ended = false; buildText(); applyAlign(); applyHl();
+      let p = (prog[id] && prog[id].pos) || 0;
+      if (p >= words.length - 1) p = 0;
+      highlight(p, false); syncNav();
+      if (p > 0) setTimeout(() => { const r = words[p].getBoundingClientRect(); scrollTo(0, scrollY + r.top - innerHeight * 0.3) }, 30);
+    }
+
+    /* ---------- arti kata ---------- */
+    let sh = null;
+    async function fj(url) {
+      const c = new AbortController(), t = setTimeout(() => c.abort(), 7000);
+      try { const r = await fetch(url, { signal: c.signal }); if (!r.ok) throw new Error(r.status); return await r.json(); }
+      finally { clearTimeout(t) }
+    }
+    function row(label, text, serif) {
+      const l = document.createElement('p'); l.className = 'lbl'; l.textContent = label;
+      const v = document.createElement('p'); v.className = 'val' + (serif ? ' serif' : ''); v.textContent = text;
+      $('#shBody').append(l, v);
+    }
+    function renderSheet(note) {
+      const b = $('#shBody'); b.textContent = '';
+      if (sh.gloss) row('Meaning in story', sh.gloss, true);
+      if (sh.auto) row('Translation (Indonesian)', sh.auto);
+      if (sh.def) row('Definition' + (sh.pos ? ' (' + sh.pos + ')' : '') + (sh.phon ? '  ' + sh.phon : ''), sh.def);
+      if (sh.ex) row('Example', sh.ex);
+      if (note) { const n = document.createElement('p'); n.className = 'lbl'; n.textContent = note; b.append(n); }
+      const saved = LS.get('words', []).some(x => x.w === sh.w);
+      $('#shSave').textContent = saved ? 'Saved' : 'Save word';
+    }
+    async function showSheet(i) {
+      resumeScrollOnClose = playing && (mode === 'scroll');
+      if (playing) pause();
+      const sp = words[i];
+      const raw = sp.textContent;
+      const key = raw.toLowerCase().replace(/['’]s$/, '');
+      const vocKey = sp.dataset.vocKey;
+      const gloss = (vocKey && story.vocab[vocKey]) || story.vocab[key] || story.vocab[raw.toLowerCase()] || '';
+      const lookup = vocKey || key;
+      sh = { w: lookup, idx: i, gloss, auto: '', def: '', ex: '', pos: '', phon: '' };
+      $('#shWord').textContent = vocKey || raw;
+      $('#sheet').hidden = false;
+      const cache = LS.get('lk', {})[lookup];
+      if (cache) { Object.assign(sh, cache); renderSheet(); return; }
+      renderSheet('Looking up…');
+      const cands = [...new Set([lookup, lookup.replace(/ies$/, 'y'), lookup.replace(/(ing|ed|es|s)$/, ''), lookup.replace(/(ing|ed)$/, 'e')])].filter(Boolean);
+      const dictP = (async () => { for (const c of cands) { try { return await fj('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(c)) } catch (e) { } } throw new Error('x') })();
+      const trP = fj('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(lookup) + '&langpair=en|id');
+      const [d, t] = await Promise.allSettled([dictP, trP]);
+      if (!sh || sh.w !== lookup) return;
+      if (d.status === 'fulfilled' && d.value && d.value[0]) {
+        const e = d.value[0], m = (e.meanings || [])[0], df = m && (m.definitions || [])[0];
+        sh.phon = e.phonetic || ((e.phonetics || []).map(p => p.text).find(Boolean)) || '';
+        sh.pos = (m && m.partOfSpeech) || ''; sh.def = (df && df.definition) || ''; sh.ex = (df && df.example) || '';
+      }
+      if (t.status === 'fulfilled') {
+        const tr = t.value && t.value.responseData && t.value.responseData.translatedText;
+        if (tr && tr.toLowerCase() !== key && !/MYMEMORY|QUERY LENGTH/i.test(tr)) sh.auto = tr;
+      }
+      const got = sh.def || sh.auto;
+      if (got) { const lk = LS.get('lk', {}); lk[key] = { auto: sh.auto, def: sh.def, ex: sh.ex, pos: sh.pos, phon: sh.phon }; LS.set('lk', lk); }
+      renderSheet(got || sh.gloss ? '' : 'No connection. Full meanings need internet. Words you have opened before are kept for offline use.');
+    }
+    function closeSheet() {
+      $('#sheet').hidden = true;
+      sh = null;
+      if (resumeScrollOnClose) {
+        resumeScrollOnClose = false;
+        if (!playing && mode === 'scroll' && !ended && story && !$('#v-read').hidden) {
+          play();
+        }
+      }
+    }
+    function speakWord(w) {
+      if (!hasTTS) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(w); u.lang = 'en-US'; if (voice) u.voice = voice; u.rate = .85;
+      speechSynthesis.speak(u);
+    }
+    function saveWord() {
+      if (!sh) return;
+      const list = LS.get('words', []);
+      if (list.some(x => x.w === sh.w)) { toast('Already saved'); return; }
+      list.unshift({ w: sh.w, arti: sh.gloss || sh.auto || '', def: sh.def || '', story: story ? story.title : '' });
+      LS.set('words', list); renderSheet(); toast('Word saved');
+    }
+
+    /* ---------- kuis ---------- */
+    function autoQuiz(s) {
+      const keys = Object.keys(s.vocab);
+      if (keys.length < 4) return [];
+      return shuffle(keys).slice(0, 5).map(k => {
+        const wrong = shuffle(keys.filter(x => x !== k)).slice(0, 3).map(x => ({ t: s.vocab[x], ok: false }));
+        return { q: 'What is the meaning of "' + k + '"?', o: [{ t: s.vocab[k], ok: true }, ...wrong] };
       });
-      const nx=document.createElement('button');nx.className='btn pri';nx.style.marginTop='16px';nx.style.width='100%';
-      nx.textContent=qz.i+1<qz.qs.length?'Next question →':'See results';
-      nx.onclick=()=>{qz.i++;qz.i<qz.qs.length?renderQ():renderResult()};
-      card.append(nx);nx.focus();
-    };
-    card.append(b);
-  });
-  box.append(card);
-}
-function renderResult(){
-  const box=$('#quizBox');box.innerHTML='';
-  const total=qz.qs.length,sc=qz.score;
-  const p=(prog[story.id]=prog[story.id]||{});
-  if(!p.quiz||sc>=p.quiz.best)p.quiz={best:sc,total};
-  saveProg(true);
-  const card=document.createElement('div');card.className='quiz-card';card.style.textAlign='center';
-  const isPerfect=sc===total;
-  const isGood=sc>=Math.ceil(total/2);
-  const badgeClass=isPerfect?'chip lv-b':(isGood?'chip lv-i':'chip lv-a');
-  const badgeText=isPerfect?'Perfect Score!':(isGood?'Well Done!':'Keep Practicing');
-  card.innerHTML=`
+    }
+    let qz = null;
+    function openQuiz(id) {
+      const s = stories.find(x => x.id === id);
+      if (!s) { location.hash = '#'; return; }
+      story = s;
+      const idx = storyIdx();
+      const qs = s.quiz.length ? s.quiz : autoQuiz(s);
+      show('quiz'); $('#qTitle').textContent = (idx >= 0 ? (idx + 1) + '. ' : '') + s.title;
+      if (!qs.length) {
+        $('#quizBox').innerHTML = '';
+        const p = document.createElement('p'); p.className = 'val'; p.textContent = 'This story has no quiz yet. Add a "## Quiz" section to its .md file.';
+        $('#quizBox').append(p); return;
+      }
+      qz = { qs, i: 0, score: 0 }; renderQ();
+    }
+    function renderQ() {
+      const box = $('#quizBox'); box.innerHTML = '';
+      const q = qz.qs[qz.i];
+      const card = document.createElement('div'); card.className = 'quiz-card';
+      const hdr = document.createElement('div'); hdr.className = 'quiz-hdr';
+      const badge = document.createElement('span'); badge.className = 'qno-badge';
+      badge.textContent = 'Question ' + (qz.i + 1) + ' of ' + qz.qs.length;
+      hdr.append(badge);
+      const h = document.createElement('h3'); h.className = 'q'; h.textContent = q.q;
+      card.append(hdr, h);
+      const opts = shuffle(q.o); let answered = false;
+      opts.forEach(o => {
+        const b = document.createElement('button'); b.className = 'opt'; b.textContent = o.t;
+        b.onclick = () => {
+          if (answered) return; answered = true;
+          if (o.ok) qz.score++;
+          [...card.querySelectorAll('.opt')].forEach((e, k) => {
+            e.disabled = true;
+            if (opts[k].ok) e.classList.add('ok'); else if (e === b) e.classList.add('bad');
+          });
+          const nx = document.createElement('button'); nx.className = 'btn pri'; nx.style.marginTop = '16px'; nx.style.width = '100%';
+          nx.textContent = qz.i + 1 < qz.qs.length ? 'Next question →' : 'See results';
+          nx.onclick = () => { qz.i++; qz.i < qz.qs.length ? renderQ() : renderResult() };
+          card.append(nx); nx.focus();
+        };
+        card.append(b);
+      });
+      box.append(card);
+    }
+    function renderResult() {
+      const box = $('#quizBox'); box.innerHTML = '';
+      const total = qz.qs.length, sc = qz.score;
+      const p = (prog[story.id] = prog[story.id] || {});
+      if (!p.quiz || sc >= p.quiz.best) p.quiz = { best: sc, total };
+      saveProg(true);
+      const card = document.createElement('div'); card.className = 'quiz-card'; card.style.textAlign = 'center';
+      const isPerfect = sc === total;
+      const isGood = sc >= Math.ceil(total / 2);
+      const badgeClass = isPerfect ? 'chip lv-b' : (isGood ? 'chip lv-i' : 'chip lv-a');
+      const badgeText = isPerfect ? 'Perfect Score!' : (isGood ? 'Well Done!' : 'Keep Practicing');
+      card.innerHTML = `
     <svg class="score-bowl" viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg>
     <div><span class="${badgeClass} score-badge">${badgeText}</span></div>
     <div class="score">${sc} / ${total}</div>
-    <p class="score-sub">${isPerfect?'Amazing! All answers are completely correct.':isGood?'Good job! Read again the parts you missed for a full score.':'Try reading once more in Voice or Scroll mode, then retake the quiz.'}</p>
+    <p class="score-sub">${isPerfect ? 'Amazing! All answers are completely correct.' : isGood ? 'Good job! Read again the parts you missed for a full score.' : 'Try reading once more in Voice or Scroll mode, then retake the quiz.'}</p>
     <div class="shAct" style="justify-content:center">
       <button class="btn pri" id="qRetake">Retake quiz</button>
       <button class="btn" id="qReadAgain">Read again</button>
       <button class="btn" id="qHome">Story list</button>
     </div>
   `;
-  box.append(card);
-  $('#qRetake').onclick=()=>openQuiz(story.id);
-  $('#qReadAgain').onclick=()=>{location.hash='#read='+encodeURIComponent(story.id)};
-  $('#qHome').onclick=()=>{location.hash='#'};
-}
+      box.append(card);
+      $('#qRetake').onclick = () => openQuiz(story.id);
+      $('#qReadAgain').onclick = () => { location.hash = '#read=' + encodeURIComponent(story.id) };
+      $('#qHome').onclick = () => { location.hash = '#' };
+    }
 
-/* ---------- kata saya ---------- */
-function openWords(){
-  show('words');
-  const box=$('#wordsBox');box.innerHTML='';
-  const list=LS.get('words',[]);
-  if(!list.length){
-    const empty=document.createElement('div');empty.className='empty-card';
-    empty.innerHTML=`
+    /* ---------- kata saya ---------- */
+    function openWords() {
+      show('words');
+      const box = $('#wordsBox'); box.innerHTML = '';
+      const list = LS.get('words', []);
+      if (!list.length) {
+        const empty = document.createElement('div'); empty.className = 'empty-card';
+        empty.innerHTML = `
       <svg viewBox="0 0 64 64" aria-hidden="true"><use href="#bowl"/></svg>
       <h3 class="serif" style="margin:0 0 6px;font-size:20px;font-weight:600">Your bowl is empty</h3>
       <p style="margin:0;font-size:14px;color:var(--mu)">No saved words yet. Tap any word while reading a story, then tap <b>Save word</b>.</p>
     `;
-    box.append(empty);return;
-  }
-  const grid=document.createElement('div');grid.className='words-grid';
-  list.forEach(x=>{
-    const d=document.createElement('div');d.className='wb';
-    const t=document.createElement('div');t.className='t';
-    const b=document.createElement('b');b.textContent=x.w;
-    t.append(b);
-    if(x.arti){const p=document.createElement('p');p.className='arti';p.textContent=x.arti;t.append(p)}
-    if(x.def){const p=document.createElement('p');p.textContent=x.def;t.append(p)}
-    const ac=document.createElement('div');ac.className='acts';
-    const mk=(txt,fn)=>{const e=document.createElement('button');e.className='btn sm';e.textContent=txt;e.onclick=fn;ac.append(e)};
-    mk('Listen',()=>speakWord(x.w));
-    mk('Edit',()=>{
-      const v=prompt('Meaning of "'+x.w+'"',x.arti||'');
-      if(v===null)return;
-      x.arti=v.trim();
-      const all=LS.get('words',[]);
-      const it=all.find(y=>y.w===x.w);
-      if(it){it.arti=v.trim();LS.set('words',all)}
-      openWords();
-    });
-    mk('Delete',()=>{LS.set('words',LS.get('words',[]).filter(y=>y.w!==x.w));openWords()});
-    d.append(t,ac);grid.append(d);
-  });
-  box.append(grid);
-}
-
-/* ---------- tambah / edit cerita ---------- */
-let editN=null;
-function openAdd(n){
-  const l=typeof n==='number'?LS.get('localStories',[]).find(x=>x.n===n):null;
-  editN=l?l.n:null;
-  $('#addH').textContent=l?'Edit story':'Add story';
-  $('#addTitle').value=l?(l.title||''):'';
-  $('#addText').value=l?l.md:'';
-  $('#addSave').textContent=l?'Save changes':'Save story';
-  $('#addDlg').hidden=false;
-  if(!l)$('#addText').focus();
-}
-$('#addFile').onchange=async e=>{
-  const f=e.target.files[0];if(!f)return;
-  $('#addText').value=await f.text();
-  if(!$('#addTitle').value)$('#addTitle').value=f.name.replace(/\.(md|txt)$/i,'').replace(/[-_]+/g,' ');
-  e.target.value='';
-};
-function saveAdd(dl){
-  const md=$('#addText').value.trim();
-  if(!md){toast('The text is empty');return;}
-  const title=$('#addTitle').value.trim();
-  const list=normLocal();
-  const wasEdit=editN!=null;
-  let item;
-  if(wasEdit){
-    item=list.find(l=>l.n===editN);
-    if(!item){toast('Story not found');return;}
-    item.title=title;item.md=md;item.time=Date.now();
-    LS.set('localStories',list);
-    const k=stories.findIndex(s=>s.id==='local:'+item.n);
-    if(k>=0)stories[k]=buildLocal(item);
-    toast('Changes saved');
-  }else{
-    const n=Math.max(LS.get('seq',0),0,...list.map(l=>l.n))+1;
-    item={n,title,md,time:Date.now()};
-    list.push(item);
-    LS.set('localStories',list);LS.set('seq',n);
-    stories.push(buildLocal(item));
-    libQ='';$('#search').value='';
-    toast('Story No. '+n+' added');
-  }
-  editN=null;
-  $('#addDlg').hidden=true;
-  const id='local:'+item.n;
-  renderLib(id);
-  const li=[...$('#list').children].find(x=>x.dataset.id===id);
-  if(li){li.classList.add('new');li.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});setTimeout(()=>li.classList.remove('new'),1600);}
-  if(dl)downloadStory(item);
-}
-$('#addSave').onclick=()=>saveAdd(false);
-$('#addSaveDl').onclick=()=>saveAdd(true);
-$('#addPaste').onclick=async()=>{
-  try{
-    const t=await navigator.clipboard.readText();
-    if(!t.trim()){toast('Clipboard is empty');return;}
-    $('#addText').value=t;
-  }catch(e){toast('Cannot read the clipboard. Long-press the text box and choose Paste.',3200);$('#addText').focus();}
-};
-$('#addCancel').onclick=$('#addScrim').onclick=()=>{editN=null;$('#addDlg').hidden=true};
-
-/* ---------- download ke folder stories ---------- */
-const canDir='showDirectoryPicker' in window;
-const idb={
-  open(){return new Promise((res,rej)=>{const r=indexedDB.open('baca-inggris',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})},
-  async get(k){const db=await this.open();return new Promise((res,rej)=>{const r=db.transaction('kv').objectStore('kv').get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})},
-  async set(k,v){const db=await this.open();return new Promise((res,rej)=>{const t=db.transaction('kv','readwrite');t.objectStore('kv').put(v,k);t.oncomplete=()=>res();t.onerror=()=>rej(t.error)})}
-};
-function slug(s){return String(s||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60)}
-function fileNameFor(l){return (slug(buildLocal(l).title)||'story-'+l.n)+'.md'}
-function exportMD(l){
-  const st=buildLocal(l);
-  const md=String(l.md).replace(/\r/g,'').trim();
-  const fm=md.match(/^---\n([\s\S]*?)\n---\n?/);
-  if(fm){
-    const head=fm[1].split('\n').filter(x=>!/^title\s*:/i.test(x));
-    head.unshift('title: '+st.title);
-    return '---\n'+head.join('\n')+'\n---\n\n'+md.slice(fm[0].length).trim()+'\n';
-  }
-  return '---\ntitle: '+st.title+'\n---\n\n'+md+'\n';
-}
-async function getDir(forcePick){
-  let h=null;
-  if(!forcePick){try{h=await idb.get('dir')}catch(e){}}
-  if(h){
-    try{
-      let p=await h.queryPermission({mode:'readwrite'});
-      if(p!=='granted')p=await h.requestPermission({mode:'readwrite'});
-      if(p==='granted')return h;
-    }catch(e){}
-  }
-  h=await window.showDirectoryPicker({mode:'readwrite',id:'baca-stories'});
-  if(h.name!=='stories'&&!confirm('The selected folder is "'+h.name+'", not "stories". Save stories here anyway?'))
-    throw new DOMException('Cancelled','AbortError');
-  try{await idb.set('dir',h)}catch(e){}
-  return h;
-}
-async function saveToFolder(name,text){
-  const dir=await getDir(false);
-  let exists=false;
-  try{await dir.getFileHandle(name);exists=true}catch(e){}
-  if(exists&&!confirm('"'+name+'" already exists in the folder. Replace it?'))return false;
-  const fh=await dir.getFileHandle(name,{create:true});
-  const w=await fh.createWritable();await w.write(text);await w.close();
-  try{
-    const ih=await dir.getFileHandle('index.json');
-    const j=JSON.parse(await (await ih.getFile()).text());
-    const arr=Array.isArray(j)?j:(j.files||[]);
-    if(!arr.includes(name)){
-      arr.push(name);
-      const out=Array.isArray(j)?arr:Object.assign(j,{files:arr});
-      const iw=await ih.createWritable();await iw.write(JSON.stringify(out,null,2));await iw.close();
+        box.append(empty); return;
+      }
+      const grid = document.createElement('div'); grid.className = 'words-grid';
+      list.forEach(x => {
+        const d = document.createElement('div'); d.className = 'wb';
+        const t = document.createElement('div'); t.className = 't';
+        const b = document.createElement('b'); b.textContent = x.w;
+        t.append(b);
+        if (x.arti) { const p = document.createElement('p'); p.className = 'arti'; p.textContent = x.arti; t.append(p) }
+        if (x.def) { const p = document.createElement('p'); p.textContent = x.def; t.append(p) }
+        const ac = document.createElement('div'); ac.className = 'acts';
+        const mk = (txt, fn) => { const e = document.createElement('button'); e.className = 'btn sm'; e.textContent = txt; e.onclick = fn; ac.append(e) };
+        mk('Listen', () => speakWord(x.w));
+        mk('Edit', () => {
+          const v = prompt('Meaning of "' + x.w + '"', x.arti || '');
+          if (v === null) return;
+          x.arti = v.trim();
+          const all = LS.get('words', []);
+          const it = all.find(y => y.w === x.w);
+          if (it) { it.arti = v.trim(); LS.set('words', all) }
+          openWords();
+        });
+        mk('Delete', () => { LS.set('words', LS.get('words', []).filter(y => y.w !== x.w)); openWords() });
+        d.append(t, ac); grid.append(d);
+      });
+      box.append(grid);
     }
-  }catch(e){}
-  return true;
-}
-async function downloadStory(l){
-  const name=fileNameFor(l),text=exportMD(l);
-  if(canDir){
-    try{
-      if(await saveToFolder(name,text))toast('Saved to the stories folder: '+name,3200);
-      return;
-    }catch(e){
-      if(e&&e.name==='AbortError'){toast('Download cancelled');return;}
-    }
-  }
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([text],{type:'text/markdown'}));
-  a.download=name;document.body.append(a);a.click();a.remove();
-  setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-  toast('Downloaded '+name+'. Move it into the stories folder.',4200);
-}
 
-/* ---------- event ---------- */
-$('#play').onclick=()=>playing?pause():play();
-$('#prevS').onclick=()=>jumpSent(-1);
-$('#nextS').onclick=()=>jumpSent(1);
-function setMode(m){
-  if(m==='voice'&&!hasTTS){toast('This browser does not support voice');return}
-  if(mode===m)return;
-  const was=playing;if(was)pause();
-  mode=m;syncMode();
-  if(story&&cur>=0){if(m==='scroll')scrollToWord(cur);else keepVisible(words[cur]);}
-  if(was)play();
-}
-$('#mVoice').onclick=()=>setMode('voice');
-$('#mSilent').onclick=()=>setMode('silent');
-$('#mScroll').onclick=()=>setMode('scroll');
-$('#rFull').onclick=toggleFull;
-document.addEventListener('fullscreenchange',syncFull);
-document.addEventListener('webkitfullscreenchange',syncFull);
-$('#optTab').onclick=()=>{optOpen=!optOpen;applyOpts()};
-$('#prevStory').onclick=()=>gotoStory(-1);
-$('#nextStory').onclick=()=>gotoStory(1);
-$('#rSet').onclick=()=>{if(playing)pause();$('#setDlg').hidden=false};
-$('#setClose').onclick=$('#setScrim').onclick=()=>$('#setDlg').hidden=true;
-$('#alL').onclick=()=>{align='left';applyAlign()};
-$('#alC').onclick=()=>{align='center';applyAlign()};
-$('#spdDown').onclick=()=>setWpm(wpm-WPM_STEP);
-$('#spdUp').onclick=()=>setWpm(wpm+WPM_STEP);
-$('#spdNorm').onclick=()=>{setWpm(WPM_NORMAL);toast('Normal speed',1200)};
-$('#hlBtn').onclick=()=>{hlOn=!hlOn;applyHl();toast(hlOn?'Highlight on':'Highlight off',1200)};
-$('#fsUp').onclick=()=>{fs=Math.min(34,fs+2);LS.set('fs',fs);applyFs()};
-$('#fsDown').onclick=()=>{fs=Math.max(15,fs-2);LS.set('fs',fs);applyFs()};
-$('#rQuiz').onclick=()=>{location.hash='#quiz='+encodeURIComponent(story.id)};
-const back=()=>{if(history.length>1)history.back();else location.hash='#'};
-['rBack','qBack','wBack'].forEach(id=>$('#'+id).onclick=back);
-const AI_PROMPT = `Tolong buatkan cerita bahasa Inggris untuk bahan latihan membaca dan belajar grammar (aplikasi PORRIDGE - Power Of Reading English), lengkap dengan Vocab dan Quiz dalam format Markdown berikut:
+    /* ---------- tambah / edit cerita ---------- */
+    let editN = null;
+    function openAdd(n) {
+      const l = typeof n === 'number' ? LS.get('localStories', []).find(x => x.n === n) : null;
+      editN = l ? l.n : null;
+      $('#addH').textContent = l ? 'Edit story' : 'Add story';
+      $('#addTitle').value = l ? (l.title || '') : '';
+      $('#addText').value = l ? l.md : '';
+      $('#addSave').textContent = l ? 'Save changes' : 'Save story';
+      $('#addDlg').hidden = false;
+      if (!l) $('#addText').focus();
+    }
+    $('#addFile').onchange = async e => {
+      const f = e.target.files[0]; if (!f) return;
+      $('#addText').value = await f.text();
+      if (!$('#addTitle').value) $('#addTitle').value = f.name.replace(/\.(md|txt)$/i, '').replace(/[-_]+/g, ' ');
+      e.target.value = '';
+    };
+    function saveAdd(dl) {
+      const md = $('#addText').value.trim();
+      if (!md) { toast('The text is empty'); return; }
+      const title = $('#addTitle').value.trim();
+      const list = normLocal();
+      const wasEdit = editN != null;
+      let item;
+      if (wasEdit) {
+        item = list.find(l => l.n === editN);
+        if (!item) { toast('Story not found'); return; }
+        item.title = title; item.md = md; item.time = Date.now();
+        LS.set('localStories', list);
+        const k = stories.findIndex(s => s.id === 'local:' + item.n);
+        if (k >= 0) stories[k] = buildLocal(item);
+        toast('Changes saved');
+      } else {
+        const n = Math.max(LS.get('seq', 0), 0, ...list.map(l => l.n)) + 1;
+        item = { n, title, md, time: Date.now() };
+        list.push(item);
+        LS.set('localStories', list); LS.set('seq', n);
+        stories.push(buildLocal(item));
+        libQ = ''; $('#search').value = '';
+        toast('Story No. ' + n + ' added');
+      }
+      editN = null;
+      $('#addDlg').hidden = true;
+      const id = 'local:' + item.n;
+      renderLib(id);
+      const li = [...$('#list').children].find(x => x.dataset.id === id);
+      if (li) { li.classList.add('new'); li.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); setTimeout(() => li.classList.remove('new'), 1600); }
+      if (dl) downloadStory(item);
+    }
+    $('#addSave').onclick = () => saveAdd(false);
+    $('#addSaveDl').onclick = () => saveAdd(true);
+    $('#addPaste').onclick = async () => {
+      try {
+        const t = await navigator.clipboard.readText();
+        if (!t.trim()) { toast('Clipboard is empty'); return; }
+        $('#addText').value = t;
+      } catch (e) { toast('Cannot read the clipboard. Long-press the text box and choose Paste.', 3200); $('#addText').focus(); }
+    };
+    $('#addCancel').onclick = $('#addScrim').onclick = () => { editN = null; $('#addDlg').hidden = true };
+
+    /* ---------- download ke folder stories ---------- */
+    const canDir = 'showDirectoryPicker' in window;
+    const idb = {
+      open() { return new Promise((res, rej) => { const r = indexedDB.open('baca-inggris', 1); r.onupgradeneeded = () => r.result.createObjectStore('kv'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error) }) },
+      async get(k) { const db = await this.open(); return new Promise((res, rej) => { const r = db.transaction('kv').objectStore('kv').get(k); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error) }) },
+      async set(k, v) { const db = await this.open(); return new Promise((res, rej) => { const t = db.transaction('kv', 'readwrite'); t.objectStore('kv').put(v, k); t.oncomplete = () => res(); t.onerror = () => rej(t.error) }) }
+    };
+    function slug(s) { return String(s || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) }
+    function fileNameFor(l) { return (slug(buildLocal(l).title) || 'story-' + l.n) + '.md' }
+    function exportMD(l) {
+      const st = buildLocal(l);
+      const md = String(l.md).replace(/\r/g, '').trim();
+      const fm = md.match(/^---\n([\s\S]*?)\n---\n?/);
+      if (fm) {
+        const head = fm[1].split('\n').filter(x => !/^title\s*:/i.test(x));
+        head.unshift('title: ' + st.title);
+        return '---\n' + head.join('\n') + '\n---\n\n' + md.slice(fm[0].length).trim() + '\n';
+      }
+      return '---\ntitle: ' + st.title + '\n---\n\n' + md + '\n';
+    }
+    async function getDir(forcePick) {
+      let h = null;
+      if (!forcePick) { try { h = await idb.get('dir') } catch (e) { } }
+      if (h) {
+        try {
+          let p = await h.queryPermission({ mode: 'readwrite' });
+          if (p !== 'granted') p = await h.requestPermission({ mode: 'readwrite' });
+          if (p === 'granted') return h;
+        } catch (e) { }
+      }
+      h = await window.showDirectoryPicker({ mode: 'readwrite', id: 'baca-stories' });
+      if (h.name !== 'stories' && !confirm('The selected folder is "' + h.name + '", not "stories". Save stories here anyway?'))
+        throw new DOMException('Cancelled', 'AbortError');
+      try { await idb.set('dir', h) } catch (e) { }
+      return h;
+    }
+    async function saveToFolder(name, text) {
+      const dir = await getDir(false);
+      let exists = false;
+      try { await dir.getFileHandle(name); exists = true } catch (e) { }
+      if (exists && !confirm('"' + name + '" already exists in the folder. Replace it?')) return false;
+      const fh = await dir.getFileHandle(name, { create: true });
+      const w = await fh.createWritable(); await w.write(text); await w.close();
+      try {
+        const ih = await dir.getFileHandle('index.json');
+        const j = JSON.parse(await (await ih.getFile()).text());
+        const arr = Array.isArray(j) ? j : (j.files || []);
+        if (!arr.includes(name)) {
+          arr.push(name);
+          const out = Array.isArray(j) ? arr : Object.assign(j, { files: arr });
+          const iw = await ih.createWritable(); await iw.write(JSON.stringify(out, null, 2)); await iw.close();
+        }
+      } catch (e) { }
+      return true;
+    }
+    async function downloadStory(l) {
+      const name = fileNameFor(l), text = exportMD(l);
+      if (canDir) {
+        try {
+          if (await saveToFolder(name, text)) toast('Saved to the stories folder: ' + name, 3200);
+          return;
+        } catch (e) {
+          if (e && e.name === 'AbortError') { toast('Download cancelled'); return; }
+        }
+      }
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([text], { type: 'text/markdown' }));
+      a.download = name; document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      toast('Downloaded ' + name + '. Move it into the stories folder.', 4200);
+    }
+
+    /* ---------- event ---------- */
+    $('#play').onclick = () => playing ? pause() : play();
+    $('#prevS').onclick = () => jumpSent(-1);
+    $('#nextS').onclick = () => jumpSent(1);
+    function setMode(m) {
+      if (m === 'voice' && !hasTTS) { toast('This browser does not support voice'); return }
+      if (mode === m) return;
+      const was = playing; if (was) pause();
+      mode = m; syncMode();
+      if (story && cur >= 0) { if (m === 'scroll') scrollToWord(cur); else keepVisible(words[cur]); }
+      if (was) play();
+    }
+    $('#mVoice').onclick = () => setMode('voice');
+    $('#mSilent').onclick = () => setMode('silent');
+    $('#mScroll').onclick = () => setMode('scroll');
+    $('#rFull').onclick = toggleFull;
+    document.addEventListener('fullscreenchange', syncFull);
+    document.addEventListener('webkitfullscreenchange', syncFull);
+    $('#optTab').onclick = () => { optOpen = !optOpen; applyOpts() };
+    $('#prevStory').onclick = () => gotoStory(-1);
+    $('#nextStory').onclick = () => gotoStory(1);
+    $('#rSet').onclick = () => { if (playing) pause(); $('#setDlg').hidden = false };
+    $('#setClose').onclick = $('#setScrim').onclick = () => $('#setDlg').hidden = true;
+    $('#alL').onclick = () => { align = 'left'; applyAlign() };
+    $('#alC').onclick = () => { align = 'center'; applyAlign() };
+    $('#spdDown').onclick = () => setWpm(wpm - WPM_STEP);
+    $('#spdUp').onclick = () => setWpm(wpm + WPM_STEP);
+    $('#spdNorm').onclick = () => { setWpm(WPM_NORMAL); toast('Normal speed', 1200) };
+    $('#hlBtn').onclick = () => { hlOn = !hlOn; applyHl(); toast(hlOn ? 'Highlight on' : 'Highlight off', 1200) };
+    $('#fsUp').onclick = () => { fs = Math.min(34, fs + 2); LS.set('fs', fs); applyFs() };
+    $('#fsDown').onclick = () => { fs = Math.max(15, fs - 2); LS.set('fs', fs); applyFs() };
+    $('#rQuiz').onclick = () => { location.hash = '#quiz=' + encodeURIComponent(story.id) };
+    const back = () => { if (history.length > 1) history.back(); else location.hash = '#' };
+    ['rBack', 'qBack', 'wBack'].forEach(id => $('#' + id).onclick = back);
+    const AI_PROMPT = `Tolong buatkan cerita bahasa Inggris untuk bahan latihan membaca dan belajar grammar (aplikasi PORRIDGE - Power Of Reading English), lengkap dengan Vocab dan Quiz dalam format Markdown berikut:
 
 ---
 title: [Fokus Grammar / Tema] : [Judul Cerita dalam Bahasa Inggris, contoh: Past Tense : Telaga Ngebel]
@@ -1533,105 +2623,106 @@ Q: What is the moral of the story?
 ---
 Outputkan langsung kode Markdown-nya saja tanpa basa-basi pembuka atau penutup.`;
 
-async function copyPrompt(){
-  const ok=await copyToClipboard(AI_PROMPT);
-  if(ok)toast('Prompt copied! Paste into ChatGPT / Gemini',3200);
-  else toast('Failed to copy prompt',2000);
-}
+    async function copyPrompt() {
+      const ok = await copyToClipboard(AI_PROMPT);
+      if (ok) toast('Prompt copied! Paste into ChatGPT / Gemini', 3200);
+      else toast('Failed to copy prompt', 2000);
+    }
 
-function calcAboutTreat(){
-  const qDrink=Math.max(0,parseInt($('#qtyDrink').value,10)||0);
-  const qFood=Math.max(0,parseInt($('#qtyFood').value,10)||0);
-  const subDrink=qDrink*10000;
-  const subFood=qFood*20000;
-  const tot=subDrink+subFood;
-  const fmt=n=>n.toLocaleString('id-ID');
-  $('#calcDrinkText').textContent=`${qDrink} x 10.000`;
-  $('#subDrink').textContent=`Rp ${fmt(subDrink)}`;
-  $('#calcFoodText').textContent=`${qFood} x 20.000`;
-  $('#subFood').textContent=`Rp ${fmt(subFood)}`;
-  $('#totalTransfer').textContent=`Rp ${fmt(tot)}`;
-}
+    function calcAboutTreat() {
+      const qDrink = Math.max(0, parseInt($('#qtyDrink').value, 10) || 0);
+      const qFood = Math.max(0, parseInt($('#qtyFood').value, 10) || 0);
+      const subDrink = qDrink * 10000;
+      const subFood = qFood * 20000;
+      const tot = subDrink + subFood;
+      const fmt = n => n.toLocaleString('id-ID');
+      $('#calcDrinkText').textContent = `${qDrink} x 10.000`;
+      $('#subDrink').textContent = `Rp ${fmt(subDrink)}`;
+      $('#calcFoodText').textContent = `${qFood} x 20.000`;
+      $('#subFood').textContent = `Rp ${fmt(subFood)}`;
+      $('#totalTransfer').textContent = `Rp ${fmt(tot)}`;
+    }
 
-const openAbout=()=>{if(playing)pause();calcAboutTreat();$('#aboutDlg').hidden=false};
-const closeAbout=()=>{$('#aboutDlg').hidden=true};
-$('#btnAbout').onclick=openAbout;
-if($('#btnAboutFoot'))$('#btnAboutFoot').onclick=openAbout;
-$('#aboutClose').onclick=$('#aboutScrim').onclick=$('#aboutOk').onclick=closeAbout;
-$('#qtyDrink').oninput=calcAboutTreat;
-$('#qtyFood').oninput=calcAboutTreat;
-$('#btnMinDrink').onclick=()=>{
-  const v=Math.max(0,(parseInt($('#qtyDrink').value,10)||0)-1);
-  $('#qtyDrink').value=v;calcAboutTreat();
-};
-$('#btnPlusDrink').onclick=()=>{
-  const v=(parseInt($('#qtyDrink').value,10)||0)+1;
-  $('#qtyDrink').value=v;calcAboutTreat();
-};
-$('#btnMinFood').onclick=()=>{
-  const v=Math.max(0,(parseInt($('#qtyFood').value,10)||0)-1);
-  $('#qtyFood').value=v;calcAboutTreat();
-};
-$('#btnPlusFood').onclick=()=>{
-  const v=(parseInt($('#qtyFood').value,10)||0)+1;
-  $('#qtyFood').value=v;calcAboutTreat();
-};
-$('#btnCopyRek').onclick=async()=>{
-  const ok=await copyToClipboard('051601017476538');
-  if(ok)toast('Nomor rekening BRI disalin!',2500);
-};
+    const openAbout = () => { if (playing) pause(); calcAboutTreat(); $('#aboutDlg').hidden = false };
+    const closeAbout = () => { $('#aboutDlg').hidden = true };
+    $('#btnAbout').onclick = openAbout;
+    if ($('#btnAboutFoot')) $('#btnAboutFoot').onclick = openAbout;
+    $('#aboutClose').onclick = $('#aboutScrim').onclick = $('#aboutOk').onclick = closeAbout;
+    $('#qtyDrink').oninput = calcAboutTreat;
+    $('#qtyFood').oninput = calcAboutTreat;
+    $('#btnMinDrink').onclick = () => {
+      const v = Math.max(0, (parseInt($('#qtyDrink').value, 10) || 0) - 1);
+      $('#qtyDrink').value = v; calcAboutTreat();
+    };
+    $('#btnPlusDrink').onclick = () => {
+      const v = (parseInt($('#qtyDrink').value, 10) || 0) + 1;
+      $('#qtyDrink').value = v; calcAboutTreat();
+    };
+    $('#btnMinFood').onclick = () => {
+      const v = Math.max(0, (parseInt($('#qtyFood').value, 10) || 0) - 1);
+      $('#qtyFood').value = v; calcAboutTreat();
+    };
+    $('#btnPlusFood').onclick = () => {
+      const v = (parseInt($('#qtyFood').value, 10) || 0) + 1;
+      $('#qtyFood').value = v; calcAboutTreat();
+    };
+    $('#btnCopyRek').onclick = async () => {
+      const ok = await copyToClipboard('051601017476538');
+      if (ok) toast('Nomor rekening BRI disalin!', 2500);
+    };
 
-$('#btnPrompt').onclick=copyPrompt;
-$('#btnWords').onclick=()=>{location.hash='#words'};
-$('#btnAdd').onclick=()=>openAdd();
-$('#btnReload').onclick=async()=>{await loadStories();renderLib();toast('Story list updated')};
-$('#dtSize').value=String(libPageSize);
-$('#dtSort').value=libSort;
-$('#dtSize').onchange=e=>{libPageSize=+e.target.value;libPage=1;LS.set('libPageSize',libPageSize);renderLib()};
-$('#dtSort').onchange=e=>{libSort=e.target.value;libPage=1;LS.set('libSort',libSort);renderLib()};
-$('#search').oninput=e=>{libQ=e.target.value;libPage=1;renderLib()};
-$('#searchClr').onclick=()=>{libQ='';$('#search').value='';libPage=1;renderLib();$('#search').focus()};
-$('#pgPrev').onclick=()=>{if(libPage>1){libPage--;renderLib();window.scrollTo(0,0)}};
-$('#pgNext').onclick=()=>{libPage++;renderLib();window.scrollTo(0,0)};
-$('#btnFolder').hidden=!canDir;
-$('#btnFolder').onclick=async()=>{
-  try{const h=await getDir(true);toast('Download folder: '+h.name)}
-  catch(e){if(!e||e.name!=='AbortError')toast('Could not open the folder')}
-};
-$('#text').addEventListener('click',e=>{
-  const w=e.target.closest('.w');
-  if(w){showSheet(+w.dataset.i);return;}
-  if(e.target.closest('#doneQuiz')){location.hash='#quiz='+encodeURIComponent(story.id);return;}
-  if(e.target.closest('#doneAgain')){pause();highlight(0,false);pos=0;scrollTo(0,0);}
-});
-$('#shClose').onclick=$('#shScrim').onclick=closeSheet;
-$('#shSpeak').onclick=()=>sh&&speakWord(sh.w);
-$('#shSave').onclick=saveWord;
-$('#shFrom').onclick=()=>{if(!sh)return;const i=sh.idx;resumeScrollOnClose=false;closeSheet();goTo(i);play()};
-document.addEventListener('visibilitychange',()=>{
-  if(document.hidden&&playing)pause();
-  if(!document.hidden&&!$('#v-lib').hidden)loadStories().then(()=>{if(!$('#v-lib').hidden)renderLib()});
-});
+    $('#btnPrompt').onclick = copyPrompt;
+    $('#btnWords').onclick = () => { location.hash = '#words' };
+    $('#btnAdd').onclick = () => openAdd();
+    $('#btnReload').onclick = async () => { await loadStories(); renderLib(); toast('Story list updated') };
+    $('#dtSize').value = String(libPageSize);
+    $('#dtSort').value = libSort;
+    $('#dtSize').onchange = e => { libPageSize = +e.target.value; libPage = 1; LS.set('libPageSize', libPageSize); renderLib() };
+    $('#dtSort').onchange = e => { libSort = e.target.value; libPage = 1; LS.set('libSort', libSort); renderLib() };
+    $('#search').oninput = e => { libQ = e.target.value; libPage = 1; renderLib() };
+    $('#searchClr').onclick = () => { libQ = ''; $('#search').value = ''; libPage = 1; renderLib(); $('#search').focus() };
+    $('#pgPrev').onclick = () => { if (libPage > 1) { libPage--; renderLib(); window.scrollTo(0, 0) } };
+    $('#pgNext').onclick = () => { libPage++; renderLib(); window.scrollTo(0, 0) };
+    $('#btnFolder').hidden = !canDir;
+    $('#btnFolder').onclick = async () => {
+      try { const h = await getDir(true); toast('Download folder: ' + h.name) }
+      catch (e) { if (!e || e.name !== 'AbortError') toast('Could not open the folder') }
+    };
+    $('#text').addEventListener('click', e => {
+      const w = e.target.closest('.w');
+      if (w) { showSheet(+w.dataset.i); return; }
+      if (e.target.closest('#doneQuiz')) { location.hash = '#quiz=' + encodeURIComponent(story.id); return; }
+      if (e.target.closest('#doneAgain')) { pause(); highlight(0, false); pos = 0; scrollTo(0, 0); }
+    });
+    $('#shClose').onclick = $('#shScrim').onclick = closeSheet;
+    $('#shSpeak').onclick = () => sh && speakWord(sh.w);
+    $('#shSave').onclick = saveWord;
+    $('#shFrom').onclick = () => { if (!sh) return; const i = sh.idx; resumeScrollOnClose = false; closeSheet(); goTo(i); play() };
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && playing) pause();
+      if (!document.hidden && !$('#v-lib').hidden) loadStories().then(() => { if (!$('#v-lib').hidden) renderLib() });
+    });
 
-/* ---------- router ---------- */
-function route(){
-  if(playing)pause();
-  resumeScrollOnClose=false;
-  closeSheet();$('#addDlg').hidden=true;$('#setDlg').hidden=true;$('#aboutDlg').hidden=true;
-  const h=location.hash.slice(1),k=h.split('=')[0],v=decodeURIComponent(h.slice(k.length+1));
-  if(k==='read'&&v)openStory(v);
-  else if(k==='quiz'&&v)openQuiz(v);
-  else if(k==='words')openWords();
-  else openLib(false).then(()=>loadStories()).then(()=>{if(!$('#v-lib').hidden)renderLib()});
-}
-window.addEventListener('hashchange',route);
+    /* ---------- router ---------- */
+    function route() {
+      if (playing) pause();
+      resumeScrollOnClose = false;
+      closeSheet(); $('#addDlg').hidden = true; $('#setDlg').hidden = true; $('#aboutDlg').hidden = true;
+      const h = location.hash.slice(1), k = h.split('=')[0], v = decodeURIComponent(h.slice(k.length + 1));
+      if (k === 'read' && v) openStory(v);
+      else if (k === 'quiz' && v) openQuiz(v);
+      else if (k === 'words') openWords();
+      else openLib(false).then(() => loadStories()).then(() => { if (!$('#v-lib').hidden) renderLib() });
+    }
+    window.addEventListener('hashchange', route);
 
-(async function init(){
-  syncMode();syncSpd();applyFs();applyAlign();applyHl();applyOpts();syncFull();
-  await loadStories();
-  route();
-  if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-})();
-</script>
+    (async function init() {
+      syncMode(); syncSpd(); applyFs(); applyAlign(); applyHl(); applyOpts(); syncFull();
+      await loadStories();
+      route();
+      if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
+    })();
+  </script>
 </body>
+
 </html>
