@@ -3,6 +3,7 @@ title: Past Tense :The Legend of Ken Arok and Ken Dedes
 level: Pemula
 grammar: Simple Past Tense
 ---
+![](jatim-kenarok-kendedes.webp)
 Long ago, a poor young man named Ken Arok lived in East Java. He was strong and smart, but he had no home and no family.
 
 One day, he met a wise priest. The priest said, "You will become a great king one day, so work hard and be brave."
