@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Sarangan Lake
+title: Past Tense :Jawa Timur - The Legend of Sarangan Lake
 level: Pemula
 grammar: Simple Past Tense
 ---
