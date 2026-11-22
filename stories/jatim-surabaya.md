@@ -3,6 +3,8 @@ title: Past Tense :Jawa Timur - The Legend of Surabaya
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-surabaya.webp)
 Long ago, a strong shark named Sura lived in the sea. A big crocodile named Baya lived in the river nearby.
 
 Both animals were very strong, and both of them loved to eat fish. The sea and the river were full of fish, so they had enough food.
