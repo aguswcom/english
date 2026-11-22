@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Calon Arang
+title: Past Tense :Jawa Timur - The Legend of Calon Arang
 level: Pemula
 grammar: Simple Past Tense
 ---
