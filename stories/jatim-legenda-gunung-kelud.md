@@ -3,6 +3,8 @@ title: Past Tense :Jawa Timur - The Legend of Mount Kelud
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-legenda-gunung-kelud.webp)
 Long ago, a beautiful princess named Dewi Kilisuci lived in the kingdom of Kediri. Many kings wanted to marry her, so they sent gifts to the palace.
 
 Two strong kings, Mahesa Suro and Lembu Suro, loved her very much. They had the heads of a buffalo and a cow, but they were also very proud.
