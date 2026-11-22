@@ -3,6 +3,7 @@ title: Past Tense :Jawa Timur - The Legend of Joko Tole
 level: Pemula
 grammar: Simple Past Tense
 ---
+![](jatim-joko-tole.webp)
 Long ago, a clever boy named Joko Tole lived on the island of Madura. His father was a famous blacksmith, so Joko Tole learned to make tools from a young age.
 
 When he grew up, he became a strong and skilled young man. He helped the villagers and worked hard every day.
