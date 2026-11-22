@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Suminten Edan
+title: Past Tense :Jawa Timur - The Legend of Suminten Edan
 level: Pemula
 grammar: Simple Past Tense
 ---
