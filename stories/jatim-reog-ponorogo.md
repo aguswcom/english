@@ -1,5 +1,5 @@
 ---
-title: Past Tense :The Legend of Reog Ponorogo
+title: Past Tense :Jawa Timur - The Legend of Reog Ponorogo
 level: Pemula
 grammar: Simple Past Tense
 ---
