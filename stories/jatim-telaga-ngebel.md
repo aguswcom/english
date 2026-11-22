@@ -4,7 +4,7 @@ level: Pemula
 grammar: Simple Past Tense
 ---
 
-![](jatim-surabaya.webp)
+![](jatim-telaga-ngebel.webp)
 Long ago, in a village in Ponorogo, East Java, there lived a farmer and his wife. They were very sad because they did not have any children.
 
 One day, the wife went to a sacred place. She prayed for a child. A few months later, she got pregnant. The couple was very happy.
