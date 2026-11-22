@@ -3,6 +3,8 @@ title: Past Tense :The Legend of Sarangan Lake
 level: Pemula
 grammar: Simple Past Tense
 ---
+
+![](jatim-sarangan.webp)
 Long ago, a kind old man named Ki Pasir and his wife Nyai Pasir lived on the slope of Mount Lawu. They were poor, but they were honest and friendly.
 
 One day, Ki Pasir went to the forest to look for food. He found a big egg under a tree and took it home.
